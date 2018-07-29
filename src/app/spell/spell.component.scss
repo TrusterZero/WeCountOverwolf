@@ -1,0 +1,37 @@
+.spell-container {
+    display: inline-flex;
+    padding: 0.5%;
+    position: relative;
+    align-items: center;
+    flex-direction: row;
+
+    & > * {
+        flex: 1 1 100%;
+    }
+}
+
+.spell-container__countdown {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    p {
+        color: white;
+        font-size: larger;
+        font-weight: 600;
+        pointer-events: none;
+        text-shadow: 2px 0 0 black,
+                     -2px 0 0 black,
+                     0 2px 0 black,
+                     0 -2px 0 black,
+                     1px 1px black,
+                     -1px -1px 0 black,
+                     1px -1px 0 black,
+                     -1px 1px 0 black;
+    }
+}
+
+.spell-container--on-cooldown {
+    img {
+        filter: grayscale(80%);
+    }
+}

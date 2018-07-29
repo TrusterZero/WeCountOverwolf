@@ -1,0 +1,9 @@
+<div (click)="startCooldown()"
+     class="spell-container" 
+     [ngClass] = "{ 'spell-container--on-cooldown': onCooldown }">
+
+     <img #spellImage
+          src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/{{image}}">
+
+  <div class="spell-container__countdown"><p>{{ countdown }}</p></div>
+</div>
