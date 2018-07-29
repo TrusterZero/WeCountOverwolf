@@ -1,4 +1,4 @@
-{
+	{
 	"manifest_version":1,
 	"type":"WebApp",
 	"meta":{
@@ -6,8 +6,8 @@
 		"version":"1.0.0",
 		"minimum-overwolf-version":"0.77.10",
 		"author":"Jurmen Hughes",
-		"icon":"IconMouseOver.png",
-		"icon_gray":"IconMouseNormal.png",
+		"icon":"",
+		"icon_gray":"",
 		"description":""
 	},
 	"data": {
@@ -15,12 +15,12 @@
 		"windows":{
 			"MainWindow":{
 					"file":"Files/index.html",
-					"transparent": true,
+					"transparent": false,
 					"resizable": true,
-					"use_os_windowing": true,
+					"use_os_windowing": false,
 					"size": {
-						"width":700,
-						"height":400
+						"width":1080,
+						"height":720
 						},
 					"min_size": {
 						"width":400,

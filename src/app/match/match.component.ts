@@ -24,7 +24,6 @@ export class MatchComponent {
       if (match) {
         this.match = match;
         this.summoners = match.summoners;
-        console.log(match);
       }
     });
   }
