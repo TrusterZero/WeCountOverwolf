@@ -12,13 +12,13 @@ export class MatchService {
     constructor(private socketService: SocketService) {
         // TODO: doesn't check if connection exists yet
         // TODO: doesn't provide a way to check if connected yet
+        // TODO: enums zijn sexeh!
         socketService.connect()
             .subscribe(this.initializeMatch);
 
         socketService.message('match', { test: 'test' });
 
         socketService.listen('matchReturn', (match: Match) => {
-            console.log(match)
             this.matchData.next(match)
         })
     }

@@ -1,7 +1,7 @@
 <div *ngFor="let summoner of summoners">
-    <summoner [id]="summoner.id"
-              [champion] = "summoner.champion" 
-              [spell1] = "summoner.spell1"
-              [spell2] = "summoner.spell2">
+    <summoner [id]="summoner?.id"
+              [champion] = "summoner?.champion"
+              [spell1] = "summoner?.spell1"
+              [spell2] = "summoner?.spell2">
     </summoner>
 </div>
