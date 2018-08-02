@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { SocketService } from './socket.service';
-import { Summoner } from './summoner/summoner.component'
+import { OverwolfService } from './overwolf.service';
+
+
+
 
 @Component({
   selector: 'app-root',
@@ -9,10 +12,8 @@ import { Summoner } from './summoner/summoner.component'
 })
 export class AppComponent {
   title = 'app';
-  socket = new SocketService();
-
-  
-  constructor(){
-    console.log("yoooooo!")
-  }
+  socket: SocketService = new SocketService();
+  overwolfService: OverwolfService = new OverwolfService()
+ 
+  constructor(){ }
 }
