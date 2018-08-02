@@ -98,14 +98,14 @@ var AppComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"](
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _socket_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./socket.service */ "./src/app/socket.service.ts");
-/* harmony import */ var _overwolf_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./overwolf.service */ "./src/app/overwolf.service.ts");
+/* harmony import */ var _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./overwolf/overwolf.service */ "./src/app/overwolf/overwolf.service.ts");
 
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.title = 'app';
         this.socket = new _socket_service__WEBPACK_IMPORTED_MODULE_0__["SocketService"]();
-        this.overwolfService = new _overwolf_service__WEBPACK_IMPORTED_MODULE_1__["OverwolfService"]();
+        this.overwolfService = new _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_1__["OverwolfService"]();
     }
     return AppComponent;
 }());
@@ -308,7 +308,7 @@ __webpack_require__.r(__webpack_exports__);
 var styles_MatchComponent = [_match_component_css_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 var RenderType_MatchComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({ encapsulation: 0, styles: styles_MatchComponent, data: {} });
 
-function View_MatchComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "div", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "summoner", [], null, null, null, _summoner_summoner_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_SummonerComponent_0"], _summoner_summoner_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_SummonerComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 114688, null, 0, _summoner_summoner_component__WEBPACK_IMPORTED_MODULE_3__["SummonerComponent"], [], { id: [0, "id"], champion: [1, "champion"], spell1: [2, "spell1"], spell2: [3, "spell2"] }, null)], function (_ck, _v) { var currVal_0 = _v.context.$implicit.id; var currVal_1 = _v.context.$implicit.champion; var currVal_2 = _v.context.$implicit.spell1; var currVal_3 = _v.context.$implicit.spell2; _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2, currVal_3); }, null); }
+function View_MatchComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "div", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "summoner", [], null, null, null, _summoner_summoner_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_SummonerComponent_0"], _summoner_summoner_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_SummonerComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 114688, null, 0, _summoner_summoner_component__WEBPACK_IMPORTED_MODULE_3__["SummonerComponent"], [], { id: [0, "id"], champion: [1, "champion"], spell1: [2, "spell1"], spell2: [3, "spell2"] }, null)], function (_ck, _v) { var currVal_0 = ((_v.context.$implicit == null) ? null : _v.context.$implicit.id); var currVal_1 = ((_v.context.$implicit == null) ? null : _v.context.$implicit.champion); var currVal_2 = ((_v.context.$implicit == null) ? null : _v.context.$implicit.spell1); var currVal_3 = ((_v.context.$implicit == null) ? null : _v.context.$implicit.spell2); _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2, currVal_3); }, null); }
 function View_MatchComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MatchComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 802816, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]], { ngForOf: [0, "ngForOf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.summoners; _ck(_v, 1, 0, currVal_0); }, null); }
 function View_MatchComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "match", [], null, null, null, View_MatchComponent_0, RenderType_MatchComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 49152, null, 0, _match_component__WEBPACK_IMPORTED_MODULE_5__["MatchComponent"], [_match_service__WEBPACK_IMPORTED_MODULE_6__["MatchService"]], null, null)], null, null); }
 var MatchComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("match", _match_component__WEBPACK_IMPORTED_MODULE_5__["MatchComponent"], View_MatchComponent_Host_0, {}, {}, []);
@@ -328,18 +328,20 @@ var MatchComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatchComponent", function() { return MatchComponent; });
 /* harmony import */ var _match_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./match.service */ "./src/app/match/match.service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
 
 var MatchComponent = /** @class */ (function () {
     function MatchComponent(matchService) {
         var _this = this;
         this.matchService = matchService;
-        this.summoners = [];
-        //ik benn hier direct gesubt aan de behaviorSubject is dat een probleem ?*
+        this.summoners = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
         matchService.matchData.subscribe(function (match) {
-            if (match) {
-                _this.match = match;
-                _this.summoners = match.summoners;
+            if (!match) {
+                return;
             }
+            _this.match = match;
+            _this.summoners.next(match.summoners);
         });
     }
     return MatchComponent;
@@ -359,19 +361,8 @@ var MatchComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatchService", function() { return MatchService; });
-/* harmony import */ var _node_modules_angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/@angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _socket_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../socket.service */ "./src/app/socket.service.ts");
-/* harmony import */ var _node_modules_rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/rxjs */ "./node_modules/rxjs/_esm5/index.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
+/* harmony import */ var _socket_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../socket.service */ "./src/app/socket.service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 
 
 var MatchService = /** @class */ (function () {
@@ -380,19 +371,20 @@ var MatchService = /** @class */ (function () {
         // TODO: doesn't provide a way to check if connected yet
         var _this = this;
         this.socketService = socketService;
-        this.matchData = new _node_modules_rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.matchData = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
         socketService.connect()
-            .subscribe(this.initializeMatch);
-        socketService.listen('matchReturn', function (match) {
+            .subscribe(function () { return _this.initializeMatch; });
+    }
+    /**
+     * TODO: feedme en damn wat zijn die enums toch lekker
+     */
+    MatchService.prototype.initializeMatch = function () {
+        var _this = this;
+        this.socketService.message('match', { test: 'test' });
+        this.socketService.listen('matchReturn', function (match) {
             _this.matchData.next(match);
         });
-    }
-    MatchService.prototype.initializeMatch = function () {
     };
-    MatchService = __decorate([
-        Object(_node_modules_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __metadata("design:paramtypes", [_socket_service__WEBPACK_IMPORTED_MODULE_1__["SocketService"]])
-    ], MatchService);
     return MatchService;
 }());
 
@@ -400,49 +392,67 @@ var MatchService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/overwolf.service.ts":
-/*!*************************************!*\
-  !*** ./src/app/overwolf.service.ts ***!
-  \*************************************/
-/*! exports provided: OverwolfService */
+/***/ "./src/app/overwolf/overwolf.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/overwolf/overwolf.service.ts ***!
+  \**********************************************/
+/*! exports provided: OverwolfService, ɵ0 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OverwolfService", function() { return OverwolfService; });
-/* harmony import */ var _socket_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./socket.service */ "./src/app/socket.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵ0", function() { return ɵ0; });
+/* harmony import */ var _socket_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../socket.service */ "./src/app/socket.service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 
-var requiredFeatures = ['matchState', 'summoner_info', 'gameMode'];
+
+var ɵ0 = function (feature) { return Features[feature]; };
+var requiredFeatures = Object.keys(Features).map(ɵ0); //type of events we listen to
+var overwolfEvents = overwolf.games.events;
 var OverwolfService = /** @class */ (function () {
     function OverwolfService() {
+        var _this = this;
         this.socketService = new _socket_service__WEBPACK_IMPORTED_MODULE_0__["SocketService"]();
+        this.matchStarted = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](false);
         this.setFeatures();
-        overwolf.games.events.onInfoUpdates2.addListener(function (infoUpdateChange) {
-            console.log(infoUpdateChange);
+        console.log(requiredFeatures);
+        overwolfEvents.onInfoUpdates2.addListener(function (infoUpdateChange) {
+            overwolfEvents.getInfo(function (info) {
+                //console.log(info)
+            });
             switch (infoUpdateChange.feature) {
-                case "summoner_info": console.log(infoUpdateChange.summoner_info);
+                case "summoner_info": _this.updateSummoner(infoUpdateChange.info[Features.summonerInfo]), "from switch";
+                case "matchState": _this.setMatchState(infoUpdateChange.info[Features.matchState]);
             }
         });
-        //test for connection
-        overwolf.profile.getCurrentUser(function (user) {
-            console.log(user.userId);
+        this.matchStarted.subscribe(function (isStarted) {
+            if (isStarted) {
+                console.log("match started =", isStarted);
+                _this.gameStart("");
+            }
         });
     }
     OverwolfService.prototype.gameStart = function (summonerId) {
         this.socketService.message('match', { summonerId: summonerId });
     };
     OverwolfService.prototype.setFeatures = function () {
-        overwolf.games.events.setRequiredFeatures(requiredFeatures, function (info) {
+        overwolfEvents.setRequiredFeatures(requiredFeatures, function (info) {
             if (info.status === 'error') {
                 //check info.status possible values
                 console.log(info.reason);
                 return;
             }
-            console.log(JSON.stringify(info));
         });
+    };
+    OverwolfService.prototype.setMatchState = function (matchState) {
+        this.matchStarted.next(matchState.matchStarted === "True");
+    };
+    OverwolfService.prototype.updateSummoner = function (summoner) {
     };
     return OverwolfService;
 }());
+
 
 
 
@@ -525,9 +535,9 @@ var RenderType_SpellComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcr
 function View_SpellComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 6, "div", [["class", "spell-container"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.startCooldown() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgClass"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["KeyValueDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]], { klass: [0, "klass"], ngClass: [1, "ngClass"] }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpod"](2, { "spell-container--on-cooldown": 0 }), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, [["spellImage", 1]], null, 0, "img", [], [[8, "src", 4]], null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 2, "div", [["class", "spell-container__countdown"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](6, null, ["", ""]))], function (_ck, _v) { var _co = _v.component; var currVal_0 = "spell-container"; var currVal_1 = _ck(_v, 2, 0, _co.onCooldown); _ck(_v, 1, 0, currVal_0, currVal_1); }, function (_ck, _v) { var _co = _v.component; var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵinlineInterpolate"](1, "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/", _co.image, ""); _ck(_v, 3, 0, currVal_2); var currVal_3 = _co.countdown; _ck(_v, 6, 0, currVal_3); }); }
+    } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgClass"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["KeyValueDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]], { klass: [0, "klass"], ngClass: [1, "ngClass"] }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpod"](2, { "spell-container--on-cooldown": 0 }), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 0, "img", [], [[8, "src", 4]], null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 2, "div", [["class", "spell-container__countdown"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](6, null, ["", ""]))], function (_ck, _v) { var _co = _v.component; var currVal_0 = "spell-container"; var currVal_1 = _ck(_v, 2, 0, (_co.countdown < _co.cooldown)); _ck(_v, 1, 0, currVal_0, currVal_1); }, function (_ck, _v) { var _co = _v.component; var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵinlineInterpolate"](1, "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/", _co.image, ""); _ck(_v, 3, 0, currVal_2); var currVal_3 = _co.countdown; _ck(_v, 6, 0, currVal_3); }); }
 function View_SpellComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "spell", [], null, null, null, View_SpellComponent_0, RenderType_SpellComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 245760, null, 0, _spell_component__WEBPACK_IMPORTED_MODULE_3__["SpellComponent"], [_socket_service__WEBPACK_IMPORTED_MODULE_4__["SocketService"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
-var SpellComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("spell", _spell_component__WEBPACK_IMPORTED_MODULE_3__["SpellComponent"], View_SpellComponent_Host_0, { id: "id", name: "name", image: "image", cooldown: "cooldown" }, {}, []);
+var SpellComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("spell", _spell_component__WEBPACK_IMPORTED_MODULE_3__["SpellComponent"], View_SpellComponent_Host_0, { id: "id", name: "name", image: "image", cooldown: "cooldown", summonerId: "summonerId" }, {}, []);
 
 
 
@@ -549,7 +559,7 @@ __webpack_require__.r(__webpack_exports__);
  * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
  * tslint:disable
  */ 
-var styles = [".spell-container[_ngcontent-%COMP%] {\n  display: inline-flex;\n  padding: 0.5%;\n  position: relative;\n  align-items: center;\n  flex-direction: row; }\n  .spell-container[_ngcontent-%COMP%]    > *[_ngcontent-%COMP%] {\n    flex: 1 1 100%; }\n  .spell-container__countdown[_ngcontent-%COMP%] {\n  position: absolute;\n  width: 100%;\n  text-align: center; }\n  .spell-container__countdown[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    color: white;\n    font-size: larger;\n    font-weight: 600;\n    pointer-events: none;\n    text-shadow: 2px 0 0 black,\r -2px 0 0 black,\r 0 2px 0 black,\r 0 -2px 0 black,\r 1px 1px black,\r -1px -1px 0 black,\r 1px -1px 0 black,\r -1px 1px 0 black; }\n  .spell-container--on-cooldown[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  -webkit-filter: grayscale(80%);\n          filter: grayscale(80%); }"];
+var styles = [".spell-container[_ngcontent-%COMP%] {\n  display: inline-flex;\n  margin: 0.5%;\n  position: relative;\n  align-items: center;\n  flex-direction: row;\n  opacity: 0.8;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n  border-radius: 100%;\n  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);\n  transition: opacity .15s, border .15s, box-shadow .15s; }\n  .spell-container[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n    border-radius: 100%; }\n  .spell-container[_ngcontent-%COMP%]    > *[_ngcontent-%COMP%] {\n    flex: 1 1 100%; }\n  .spell-container[_ngcontent-%COMP%]:hover {\n    cursor: pointer;\n    opacity: 1;\n    border: 1px solid rgba(0, 0, 0, 0.7);\n    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6); }\n  .spell-container__countdown[_ngcontent-%COMP%] {\n  position: absolute;\n  width: 100%;\n  text-align: center; }\n  .spell-container__countdown[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    color: white;\n    font-size: larger;\n    font-weight: 600;\n    pointer-events: none;\n    text-shadow: 2px 0 0 black,\r -2px 0 0 black,\r 0 2px 0 black,\r 0 -2px 0 black,\r 1px 1px black,\r -1px -1px 0 black,\r 1px -1px 0 black,\r -1px 1px 0 black; }\n  .spell-container--on-cooldown[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  -webkit-filter: grayscale(80%);\n          filter: grayscale(80%); }"];
 
 
 
@@ -578,30 +588,56 @@ var SpellComponent = /** @class */ (function () {
         var _this = this;
         this.socketService = socketService;
         this.destroyer$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this.onCooldown = false;
         this.countdown = 0;
+        // todo want to buy enum!
         socketService.listen("sumUsed", function (data) {
-            if (_this.id !== data.spellId) {
+            if (_this.spellId !== data.spellId) {
                 return;
             }
-            _this.onCooldown = true;
+            var stopCooldown$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
             Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["interval"])(1000)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(_this.destroyer$))
-                .subscribe(function () { return _this.countdown--; });
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(_this.destroyer$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(stopCooldown$))
+                .subscribe(function () {
+                _this.countdown--;
+                if (_this.countdown === 0) {
+                    stopCooldown$.next();
+                    _this.resetCooldown();
+                }
+            });
         });
     }
+    Object.defineProperty(SpellComponent.prototype, "spellId", {
+        get: function () {
+            return this.id + "-" + this.summonerId;
+        },
+        enumerable: true,
+        configurable: true
+    });
     SpellComponent.prototype.ngOnInit = function () {
-        this.countdown = this.cooldown;
+        this.cooldown = 5;
+        this.resetCooldown();
     };
     SpellComponent.prototype.ngOnDestroy = function () {
         this.destroyer$.next();
     };
+    /**
+     * TODO FEEDME
+     */
     SpellComponent.prototype.startCooldown = function () {
+        if (this.countdown !== this.cooldown) {
+            return;
+        }
         var cooldownActivationData = {
-            spellId: this.id,
+            spellId: this.spellId,
             timeStamp: Date.now()
         };
         this.socketService.message("startCooldown", cooldownActivationData);
+        // we start counting down immediately to trigger the state change and
+        // which is acceptable because there is most likely already a human response delay of at least a second
+        this.countdown--;
+    };
+    SpellComponent.prototype.resetCooldown = function () {
+        this.countdown = this.cooldown;
     };
     return SpellComponent;
 }());

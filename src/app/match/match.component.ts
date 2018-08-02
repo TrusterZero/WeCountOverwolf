@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Summoner } from '../summoner/summoner.component';
 import { MatchService } from './match.service';
-import { Subject } from 'rxjs/index';
+import { Subject } from 'rxjs';
 
 export interface Match {
   id: number;

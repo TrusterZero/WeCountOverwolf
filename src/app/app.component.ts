@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SocketService } from './socket.service';
-import { OverwolfService } from './overwolf.service';
+import { OverwolfService } from './overwolf/overwolf.service';
 
 
 

@@ -1,7 +1,7 @@
-import { Injectable } from "../../../node_modules/@angular/core";
+import { Injectable } from "@angular/core";
 import { Match } from "./match.component";
 import { SocketService } from "../socket.service";
-import { Subject } from "../../../node_modules/rxjs";
+import { Subject } from "rxjs";
 
 
 @Injectable()
