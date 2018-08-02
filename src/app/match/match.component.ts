@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Summoner } from '../summoner/summoner.component';
 import { MatchService } from './match.service';
+import { Subject } from 'rxjs/index';
 
 export interface Match {
   id: number;
@@ -15,16 +16,16 @@ export interface Match {
 
 export class MatchComponent {
   match: Match;
-  summoners: Summoner[] = [];
+  summoners: Subject<Summoner[]> = new Subject<Summoner[]>();
 
   constructor(private matchService: MatchService) {
-
-    //ik benn hier direct gesubt aan de behaviorSubject is dat een probleem ?*
-    matchService.matchData.subscribe((match) => {
-      if (match) {
-        this.match = match;
-        this.summoners = match.summoners;
+    matchService.matchData.subscribe((match: Match) => {
+      if (!match) {
+        return;
       }
+
+      this.match = match;
+      this.summoners.next(match.summoners);
     });
   }
 }
