@@ -1,12 +1,11 @@
 .champion-container {
     display: inline-block;
-    width: 20%;
+    width: 15%;
 
     img {
+        width: 60%;
         float: left;
+        border-radius: 100px;
     }
-    h3 { 
-        padding-top: 30px;
-        padding-bottom: 30px;
-     }
+
 }

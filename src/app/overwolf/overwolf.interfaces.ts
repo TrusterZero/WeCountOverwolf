@@ -1,17 +1,17 @@
-enum Features {
+export enum Features {
 
     matchState = 'matchState',
     summonerInfo = 'summoner_info',
     gameMode = 'gameMode'
 }
 
-interface Update {
+export interface Update {
 
     feature: string;
     info: Object;
 }
 
-interface SummonerInfo {
+export interface SummonerInfo {
 
     id: string;
     region: string;
@@ -19,12 +19,12 @@ interface SummonerInfo {
     champion: string;
 }
 
-interface GameModeInfo {
+export interface GameModeInfo {
 
     gameMode: string;
 }
 
-interface MatchState {
+export interface MatchState {
 
     matchStarted: string;
     matchOutcome: string;

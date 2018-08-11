@@ -13,7 +13,9 @@ import { OverwolfService } from './overwolf/overwolf.service';
 export class AppComponent {
   title = 'app';
   socket: SocketService = new SocketService();
-  overwolfService: OverwolfService = new OverwolfService()
- 
-  constructor(){ }
+  overwolfService: OverwolfService = new OverwolfService();
+
+  constructor() {
+    this.socket.connect();
+  }
 }
