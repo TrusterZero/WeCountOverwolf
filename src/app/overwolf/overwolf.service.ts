@@ -1,6 +1,6 @@
 import {SocketService} from '../socket/socket.service';
 import {BehaviorSubject, interval, Subject} from 'rxjs';
-import {Feature, WindowResult, OverwolfWindow, MatchState} from './overwolf.interfaces';
+import {Feature, WindowResult, OverwolfWindow, MatchState, NewEvent, Status} from './overwolf.interfaces';
 import {CreationRequest, SocketEvents} from '../socket/socket.interface';
 
 declare const overwolf; // Overwolf uses a build in js file
@@ -68,7 +68,7 @@ export class OverwolfService {
 
     for (const event of events) {
       switch (event) {
-        case 'matchEnd':
+        case NewEvent.matchEnd:
           const matchState = this.matchState$.getValue();
           matchState.matchActive = false;
 
@@ -116,7 +116,7 @@ export class OverwolfService {
   private setFeatures(): void {
     // TODO: ff sparren!
     overwolfEvents.setRequiredFeatures(this.usingFeatures, (info) => {
-      if (info.status === 'error') {
+      if (info.status === Status.error) {
         // check info.status possible values
         console.log(info.reason);
         return;
@@ -148,7 +148,7 @@ export class OverwolfService {
         .subscribe(() => this.hideWindow());
     });
 
-    if (arg.status === 'success') {
+    if (arg.status === Status.success) {
       overwolf.windows.restore(this.mainWindow.id, () => {
         hideWindow$.next();
       });

@@ -14,6 +14,16 @@ export enum Feature {
     announcer = 'announcer'
 }
 
+export enum Status {
+  error = 'error',
+  success = 'success'
+}
+
+// TODO ADD ALL POSSIBLE EVENTS
+export enum NewEvent {
+  matchEnd = 'matchEnd',
+}
+
 export interface WindowResult {
   status: string;
   window: OverwolfWindow;
