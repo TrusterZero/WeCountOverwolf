@@ -2,6 +2,7 @@ import {Component, OnInit, Input, ChangeDetectorRef} from '@angular/core';
 import { Summoner } from '../summoner/summoner.component';
 import { MatchService } from './match.service';
 import { Subject } from 'rxjs';
+import {OverwolfService} from '../overwolf/overwolf.service';
 
 export interface Match {
   id: number;
@@ -11,17 +12,21 @@ export interface Match {
 @Component({
   selector: 'match',
   templateUrl: './match.component.html',
-  styleUrls: ['./match.component.css']
+  styleUrls: ['./match.component.scss']
 })
 
 export class MatchComponent {
-  match: Match;
+  match: Match = null;
   summoners: Summoner[] = [];
 
   constructor(private matchService: MatchService, private changeDetection: ChangeDetectorRef) {
     matchService.matchData.subscribe((match: Match) => {
-      console.log(match)
+
       if (!match) {
+        this.match = null;
+        this.summoners = [];
+        this.changeDetection.detectChanges();
+
         return;
       }
 

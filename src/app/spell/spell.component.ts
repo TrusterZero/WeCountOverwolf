@@ -1,8 +1,8 @@
 import {Component, OnInit, Input, OnDestroy, ChangeDetectorRef} from '@angular/core';
-import { SocketService } from '../socket.service';
+import { SocketService } from '../socket/socket.service';
 import { interval, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import {CooldownActivationData, SocketEvents} from '../socket.interface';
+import {CooldownActivationData, SocketEvents} from '../socket/socket.interface';
 
 
 @Component({

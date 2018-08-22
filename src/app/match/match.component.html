@@ -1,7 +1,22 @@
-<div *ngFor="let summoner of summoners">
+<link rel="stylesheet" href="match.component.scss">
+<div *ngIf="match != null">
+  <div *ngFor="let summoner of summoners">
     <summoner [id]="summoner?.id"
-              [champion] = "summoner?.champion"
-              [spell1] = "summoner?.spell1"
-              [spell2] = "summoner?.spell2">
+              [champion]="summoner?.champion"
+              [spell1]="summoner?.spell1"
+              [spell2]="summoner?.spell2">
     </summoner>
+  </div>
+</div>
+
+<div class='startWindow'*ngIf="match == null">
+
+  <h2> Use sumCounter this match?</h2>
+  <div><!--id="ad-div"-->
+    <img src="assets/ad-placeholder.jpg" width="400" height="300">
+  </div>
+  <div class = 'button-holder'>
+    <button>Yes</button>
+    <button>No</button>
+  </div>
 </div>

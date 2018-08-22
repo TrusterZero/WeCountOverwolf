@@ -1,21 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Match } from './match.component';
-import { SocketService } from '../socket.service';
+import { SocketService } from '../socket/socket.service';
 import { Subject } from 'rxjs';
+import {SocketEvents} from '../socket/socket.interface';
+import {OverwolfService} from '../overwolf/overwolf.service';
+import {MatchState} from '../overwolf/overwolf.interfaces';
 
 
 @Injectable()
 export class MatchService {
-    // Kan heel deze service niet weg ???????
-    // de match component kan ook direct gekoppelc worden aan de socket service
 
     matchData: Subject<Match> = new Subject<Match>();
 
-    constructor(private socketService: SocketService) {
+    constructor(private socketService: SocketService, private overwolf: OverwolfService) {
+      socketService.listen( SocketEvents.matchCreated, ( match: Match ) => {
+        this.matchData.next( match );
+      });
 
-      socketService.connectedMatch
-          .subscribe((match: Match) => {
-              this.matchData.next(match);
-          });
+      overwolf.matchState$.subscribe(( matchState: MatchState ) => {
+
+        if ( !matchState.matchActive ) {
+          this.matchData.next();
+        }
+      });
     }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SocketService } from './socket.service';
+import { SocketService } from './socket/socket.service';
 import { OverwolfService } from './overwolf/overwolf.service';
 
 
@@ -13,7 +13,6 @@ import { OverwolfService } from './overwolf/overwolf.service';
 export class AppComponent {
   title = 'app';
   socket: SocketService = new SocketService();
-  overwolfService: OverwolfService = new OverwolfService();
 
   constructor() {
     this.socket.connect();

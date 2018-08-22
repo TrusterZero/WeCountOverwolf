@@ -1,109 +1,200 @@
-import { SocketService } from '../socket.service';
-import { BehaviorSubject } from 'rxjs';
-import {Features, MatchState, Update} from './overwolf.interfaces';
-import {SocketEvents, CreationRequest} from '../socket.interface';
+import {SocketService} from '../socket/socket.service';
+import {BehaviorSubject, interval, Subject} from 'rxjs';
+import {Feature, WindowResult, OverwolfWindow, MatchState} from './overwolf.interfaces';
+import {CreationRequest, SocketEvents} from '../socket/socket.interface';
+
 declare const overwolf; // Overwolf uses a build in js file
 
-
-const requiredFeatures: string[] = Object.keys(Features)
-                                      .map(feature => Features[feature]); // type of events we listen to
 const overwolfEvents = overwolf.games.events;
 
+// todo any's bestaan niet
 export class OverwolfService {
 
-    summonerId: string;
-    socketService: SocketService = new SocketService();
-    matchStarted: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  mainWindow: OverwolfWindow;
+  matchState$: BehaviorSubject<MatchState> = new BehaviorSubject<MatchState>(null);
 
-  constructor() {
+  private usingFeatures: Feature[] = [
+    Feature.matchState,
+    Feature.summonerInfo,
+    Feature.gameMode
+  ];
 
+  constructor(private socketService: SocketService) {
+    //  todo: aparte functie voor listeners
     this.setFeatures();
+    this.handleOverwolfEvents();
+    this.matchState$.subscribe((matchState: MatchState) => this.checkMatchState(matchState));
+  }
 
-    this.matchStarted
-      .subscribe((isStarted: boolean) => {
+  private handleOverwolfEvents() {
 
-        if (isStarted) {
-          this.gameStart(Number(this.summonerId));
-        }
-      });
+    overwolf.windows.getCurrentWindow((result: WindowResult) => {
+      this.setMainWindow(result.window);
+    });
 
-      // Check if match is already started
-      overwolfEvents.getInfo( (info) => {
+    overwolfEvents.getInfo(this.updateInfo);
+    overwolfEvents.onInfoUpdates2.addListener(this.updateInfo);
+    overwolfEvents.onNewEvents.addListener(this.handleNewEvents);
+    overwolf.settings.registerHotKey((args) => this.handleHotKey(args));
 
-        this.summonerId = info.res.summoner_info.id;
-        const matchState: MatchState = {
-          matchStarted: info.res.game_info.matchStarted,
-          matchOutcome: ''
-        };
+  }
 
-        this.setMatchState(matchState);
-      });
+  private setMainWindow(window: OverwolfWindow) {
 
+    if (!window) {
+      return;
+    }
 
-    overwolfEvents.onInfoUpdates2
-      .addListener( (infoUpdateChange: Update) => {
+    this.mainWindow = window;
+  }
 
-        if (!this.summonerId) {
-            this.updateSummoner();
-        }
+  private updateInfo(info: any) {
+    const result: any = this.checkEventSource(info);
 
-        if (infoUpdateChange.feature === Features.matchState) {
-          this.setMatchState(infoUpdateChange.info['game_info'] as MatchState);
-        }
-      });
+      if (!this.hasSummonerInfo(result) || !this.hasGameInfo(result)) {
+        return;
+      }
 
+      const matchState: MatchState = {
+        summonerId: info.res.summoner_info.id,
+        region: info.res.summoner_info.region,
+        matchActive: info.res.game_info.matchStarted
+      };
+
+      this.matchState$.next(matchState);
+    }
+
+  private handleNewEvents(events: any[]) {
+
+    for (const event of events) {
+      switch (event) {
+        case 'matchEnd':
+          const matchState = this.matchState$.getValue();
+          matchState.matchActive = false;
+
+          this.matchState$.next(matchState);
+          break;
+      }
+    }
+  }
+
+  private checkMatchState(matchState: MatchState) {
+
+    if (matchState.matchActive) {
+      this.startMatch(matchState);
+    }
   }
 
   /**
    *
-   *  Starts the game by asking the server for the match data
+   *  Ask the server to start a match
    *
+   * @param region: Region player is in
    * @param summonerId
    */
-  private gameStart(summonerId: number): void {
-        this.socketService.message(SocketEvents.createMatch, { summonerId: summonerId } as CreationRequest);
-        console.log('request send');
+  private startMatch(matchState: MatchState) {
+
+    this.socketService.message(SocketEvents.createMatch, {
+      summonerId: matchState.summonerId,
+      region: matchState.region
+    } as CreationRequest);
   }
+
+  private handleHotKey(args) {
+
+    this.showWindow(args);
+    // todo in showWindow een Subject voor hideWindow met een delay van 2000 die je next
+    // todo ASK: ik heb denk gedaan wat je wou maar ik weet niet waarom
+  }
+
 
   /**
    *
    * Set the event types we react to
    *
-   *
    */
   private setFeatures(): void {
-
-      overwolfEvents.setRequiredFeatures(requiredFeatures, (info) => {
-          if (info.status === 'error') {
-              // check info.status possible values
-              console.log(info.reason);
-              return;
-          }
-      });
-  }
-
-  /**
-   *
-   * Switches state between in and out of game
-   *
-   * @param matchState
-   */
-  private setMatchState(matchState: MatchState): void {
-
-      this.matchStarted.next(matchState.matchStarted === 'true');
-  }
-
-  /**
-   *
-   * Sets the summoner Id with this Id we find the Match the player is in
-   *
-   */
-  private updateSummoner(): void {
-    overwolfEvents.getInfo((info) => {
-      if (info) {
-        this.summonerId = info.res.summoner_info.id;
+    // TODO: ff sparren!
+    overwolfEvents.setRequiredFeatures(this.usingFeatures, (info) => {
+      if (info.status === 'error') {
+        // check info.status possible values
+        console.log(info.reason);
+        return;
       }
     });
   }
 
+  /**
+   *
+   * Hides the main window
+   */
+  private hideWindow() {
+
+    overwolf.windows.hide(this.mainWindow.id, () => {
+    });
+  }
+
+  /**
+   *
+   * Shows the main window and hides it after 2 seconds using hideWindow method
+   * @param arg
+   */
+  private showWindow(arg): void {
+
+    const hideWindow$: Subject<void> = new Subject<void>();
+
+    hideWindow$.subscribe(() => {
+      interval(2000)
+        .subscribe(() => this.hideWindow());
+    });
+
+    if (arg.status === 'success') {
+      overwolf.windows.restore(this.mainWindow.id, () => {
+        hideWindow$.next();
+      });
+    }
+  }
+
+  private checkEventSource(info: any) {
+
+    if (this.fromInfoUpdates(info)) {
+      return info;
+    } else if (this.fromGetInfo(info)) {
+      return info.res;
+    } else {
+      return null;
+    }
+  }
+
+  private fromInfoUpdates(info: any) {
+    // TODO ASK dit is geen goeie check enige wat vast staat is dat info updates geen res heeft
+    if (info.res) {
+      return false;
+    }
+  }
+
+  private fromGetInfo(info: any) {
+
+    if (info.res) {
+      return true;
+    }
+  }
+
+  private hasGameInfo(result): boolean {
+
+    if (result.game_info || result.game_info.matchStarted) {
+      return true;
+    }
+    return false;
+
+  }
+
+  private hasSummonerInfo(result: any): boolean {
+
+    if (result.summoner_info && result.summoner_info.id) {
+      return true;
+    }
+    return false;
+
+  }
 }

@@ -1,31 +1,46 @@
-export enum Features {
-
+export enum Feature {
     matchState = 'matchState',
+    death = 'death',
+    respawn = 'respawn',
+    abilities = 'abilities',
+    kill = 'kill',
+    assist = 'assist',
+    gold = 'gold',
+    minions = 'minions',
     summonerInfo = 'summoner_info',
-    gameMode = 'gameMode'
+    gameMode = 'gameMode',
+    teams = 'teams',
+    level = 'level',
+    announcer = 'announcer'
+}
+
+export interface WindowResult {
+  status: string;
+  window: OverwolfWindow;
+}
+
+export interface OverwolfWindow {
+    id: string;
+    name: string;
+    width: number;
+    height: number;
+    top: number;
+    left: number;
+    isVisible: true;
+    Parent: null;
 }
 
 export interface Update {
-
     feature: string;
-    info: Object;
-}
-
-export interface SummonerInfo {
-
-    id: string;
-    region: string;
-    name: string;
-    champion: string;
+    info: any;
 }
 
 export interface GameModeInfo {
-
     gameMode: string;
 }
 
 export interface MatchState {
-
-    matchStarted: string;
-    matchOutcome: string;
+  summonerId: number;
+  region: string;
+  matchActive: boolean;
 }

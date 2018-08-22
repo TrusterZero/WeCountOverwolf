@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import * as socketIo from 'socket.io-client';
 import {Subject} from 'rxjs';
-import {Match} from './match/match.component';
+import {Match} from '../match/match.component';
 import {Payload, RequestError, RequestErrorCodes, SocketEvents} from './socket.interface';
 import Socket = SocketIOClient.Socket;
 
@@ -11,7 +11,6 @@ const socket: Socket = socketIo(SERVER_URL);
 @Injectable()
 export class SocketService {
 
-  connectedMatch: Subject<Match> = new Subject<Match>(); // kan deze global ???
   private roomId: number;
 
   constructor() {
@@ -19,7 +18,6 @@ export class SocketService {
     this.listen(SocketEvents.matchCreated, (match: Match) => {
 
       this.roomId = match.id;
-      this.connectedMatch.next( match ); // gebeurd voor elke instantie
     });
   }
 

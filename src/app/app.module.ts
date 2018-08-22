@@ -4,9 +4,10 @@ import { AppComponent } from './app.component';
 import { SummonerComponent } from './summoner/summoner.component';
 import { SpellComponent } from './spell/spell.component';
 import { ChampionComponent } from './champion/champion.component';
-import { SocketService } from './socket.service';
+import { SocketService } from './socket/socket.service';
 import { MatchComponent } from './match/match.component';
 import { MatchService } from './match/match.service';
+import {OverwolfService} from './overwolf/overwolf.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { MatchService } from './match/match.service';
   imports: [
     BrowserModule
   ],
-  providers: [SocketService, MatchService],
+  providers: [SocketService, MatchService, OverwolfService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
