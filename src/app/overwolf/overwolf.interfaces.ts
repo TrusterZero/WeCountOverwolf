@@ -14,6 +14,10 @@ export enum Feature {
     announcer = 'announcer'
 }
 
+export enum Hotkey {
+  showWindow = 'showWindow',
+}
+
 export enum Status {
   error = 'error',
   success = 'success'

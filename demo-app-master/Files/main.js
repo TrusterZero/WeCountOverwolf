@@ -97,12 +97,12 @@ var AppComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"](
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
-/* harmony import */ var _socket_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./socket.service */ "./src/app/socket.service.ts");
+/* harmony import */ var _socket_socket_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./socket/socket.service */ "./src/app/socket/socket.service.ts");
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.title = 'app';
-        this.socket = new _socket_service__WEBPACK_IMPORTED_MODULE_0__["SocketService"]();
+        this.socket = new _socket_socket_service__WEBPACK_IMPORTED_MODULE_0__["SocketService"]();
         this.socket.connect();
     }
     return AppComponent;
@@ -128,7 +128,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component_ngfactory__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component.ngfactory */ "./src/app/app.component.ngfactory.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var _socket_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./socket.service */ "./src/app/socket.service.ts");
+/* harmony import */ var _socket_socket_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./socket/socket.service */ "./src/app/socket/socket.service.ts");
 /* harmony import */ var _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./overwolf/overwolf.service */ "./src/app/overwolf/overwolf.service.ts");
 /* harmony import */ var _match_match_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./match/match.service */ "./src/app/match/match.service.ts");
 /**
@@ -146,7 +146,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var AppModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_app_module__WEBPACK_IMPORTED_MODULE_1__["AppModule"], [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]], function (_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, [_app_component_ngfactory__WEBPACK_IMPORTED_MODULE_3__["AppComponentNgFactory"]]], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_core_core_l"], [[3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgLocalization"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgLocaleLocalization"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_4__["ɵangular_packages_common_common_a"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_core__WEBPACK_IMPORTED_MODULE_0__["Compiler"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Compiler"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_core__WEBPACK_IMPORTED_MODULE_0__["APP_ID"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_core_core_f"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_core__WEBPACK_IMPORTED_MODULE_0__["IterableDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_core_core_j"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_core_core_k"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["DomSanitizer"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵangular_packages_platform_browser_platform_browser_e"], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](6144, _angular_core__WEBPACK_IMPORTED_MODULE_0__["Sanitizer"], null, [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["DomSanitizer"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["HAMMER_GESTURE_CONFIG"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["HammerGestureConfig"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["EVENT_MANAGER_PLUGINS"], function (p0_0, p0_1, p0_2, p1_0, p2_0, p2_1, p2_2) { return [new _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomEventsPlugin"](p0_0, p0_1, p0_2), new _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵKeyEventsPlugin"](p1_0), new _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵHammerGesturesPlugin"](p2_0, p2_1, p2_2)]; }, [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], [2, _angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"]], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["HAMMER_GESTURE_CONFIG"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵConsole"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["EventManager"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["EventManager"], [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["EVENT_MANAGER_PLUGINS"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](135680, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomSharedStylesHost"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomSharedStylesHost"], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomRendererFactory2"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomRendererFactory2"], [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["EventManager"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomSharedStylesHost"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](6144, _angular_core__WEBPACK_IMPORTED_MODULE_0__["RendererFactory2"], null, [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomRendererFactory2"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](6144, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵSharedStylesHost"], null, [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomSharedStylesHost"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_core__WEBPACK_IMPORTED_MODULE_0__["Testability"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Testability"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["Meta"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["Meta"], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["Title"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["Title"], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], _socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_7__["OverwolfService"], _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_7__["OverwolfService"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _match_match_service__WEBPACK_IMPORTED_MODULE_8__["MatchService"], _match_match_service__WEBPACK_IMPORTED_MODULE_8__["MatchService"], [_socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_7__["OverwolfService"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1024, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ErrorHandler"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵangular_packages_platform_browser_platform_browser_a"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1024, _angular_core__WEBPACK_IMPORTED_MODULE_0__["APP_INITIALIZER"], function (p0_0) { return [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵangular_packages_platform_browser_platform_browser_h"](p0_0)]; }, [[2, _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgProbeToken"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationInitStatus"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationInitStatus"], [[2, _angular_core__WEBPACK_IMPORTED_MODULE_0__["APP_INITIALIZER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](131584, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationRef"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationRef"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵConsole"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ErrorHandler"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationInitStatus"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationModule"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationModule"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"], [[3, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _app_module__WEBPACK_IMPORTED_MODULE_1__["AppModule"], _app_module__WEBPACK_IMPORTED_MODULE_1__["AppModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](256, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵAPP_ROOT"], true, [])]); });
+var AppModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_app_module__WEBPACK_IMPORTED_MODULE_1__["AppModule"], [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]], function (_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, [_app_component_ngfactory__WEBPACK_IMPORTED_MODULE_3__["AppComponentNgFactory"]]], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_core_core_l"], [[3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgLocalization"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgLocaleLocalization"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_4__["ɵangular_packages_common_common_a"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_core__WEBPACK_IMPORTED_MODULE_0__["Compiler"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Compiler"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_core__WEBPACK_IMPORTED_MODULE_0__["APP_ID"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_core_core_f"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_core__WEBPACK_IMPORTED_MODULE_0__["IterableDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_core_core_j"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_core_core_k"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["DomSanitizer"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵangular_packages_platform_browser_platform_browser_e"], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](6144, _angular_core__WEBPACK_IMPORTED_MODULE_0__["Sanitizer"], null, [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["DomSanitizer"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["HAMMER_GESTURE_CONFIG"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["HammerGestureConfig"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["EVENT_MANAGER_PLUGINS"], function (p0_0, p0_1, p0_2, p1_0, p2_0, p2_1, p2_2) { return [new _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomEventsPlugin"](p0_0, p0_1, p0_2), new _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵKeyEventsPlugin"](p1_0), new _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵHammerGesturesPlugin"](p2_0, p2_1, p2_2)]; }, [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], [2, _angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"]], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["HAMMER_GESTURE_CONFIG"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵConsole"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["EventManager"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["EventManager"], [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["EVENT_MANAGER_PLUGINS"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](135680, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomSharedStylesHost"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomSharedStylesHost"], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomRendererFactory2"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomRendererFactory2"], [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["EventManager"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomSharedStylesHost"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](6144, _angular_core__WEBPACK_IMPORTED_MODULE_0__["RendererFactory2"], null, [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomRendererFactory2"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](6144, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵSharedStylesHost"], null, [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵDomSharedStylesHost"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_core__WEBPACK_IMPORTED_MODULE_0__["Testability"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Testability"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["Meta"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["Meta"], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["Title"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["Title"], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DOCUMENT"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _socket_socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], _socket_socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_7__["OverwolfService"], _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_7__["OverwolfService"], [_socket_socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _match_match_service__WEBPACK_IMPORTED_MODULE_8__["MatchService"], _match_match_service__WEBPACK_IMPORTED_MODULE_8__["MatchService"], [_socket_socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_7__["OverwolfService"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1024, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ErrorHandler"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵangular_packages_platform_browser_platform_browser_a"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1024, _angular_core__WEBPACK_IMPORTED_MODULE_0__["APP_INITIALIZER"], function (p0_0) { return [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["ɵangular_packages_platform_browser_platform_browser_h"](p0_0)]; }, [[2, _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgProbeToken"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationInitStatus"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationInitStatus"], [[2, _angular_core__WEBPACK_IMPORTED_MODULE_0__["APP_INITIALIZER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](131584, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationRef"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationRef"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵConsole"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ErrorHandler"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationInitStatus"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationModule"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationModule"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ApplicationRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"], [[3, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["BrowserModule"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _app_module__WEBPACK_IMPORTED_MODULE_1__["AppModule"], _app_module__WEBPACK_IMPORTED_MODULE_1__["AppModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](256, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵAPP_ROOT"], true, [])]); });
 
 
 
@@ -369,9 +369,9 @@ var MatchComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatchService", function() { return MatchService; });
-/* harmony import */ var _socket_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../socket.service */ "./src/app/socket.service.ts");
+/* harmony import */ var _socket_socket_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../socket/socket.service */ "./src/app/socket/socket.service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _socket_interface__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../socket.interface */ "./src/app/socket.interface.ts");
+/* harmony import */ var _socket_socket_interface__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../socket/socket.interface */ "./src/app/socket/socket.interface.ts");
 /* harmony import */ var _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../overwolf/overwolf.service */ "./src/app/overwolf/overwolf.service.ts");
 
 
@@ -383,11 +383,11 @@ var MatchService = /** @class */ (function () {
         this.socketService = socketService;
         this.overwolf = overwolf;
         this.matchData = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        socketService.listen(_socket_interface__WEBPACK_IMPORTED_MODULE_2__["SocketEvents"].matchCreated, function (match) {
+        socketService.listen(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_2__["SocketEvents"].matchCreated, function (match) {
             _this.matchData.next(match);
         });
-        overwolf.matchActive.subscribe(function (state) {
-            if (!state) {
+        overwolf.matchState$.subscribe(function (matchState) {
+            if (!matchState.matchActive) {
                 _this.matchData.next();
             }
         });
@@ -403,12 +403,15 @@ var MatchService = /** @class */ (function () {
 /*!*************************************************!*\
   !*** ./src/app/overwolf/overwolf.interfaces.ts ***!
   \*************************************************/
-/*! exports provided: Feature */
+/*! exports provided: Feature, Hotkey, Status, NewEvent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Feature", function() { return Feature; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hotkey", function() { return Hotkey; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Status", function() { return Status; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewEvent", function() { return NewEvent; });
 var Feature;
 (function (Feature) {
     Feature["matchState"] = "matchState";
@@ -425,6 +428,20 @@ var Feature;
     Feature["level"] = "level";
     Feature["announcer"] = "announcer";
 })(Feature || (Feature = {}));
+var Hotkey;
+(function (Hotkey) {
+    Hotkey["showWindow"] = "showWindow";
+})(Hotkey || (Hotkey = {}));
+var Status;
+(function (Status) {
+    Status["error"] = "error";
+    Status["success"] = "success";
+})(Status || (Status = {}));
+// TODO ADD ALL POSSIBLE EVENTS
+var NewEvent;
+(function (NewEvent) {
+    NewEvent["matchEnd"] = "matchEnd";
+})(NewEvent || (NewEvent = {}));
 
 
 /***/ }),
@@ -439,91 +456,83 @@ var Feature;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OverwolfService", function() { return OverwolfService; });
-/* harmony import */ var _socket_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../socket.service */ "./src/app/socket.service.ts");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./overwolf.interfaces */ "./src/app/overwolf/overwolf.interfaces.ts");
-/* harmony import */ var _socket_interface__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../socket.interface */ "./src/app/socket.interface.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-
-
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./overwolf.interfaces */ "./src/app/overwolf/overwolf.interfaces.ts");
+/* harmony import */ var _socket_socket_interface__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../socket/socket.interface */ "./src/app/socket/socket.interface.ts");
 
 
 
 var overwolfEvents = overwolf.games.events;
+// todo any's bestaan niet
 var OverwolfService = /** @class */ (function () {
-    function OverwolfService() {
+    function OverwolfService(socketService) {
         var _this = this;
-        this.socketService = new _socket_service__WEBPACK_IMPORTED_MODULE_0__["SocketService"]();
-        this.summonerId$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.region$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        this.matchState$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](false);
-        this.matchPrep$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])([this.matchActive, this.summonerId$, this.region$]);
+        this.socketService = socketService;
+        this.initialMatchState = {
+            matchActive: false,
+            region: null,
+            summonerId: null
+        };
+        this.matchState$ = new rxjs__WEBPACK_IMPORTED_MODULE_0__["BehaviorSubject"](this.initialMatchState);
         this.usingFeatures = [
-            _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_2__["Feature"].matchState,
-            _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_2__["Feature"].summonerInfo,
-            _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_2__["Feature"].gameMode
+            _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Feature"].matchState,
+            _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Feature"].summonerInfo,
+            _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Feature"].gameMode
         ];
+        //  todo: aparte functie voor listeners
         this.setFeatures();
-        // Starts the match when all the information is ready
-        this.matchState$
-            .subscribe(function (results) {
-            var isStarted = results[0];
-            var summonerId = results[1];
-            var region = results[2];
-            if (isStarted) {
-                _this.startMatch(region, summonerId);
-            }
-        });
-        // Gets the main window and saves it for later use
-        overwolf.windows.getCurrentWindow(function (result) {
-            if (result.status === 'success') {
-                _this.mainWindow = result.window;
-            }
-        });
-        // Check if match is already started
-        overwolfEvents.getInfo(function (info) {
-            if (info.res.summoner_info.id) {
-                _this.summonerId$.next(info.res.summoner_info.id);
-                _this.region$.next(info.res.summoner_info.region);
-                _this.matchState$.next(info.res.game_info.matchStarted);
-            }
-        });
-        // Reacts to the start of a Match
-        overwolfEvents.onInfoUpdates2
-            .addListener(function (infoUpdateChange) {
-            if (infoUpdateChange.feature === _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_2__["Feature"].matchState) {
-                console.log(infoUpdateChange.feature);
-                _this.matchState$.next(true);
-                _this.updateSummoner();
-            }
-        });
-        // The onInfoUpdates doesn't fire a not normal 'end of match'
-        // The onNewEvents fires the 'match start' to late in the game
-        // Reacts to the end of a match
-        overwolfEvents.onNewEvents
-            .addListener(function (newEvents) {
-            newEvents.events.forEach(function (event) {
-                if (event.name === 'matchEnd') {
-                    _this.matchState$.next(false);
-                }
-            });
-        });
-        // Listens to the Hotkey registered in the manifest.json
-        overwolf.settings.registerHotKey('showWindow', function (arg) { return _this.showWindow(arg); });
+        this.setWindow();
+        this.handleOverwolfEvents();
+        this.matchState$.subscribe(function (matchState) { return _this.checkMatchState(matchState); });
     }
-    /**
-     *
-     * Sets the summoner Id with this Id we find the Match the player is in
-     *
-     */
-    OverwolfService.prototype.updateSummoner = function () {
+    OverwolfService.prototype.setWindow = function () {
         var _this = this;
-        overwolfEvents.getInfo(function (info) {
-            if (info) {
-                _this.summonerId$.next(info.res.summoner_info.id);
-                _this.region$.next(info.res.summoner_info.region);
-            }
+        overwolf.windows.getCurrentWindow(function (result) {
+            _this.setMainWindow(result.window);
         });
+    };
+    OverwolfService.prototype.handleOverwolfEvents = function () {
+        var _this = this;
+        this.checkEventSource('x');
+        overwolfEvents.getInfo(function () { return _this.updateInfo; });
+        overwolfEvents.onInfoUpdates2.addListener(this.updateInfo);
+        overwolfEvents.onNewEvents.addListener(this.handleNewEvents);
+        overwolf.settings.registerHotKey(_overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Hotkey"].showWindow, function (args) { return _this.handleHotKey(args); });
+    };
+    OverwolfService.prototype.setMainWindow = function (window) {
+        if (!window) {
+            return;
+        }
+        this.mainWindow = window;
+    };
+    OverwolfService.prototype.updateInfo = function (info) {
+        console.log(this);
+        var result = this.checkEventSource(info);
+        // validating result
+        if (!this.hasSummonerInfo(result) || !this.hasGameInfo(result)) {
+            return;
+        }
+        var matchState = {
+            summonerId: result.summoner_info.id,
+            region: result.summoner_info.region,
+            matchActive: result.game_info.matchStarted
+        };
+        this.matchState$.next(matchState);
+    };
+    OverwolfService.prototype.handleNewEvents = function (events) {
+        for (var _i = 0, events_1 = events; _i < events_1.length; _i++) {
+            var event_1 = events_1[_i];
+            switch (event_1) {
+                case _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["NewEvent"].matchEnd:
+                    this.endMatch();
+                    break;
+            }
+        }
+    };
+    OverwolfService.prototype.checkMatchState = function (matchState) {
+        if (matchState.matchActive) {
+            this.startMatch(matchState);
+        }
     };
     /**
      *
@@ -532,11 +541,27 @@ var OverwolfService = /** @class */ (function () {
      * @param region: Region player is in
      * @param summonerId
      */
-    OverwolfService.prototype.startMatch = function (region, summonerId) {
-        this.socketService.message(_socket_interface__WEBPACK_IMPORTED_MODULE_3__["SocketEvents"].createMatch, {
-            summonerId: summonerId,
-            region: region
+    OverwolfService.prototype.startMatch = function (matchState) {
+        this.socketService.message(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_2__["SocketEvents"].createMatch, {
+            summonerId: matchState.summonerId,
+            region: matchState.region
         });
+    };
+    /**
+     *
+     *  Ends the match and requests server to disconnect from the gameroom
+     *
+     */
+    OverwolfService.prototype.endMatch = function () {
+        var matchState = this.matchState$.getValue();
+        matchState.matchActive = false;
+        // TODO ask socketServer to Disconnect from the gameRoom
+        this.matchState$.next(matchState);
+    };
+    OverwolfService.prototype.handleHotKey = function (args) {
+        this.showWindow(args);
+        // todo in showWindow een Subject voor hideWindow met een delay van 2000 die je next
+        // todo ASK: ik heb denk gedaan wat je wou maar ik weet niet waarom
     };
     /**
      *
@@ -544,8 +569,9 @@ var OverwolfService = /** @class */ (function () {
      *
      */
     OverwolfService.prototype.setFeatures = function () {
+        // TODO: ff sparren!
         overwolfEvents.setRequiredFeatures(this.usingFeatures, function (info) {
-            if (info.status === 'error') {
+            if (info.status === _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Status"].error) {
                 // check info.status possible values
                 console.log(info.reason);
                 return;
@@ -567,19 +593,80 @@ var OverwolfService = /** @class */ (function () {
      */
     OverwolfService.prototype.showWindow = function (arg) {
         var _this = this;
-        console.log('in show window');
-        var hideWindow$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        if (arg.status === 'success') {
+        var hideWindow$ = new rxjs__WEBPACK_IMPORTED_MODULE_0__["Subject"]();
+        hideWindow$.subscribe(function () {
+            Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["interval"])(2000)
+                .subscribe(function () { return _this.hideWindow(); });
+        });
+        if (arg.status === _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Status"].success) {
             overwolf.windows.restore(this.mainWindow.id, function () {
-                // Hide window after to 2 seconds
-                Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(2000)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(hideWindow$))
-                    .subscribe(function () {
-                    _this.hideWindow();
-                    hideWindow$.next();
-                });
+                hideWindow$.next();
             });
         }
+    };
+    /**
+     *
+     * Check if the info was send from InfoUpdates2 or GetInfo functions
+     *
+     * @param info
+     */
+    OverwolfService.prototype.checkEventSource = function (info) {
+        if (this.fromInfoUpdates(info)) {
+            return info;
+        }
+        else if (this.fromGetInfo(info)) {
+            return info.res;
+        }
+        else {
+            return null;
+        }
+    };
+    /**
+     *
+     *  Check if info was send from InfoUpdates2
+     *
+     * @param info
+     */
+    OverwolfService.prototype.fromInfoUpdates = function (info) {
+        // TODO ASK dit is geen goeie check enige wat vast staat is dat info updates geen res heeft
+        if (info.res) {
+            return false;
+        }
+    };
+    /**
+     *
+     * Check if info was send from GetInfo
+     *
+     * @param info
+     */
+    OverwolfService.prototype.fromGetInfo = function (info) {
+        if (info.res) {
+            return true;
+        }
+    };
+    /**
+     *
+     * Check if data contains game info
+     *
+     * @param result
+     */
+    OverwolfService.prototype.hasGameInfo = function (result) {
+        if (result.game_info || result.game_info.matchStarted) {
+            return true;
+        }
+        return false;
+    };
+    /**
+     *
+     * Check if datam contains summoner info
+     *
+     * @param result
+     */
+    OverwolfService.prototype.hasSummonerInfo = function (result) {
+        if (result.summoner_info && result.summoner_info.id) {
+            return true;
+        }
+        return false;
     };
     return OverwolfService;
 }());
@@ -588,10 +675,10 @@ var OverwolfService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/socket.interface.ts":
-/*!*************************************!*\
-  !*** ./src/app/socket.interface.ts ***!
-  \*************************************/
+/***/ "./src/app/socket/socket.interface.ts":
+/*!********************************************!*\
+  !*** ./src/app/socket/socket.interface.ts ***!
+  \********************************************/
 /*! exports provided: SocketEvents, RequestErrorCodes */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -618,10 +705,10 @@ var RequestErrorCodes;
 
 /***/ }),
 
-/***/ "./src/app/socket.service.ts":
-/*!***********************************!*\
-  !*** ./src/app/socket.service.ts ***!
-  \***********************************/
+/***/ "./src/app/socket/socket.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/socket/socket.service.ts ***!
+  \******************************************/
 /*! exports provided: SocketService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -630,7 +717,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SocketService", function() { return SocketService; });
 /* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/lib/index.js");
 /* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(socket_io_client__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _socket_interface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./socket.interface */ "./src/app/socket.interface.ts");
+/* harmony import */ var _socket_interface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./socket.interface */ "./src/app/socket/socket.interface.ts");
 
 
 var SERVER_URL = 'http://127.0.0.1:3000/';
@@ -722,7 +809,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _spell_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./spell.component */ "./src/app/spell/spell.component.ts");
-/* harmony import */ var _socket_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../socket.service */ "./src/app/socket.service.ts");
+/* harmony import */ var _socket_socket_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../socket/socket.service */ "./src/app/socket/socket.service.ts");
 /**
  * @fileoverview This file was generated by the Angular template compiler. Do not edit.
  *
@@ -741,7 +828,7 @@ function View_SpellComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODU
         var pd_0 = (_co.startCooldown() !== false);
         ad = (pd_0 && ad);
     } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgClass"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["KeyValueDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]], { klass: [0, "klass"], ngClass: [1, "ngClass"] }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpod"](2, { "spell-container--on-cooldown": 0 }), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 0, "img", [], [[8, "src", 4]], null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 2, "div", [["class", "spell-container__countdown"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](6, null, ["", ""]))], function (_ck, _v) { var _co = _v.component; var currVal_0 = "spell-container"; var currVal_1 = _ck(_v, 2, 0, (_co.countdown < _co.cooldown)); _ck(_v, 1, 0, currVal_0, currVal_1); }, function (_ck, _v) { var _co = _v.component; var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵinlineInterpolate"](1, "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/", _co.image, ""); _ck(_v, 3, 0, currVal_2); var currVal_3 = _co.countdown; _ck(_v, 6, 0, currVal_3); }); }
-function View_SpellComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "spell", [], null, null, null, View_SpellComponent_0, RenderType_SpellComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 245760, null, 0, _spell_component__WEBPACK_IMPORTED_MODULE_3__["SpellComponent"], [_socket_service__WEBPACK_IMPORTED_MODULE_4__["SocketService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_SpellComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "spell", [], null, null, null, View_SpellComponent_0, RenderType_SpellComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 245760, null, 0, _spell_component__WEBPACK_IMPORTED_MODULE_3__["SpellComponent"], [_socket_socket_service__WEBPACK_IMPORTED_MODULE_4__["SocketService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 var SpellComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("spell", _spell_component__WEBPACK_IMPORTED_MODULE_3__["SpellComponent"], View_SpellComponent_Host_0, { id: "id", name: "name", image: "image", cooldown: "cooldown", summonerId: "summonerId" }, {}, []);
 
 
@@ -781,10 +868,10 @@ var styles = [".spell-container[_ngcontent-%COMP%] {\n  display: inline-flex;\n 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SpellComponent", function() { return SpellComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _socket_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../socket.service */ "./src/app/socket.service.ts");
+/* harmony import */ var _socket_socket_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../socket/socket.service */ "./src/app/socket/socket.service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _socket_interface__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../socket.interface */ "./src/app/socket.interface.ts");
+/* harmony import */ var _socket_socket_interface__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../socket/socket.interface */ "./src/app/socket/socket.interface.ts");
 
 
 
@@ -797,7 +884,7 @@ var SpellComponent = /** @class */ (function () {
         this.changeDetection = changeDetection;
         this.destroyer$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         this.countdown = 0;
-        socketService.listen(_socket_interface__WEBPACK_IMPORTED_MODULE_4__["SocketEvents"].sumUsed, function (data) {
+        socketService.listen(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_4__["SocketEvents"].sumUsed, function (data) {
             if (_this.spellId !== data.spellId) {
                 return;
             }
@@ -836,7 +923,7 @@ var SpellComponent = /** @class */ (function () {
             spellId: this.spellId,
             timeStamp: Date.now(),
         };
-        this.socketService.message(_socket_interface__WEBPACK_IMPORTED_MODULE_4__["SocketEvents"].startCooldown, cooldownActivationData);
+        this.socketService.message(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_4__["SocketEvents"].startCooldown, cooldownActivationData);
         // we start counting down immediately to trigger the state change and
         // which is acceptable because there is most likely already a human response delay of at least a second
         // this.countdown--;
@@ -882,7 +969,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _champion_champion_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../champion/champion.component */ "./src/app/champion/champion.component.ts");
 /* harmony import */ var _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../spell/spell.component.ngfactory */ "./src/app/spell/spell.component.ngfactory.js");
 /* harmony import */ var _spell_spell_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../spell/spell.component */ "./src/app/spell/spell.component.ts");
-/* harmony import */ var _socket_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../socket.service */ "./src/app/socket.service.ts");
+/* harmony import */ var _socket_socket_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../socket/socket.service */ "./src/app/socket/socket.service.ts");
 /* harmony import */ var _summoner_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./summoner.component */ "./src/app/summoner/summoner.component.ts");
 /**
  * @fileoverview This file was generated by the Angular template compiler. Do not edit.
@@ -901,7 +988,7 @@ __webpack_require__.r(__webpack_exports__);
 var styles_SummonerComponent = [_summoner_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 var RenderType_SummonerComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({ encapsulation: 0, styles: styles_SummonerComponent, data: {} });
 
-function View_SummonerComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 6, "div", [["class", "summoner-container"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "champion", [], null, null, null, _champion_champion_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_ChampionComponent_0"], _champion_champion_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_ChampionComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 49152, null, 0, _champion_champion_component__WEBPACK_IMPORTED_MODULE_3__["ChampionComponent"], [], { id: [0, "id"], name: [1, "name"], image: [2, "image"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 1, "spell", [], null, null, null, _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_SpellComponent_0"], _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_SpellComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 245760, null, 0, _spell_spell_component__WEBPACK_IMPORTED_MODULE_5__["SpellComponent"], [_socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], { id: [0, "id"], name: [1, "name"], image: [2, "image"], cooldown: [3, "cooldown"], summonerId: [4, "summonerId"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 1, "spell", [], null, null, null, _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_SpellComponent_0"], _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_SpellComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](6, 245760, null, 0, _spell_spell_component__WEBPACK_IMPORTED_MODULE_5__["SpellComponent"], [_socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], { id: [0, "id"], name: [1, "name"], image: [2, "image"], cooldown: [3, "cooldown"], summonerId: [4, "summonerId"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.champion.id; var currVal_1 = _co.champion.name; var currVal_2 = _co.champion.image; _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2); var currVal_3 = _co.spell1.id; var currVal_4 = _co.spell1.name; var currVal_5 = _co.spell1.image; var currVal_6 = _co.spell1.cooldown; var currVal_7 = _co.id; _ck(_v, 4, 0, currVal_3, currVal_4, currVal_5, currVal_6, currVal_7); var currVal_8 = _co.spell2.id; var currVal_9 = _co.spell2.name; var currVal_10 = _co.spell2.image; var currVal_11 = _co.spell2.cooldown; var currVal_12 = _co.id; _ck(_v, 6, 0, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12); }, null); }
+function View_SummonerComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 6, "div", [["class", "summoner-container"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "champion", [], null, null, null, _champion_champion_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_ChampionComponent_0"], _champion_champion_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_ChampionComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 49152, null, 0, _champion_champion_component__WEBPACK_IMPORTED_MODULE_3__["ChampionComponent"], [], { id: [0, "id"], name: [1, "name"], image: [2, "image"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 1, "spell", [], null, null, null, _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_SpellComponent_0"], _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_SpellComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 245760, null, 0, _spell_spell_component__WEBPACK_IMPORTED_MODULE_5__["SpellComponent"], [_socket_socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], { id: [0, "id"], name: [1, "name"], image: [2, "image"], cooldown: [3, "cooldown"], summonerId: [4, "summonerId"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 1, "spell", [], null, null, null, _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_SpellComponent_0"], _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_SpellComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](6, 245760, null, 0, _spell_spell_component__WEBPACK_IMPORTED_MODULE_5__["SpellComponent"], [_socket_socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], { id: [0, "id"], name: [1, "name"], image: [2, "image"], cooldown: [3, "cooldown"], summonerId: [4, "summonerId"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.champion.id; var currVal_1 = _co.champion.name; var currVal_2 = _co.champion.image; _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2); var currVal_3 = _co.spell1.id; var currVal_4 = _co.spell1.name; var currVal_5 = _co.spell1.image; var currVal_6 = _co.spell1.cooldown; var currVal_7 = _co.id; _ck(_v, 4, 0, currVal_3, currVal_4, currVal_5, currVal_6, currVal_7); var currVal_8 = _co.spell2.id; var currVal_9 = _co.spell2.name; var currVal_10 = _co.spell2.image; var currVal_11 = _co.spell2.cooldown; var currVal_12 = _co.id; _ck(_v, 6, 0, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12); }, null); }
 function View_SummonerComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "summoner", [], null, null, null, View_SummonerComponent_0, RenderType_SummonerComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _summoner_component__WEBPACK_IMPORTED_MODULE_7__["SummonerComponent"], [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 var SummonerComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("summoner", _summoner_component__WEBPACK_IMPORTED_MODULE_7__["SummonerComponent"], View_SummonerComponent_Host_0, { id: "id", champion: "champion", spell1: "spell1", spell2: "spell2" }, {}, []);
 
