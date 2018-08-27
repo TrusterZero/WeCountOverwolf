@@ -1,7 +1,18 @@
 import {SocketService} from '../socket/socket.service';
 import {BehaviorSubject, interval, Subject} from 'rxjs';
-import {Feature, WindowResult, OverwolfWindow, MatchState, NewEvent, Status, Hotkey} from './overwolf.interfaces';
+import {
+  Feature,
+  WindowResult,
+  OverwolfWindow,
+  MatchState,
+  NewEvent,
+  Status,
+  Hotkey,
+  Update
+} from './overwolf.interfaces';
 import {CreationRequest, SocketEvents} from '../socket/socket.interface';
+import {error} from "selenium-webdriver";
+import UnsupportedOperationError = error.UnsupportedOperationError;
 
 declare const overwolf; // Overwolf uses a build in js file
 
@@ -40,7 +51,6 @@ export class OverwolfService {
   }
 
   private handleOverwolfEvents() {
-    this.checkEventSource('x');
     overwolfEvents.getInfo(() => this.updateInfo);
     overwolfEvents.onInfoUpdates2.addListener(() => this.updateInfo);
     overwolfEvents.onNewEvents.addListener(() => this.handleNewEvents);
@@ -58,20 +68,19 @@ export class OverwolfService {
   }
 
   private updateInfo(info: any) {
+      const result: Update = this.validateResult(info);
 
-      const result = this.checkEventSource(info);
-      // validating result
-      if (!this.hasSummonerInfo(result) || !this.hasGameInfo(result)) {
+      if ( !result) {
         return;
       }
-
       const matchState: MatchState = {
         summonerId: result.summoner_info.id,
         region: result.summoner_info.region,
         matchActive: result.game_info.matchStarted
       };
-
+      console.log(matchState)
       this.matchState$.next(matchState);
+
   }
 
   private handleNewEvents(events: NewEvent[]) {
@@ -171,6 +180,15 @@ export class OverwolfService {
         hideWindow$.next();
       });
     }
+  }
+
+  private validateResult(info: any): Update {
+    const result = this.checkEventSource(info);
+    // validating result
+    if (!this.hasSummonerInfo(result) || !this.hasGameInfo(result)) {
+      return null;
+    }
+    return result;
   }
 
   /**

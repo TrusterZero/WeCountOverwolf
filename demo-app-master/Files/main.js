@@ -387,6 +387,7 @@ var MatchService = /** @class */ (function () {
             _this.matchData.next(match);
         });
         overwolf.matchState$.subscribe(function (matchState) {
+            console.log(matchState);
             if (!matchState.matchActive) {
                 _this.matchData.next();
             }
@@ -493,10 +494,9 @@ var OverwolfService = /** @class */ (function () {
     };
     OverwolfService.prototype.handleOverwolfEvents = function () {
         var _this = this;
-        this.checkEventSource('x');
         overwolfEvents.getInfo(function () { return _this.updateInfo; });
-        overwolfEvents.onInfoUpdates2.addListener(this.updateInfo);
-        overwolfEvents.onNewEvents.addListener(this.handleNewEvents);
+        overwolfEvents.onInfoUpdates2.addListener(function () { return _this.updateInfo; });
+        overwolfEvents.onNewEvents.addListener(function () { return _this.handleNewEvents; });
         overwolf.settings.registerHotKey(_overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Hotkey"].showWindow, function (args) { return _this.handleHotKey(args); });
     };
     OverwolfService.prototype.setMainWindow = function (window) {
@@ -506,10 +506,8 @@ var OverwolfService = /** @class */ (function () {
         this.mainWindow = window;
     };
     OverwolfService.prototype.updateInfo = function (info) {
-        console.log(this);
-        var result = this.checkEventSource(info);
-        // validating result
-        if (!this.hasSummonerInfo(result) || !this.hasGameInfo(result)) {
+        var result = this.validateResult(info);
+        if (!result) {
             return;
         }
         var matchState = {
@@ -517,6 +515,7 @@ var OverwolfService = /** @class */ (function () {
             region: result.summoner_info.region,
             matchActive: result.game_info.matchStarted
         };
+        console.log(matchState);
         this.matchState$.next(matchState);
     };
     OverwolfService.prototype.handleNewEvents = function (events) {
@@ -603,6 +602,14 @@ var OverwolfService = /** @class */ (function () {
                 hideWindow$.next();
             });
         }
+    };
+    OverwolfService.prototype.validateResult = function (info) {
+        var result = this.checkEventSource(info);
+        // validating result
+        if (!this.hasSummonerInfo(result) || !this.hasGameInfo(result)) {
+            return null;
+        }
+        return result;
     };
     /**
      *

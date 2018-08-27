@@ -18,7 +18,7 @@ export class MatchService {
       });
 
       overwolf.matchState$.subscribe(( matchState: MatchState ) => {
-
+        console.log(matchState)
         if ( !matchState.matchActive ) {
           this.matchData.next();
         }

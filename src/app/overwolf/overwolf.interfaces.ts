@@ -45,10 +45,17 @@ export interface OverwolfWindow {
 }
 
 export interface Update {
-    feature: string;
-    info: any;
+    summoner_info: SummonerInfo;
+    game_info: GameInfo;
+}
+interface SummonerInfo {
+  id: number;
+  region: string;
 }
 
+interface GameInfo {
+  matchStarted: boolean;
+}
 export interface GameModeInfo {
     gameMode: string;
 }
