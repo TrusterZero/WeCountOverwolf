@@ -40,7 +40,7 @@ export interface OverwolfWindow {
     height: number;
     top: number;
     left: number;
-    isVisible: true;
+    isVisible: boolean;
     Parent: null;
 }
 

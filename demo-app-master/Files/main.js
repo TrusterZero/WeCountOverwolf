@@ -464,6 +464,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var overwolfEvents = overwolf.games.events;
+var VISIBLE_WINDOW_TIME = 3000;
 // todo any's bestaan niet
 var OverwolfService = /** @class */ (function () {
     function OverwolfService(socketService) {
@@ -494,8 +495,8 @@ var OverwolfService = /** @class */ (function () {
     };
     OverwolfService.prototype.handleOverwolfEvents = function () {
         var _this = this;
-        overwolfEvents.getInfo(function () { return _this.updateInfo; });
-        overwolfEvents.onInfoUpdates2.addListener(function () { return _this.updateInfo; });
+        overwolfEvents.getInfo(function (info) { return _this.updateInfo(info); });
+        overwolfEvents.onInfoUpdates2.addListener(function (info) { return _this.updateInfo(info); });
         overwolfEvents.onNewEvents.addListener(function () { return _this.handleNewEvents; });
         overwolf.settings.registerHotKey(_overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Hotkey"].showWindow, function (args) { return _this.handleHotKey(args); });
     };
@@ -506,6 +507,7 @@ var OverwolfService = /** @class */ (function () {
         this.mainWindow = window;
     };
     OverwolfService.prototype.updateInfo = function (info) {
+        console.log(info);
         var result = this.validateResult(info);
         if (!result) {
             return;
@@ -582,7 +584,9 @@ var OverwolfService = /** @class */ (function () {
      * Hides the main window
      */
     OverwolfService.prototype.hideWindow = function () {
+        var _this = this;
         overwolf.windows.hide(this.mainWindow.id, function () {
+            _this.mainWindow.isVisible = false;
         });
     };
     /**
@@ -592,20 +596,26 @@ var OverwolfService = /** @class */ (function () {
      */
     OverwolfService.prototype.showWindow = function (arg) {
         var _this = this;
+        if (this.mainWindow.isVisible) {
+            return;
+        }
         var hideWindow$ = new rxjs__WEBPACK_IMPORTED_MODULE_0__["Subject"]();
         hideWindow$.subscribe(function () {
-            Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["interval"])(2000)
+            Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["interval"])(VISIBLE_WINDOW_TIME)
                 .subscribe(function () { return _this.hideWindow(); });
         });
         if (arg.status === _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Status"].success) {
             overwolf.windows.restore(this.mainWindow.id, function () {
+                _this.mainWindow.isVisible = true;
                 hideWindow$.next();
             });
         }
     };
     OverwolfService.prototype.validateResult = function (info) {
         var result = this.checkEventSource(info);
-        // validating result
+        if (!result) {
+            return;
+        }
         if (!this.hasSummonerInfo(result) || !this.hasGameInfo(result)) {
             return null;
         }

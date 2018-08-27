@@ -11,13 +11,12 @@ import {
   Update
 } from './overwolf.interfaces';
 import {CreationRequest, SocketEvents} from '../socket/socket.interface';
-import {error} from "selenium-webdriver";
-import UnsupportedOperationError = error.UnsupportedOperationError;
+
 
 declare const overwolf; // Overwolf uses a build in js file
 
 const overwolfEvents = overwolf.games.events;
-
+const VISIBLE_WINDOW_TIME = 3000;
 // todo any's bestaan niet
 export class OverwolfService {
 
@@ -51,8 +50,8 @@ export class OverwolfService {
   }
 
   private handleOverwolfEvents() {
-    overwolfEvents.getInfo(() => this.updateInfo);
-    overwolfEvents.onInfoUpdates2.addListener(() => this.updateInfo);
+    overwolfEvents.getInfo((info) => this.updateInfo(info));
+    overwolfEvents.onInfoUpdates2.addListener((info) => this.updateInfo(info));
     overwolfEvents.onNewEvents.addListener(() => this.handleNewEvents);
     overwolf.settings.registerHotKey(Hotkey.showWindow, (args) => this.handleHotKey(args));
 
@@ -68,6 +67,7 @@ export class OverwolfService {
   }
 
   private updateInfo(info: any) {
+      console.log(info);
       const result: Update = this.validateResult(info);
 
       if ( !result) {
@@ -78,7 +78,7 @@ export class OverwolfService {
         region: result.summoner_info.region,
         matchActive: result.game_info.matchStarted
       };
-      console.log(matchState)
+      console.log(matchState);
       this.matchState$.next(matchState);
 
   }
@@ -158,6 +158,7 @@ export class OverwolfService {
   private hideWindow() {
 
     overwolf.windows.hide(this.mainWindow.id, () => {
+      this.mainWindow.isVisible = false;
     });
   }
 
@@ -167,16 +168,20 @@ export class OverwolfService {
    * @param arg
    */
   private showWindow(arg): void {
+    if (this.mainWindow.isVisible) {
+      return;
+    }
 
     const hideWindow$: Subject<void> = new Subject<void>();
 
     hideWindow$.subscribe(() => {
-      interval(2000)
+      interval(VISIBLE_WINDOW_TIME)
         .subscribe(() => this.hideWindow());
     });
 
     if (arg.status === Status.success) {
       overwolf.windows.restore(this.mainWindow.id, () => {
+        this.mainWindow.isVisible = true;
         hideWindow$.next();
       });
     }
@@ -184,7 +189,11 @@ export class OverwolfService {
 
   private validateResult(info: any): Update {
     const result = this.checkEventSource(info);
-    // validating result
+
+    if (!result) {
+      return;
+    }
+
     if (!this.hasSummonerInfo(result) || !this.hasGameInfo(result)) {
       return null;
     }
@@ -198,7 +207,6 @@ export class OverwolfService {
    * @param info
    */
   private checkEventSource(info: any) {
-
     if (this.fromInfoUpdates(info)) {
       return info;
     } else if (this.fromGetInfo(info)) {
