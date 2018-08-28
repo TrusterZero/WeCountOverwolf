@@ -403,7 +403,7 @@ var MatchService = /** @class */ (function () {
 /*!*************************************************!*\
   !*** ./src/app/overwolf/overwolf.interfaces.ts ***!
   \*************************************************/
-/*! exports provided: Feature, Hotkey, Status, NewEvent */
+/*! exports provided: Feature, Hotkey, Status, NewEventName */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -411,7 +411,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Feature", function() { return Feature; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hotkey", function() { return Hotkey; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Status", function() { return Status; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewEvent", function() { return NewEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewEventName", function() { return NewEventName; });
 var Feature;
 (function (Feature) {
     Feature["matchState"] = "matchState";
@@ -438,11 +438,10 @@ var Status;
     Status["success"] = "success";
 })(Status || (Status = {}));
 // TODO ADD ALL POSSIBLE EVENTS
-var NewEvent;
-(function (NewEvent) {
-    NewEvent["matchEnd"] = "matchEnd";
-    NewEvent["onKeyDown"] = "onKeyDown";
-})(NewEvent || (NewEvent = {}));
+var NewEventName;
+(function (NewEventName) {
+    NewEventName["matchEnd"] = "matchEnd";
+})(NewEventName || (NewEventName = {}));
 
 
 /***/ }),
@@ -464,7 +463,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var overwolfEvents = overwolf.games.events;
-var VISIBLE_WINDOW_TIME = 3000;
 var CTRL_KEYCODE = '162';
 var SPACE_KEYCODE = '32';
 // todo any's bestaan niet
@@ -504,7 +502,7 @@ var OverwolfService = /** @class */ (function () {
         var _this = this;
         overwolfEvents.getInfo(function (info) { return _this.updateInfo(info); });
         overwolfEvents.onInfoUpdates2.addListener(function (info) { return _this.updateInfo(info); });
-        overwolfEvents.onNewEvents.addListener(function () { return _this.handleNewEvents; });
+        overwolfEvents.onNewEvents.addListener(function (info) { return _this.handleNewEvents(info.events); });
         overwolf.games.inputTracking.onKeyDown.addListener(function (event) { return _this.handleKeyDown(event); });
         overwolf.games.inputTracking.onKeyUp.addListener(function (event) { return _this.handleKeyUp(event); });
     };
@@ -542,11 +540,15 @@ var OverwolfService = /** @class */ (function () {
         this.matchState$.next(currentMatchState);
     };
     OverwolfService.prototype.handleNewEvents = function (events) {
-        console.log(events);
+        console.log(events[0]);
         for (var _i = 0, events_1 = events; _i < events_1.length; _i++) {
             var event_1 = events_1[_i];
-            switch (event_1) {
-                case _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["NewEvent"].matchEnd:
+            console.log('hoi');
+            console.log(event_1.name);
+            console.log(event_1.name === _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["NewEventName"].matchEnd);
+            switch (event_1.name) {
+                case _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["NewEventName"].matchEnd:
+                    console.log('aaaaaaa');
                     this.endMatch();
                     break;
             }

@@ -24,7 +24,7 @@ export enum Status {
 }
 
 export interface OverwolfKeyEvent {
-  key: number;
+  key: string;
   onGame: boolean;
 }
 
@@ -32,10 +32,18 @@ export interface ShowWindowHotkey {
   ctrlPressed: boolean;
   spacePressed: boolean;
 }
+
+export interface NewEventResultSet {
+  events: NewEvent[];
+}
+
+export interface NewEvent {
+  name: string;
+  data: any;
+}
 // TODO ADD ALL POSSIBLE EVENTS
-export enum NewEvent {
+export enum NewEventName {
   matchEnd = 'matchEnd',
-  onKeyDown = 'onKeyDown'
 }
 
 export interface WindowResult {
