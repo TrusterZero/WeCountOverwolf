@@ -42,7 +42,6 @@ export class OverwolfService {
   private usingFeatures: Feature[] = [
     Feature.matchState,
     Feature.summonerInfo,
-    Feature.gameMode
   ];
 
   constructor(private socketService: SocketService) {
@@ -85,27 +84,31 @@ export class OverwolfService {
     }
 
     this.mainWindow = window;
-    console.log(this.mainWindow);
   }
 
   private updateInfo(info: any) {
-      console.log(info);
-      const result: Update = this.validateResult(info);
+      const result: Update = this.checkEventSource(info);
 
       if ( !result) {
         return;
       }
-      const matchState: MatchState = {
-        summonerId: result.summoner_info.id,
-        region: result.summoner_info.region,
-        matchActive: result.game_info.matchStarted
-      };
-      console.log(matchState);
-      this.matchState$.next(matchState);
 
+      const currentMatchState: MatchState = this.matchState$.getValue();
+
+      if (this.hasSummonerId(result)) {
+        currentMatchState.summonerId = result.summoner_info.id;
+      }
+      if (this.hasSummonerRegion(result)) {
+        currentMatchState.region = result.summoner_info.region;
+      }
+      if (this.hasMatchInfo(result)) {
+        currentMatchState.matchActive = result.game_info.matchStarted;
+      }
+      this.matchState$.next(currentMatchState);
   }
 
   private handleNewEvents(events: NewEvent[]) {
+    console.log(events)
     for (const event of events) {
       switch (event) {
         case NewEvent.matchEnd:
@@ -116,7 +119,6 @@ export class OverwolfService {
   }
 
   private checkMatchState(matchState: MatchState) {
-
     if (matchState.matchActive) {
       this.startMatch(matchState);
     }
@@ -202,19 +204,6 @@ export class OverwolfService {
       overwolf.windows.restore(this.mainWindow.id, () => {});
     }
 
-  private validateResult(info: any): Update {
-    const result = this.checkEventSource(info);
-
-    if (!result) {
-      return;
-    }
-
-    if (!this.hasSummonerInfo(result) || !this.hasGameInfo(result)) {
-      return null;
-    }
-    return result as Update;
-  }
-
   /**
    *
    * Check if the info was send from InfoUpdates2 or GetInfo functions
@@ -223,7 +212,7 @@ export class OverwolfService {
    */
   private checkEventSource(info: any) {
     if (this.fromInfoUpdates(info)) {
-      return info;
+      return info.info;
     } else if (this.fromGetInfo(info)) {
       return info.res;
     } else {
@@ -239,8 +228,8 @@ export class OverwolfService {
    */
   private fromInfoUpdates(info: any) {
     // TODO ASK dit is geen goeie check enige wat vast staat is dat info updates geen res heeft
-    if (info.res) {
-      return false;
+    if (info.feature) {
+      return true;
     }
   }
 
@@ -263,9 +252,9 @@ export class OverwolfService {
    *
    * @param result
    */
-  private hasGameInfo(result: any): boolean {
+  private hasMatchInfo(result: Update): boolean {
 
-    if (result.game_info || result.game_info.matchStarted) {
+    if (result.game_info && result.game_info.matchStarted) {
       return true;
     }
     return false;
@@ -278,12 +267,28 @@ export class OverwolfService {
    *
    * @param result
    */
-  private hasSummonerInfo(result: any): boolean {
+  private hasSummonerInfo(result: Update): boolean {
 
-    if (result.summoner_info && result.summoner_info.id) {
+    if (result.summoner_info) {
       return true;
     }
     return false;
 
+  }
+
+  private hasSummonerId(result: Update): boolean {
+    if (this.hasSummonerInfo(result)) {
+      if (result.summoner_info.id) {
+        return true;
+      }
+    }
+  }
+
+  private hasSummonerRegion(result: Update): boolean {
+    if (this.hasSummonerInfo(result)) {
+      if (result.summoner_info.region) {
+        return true;
+      }
+    }
   }
 }

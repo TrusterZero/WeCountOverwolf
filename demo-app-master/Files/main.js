@@ -387,7 +387,6 @@ var MatchService = /** @class */ (function () {
             _this.matchData.next(match);
         });
         overwolf.matchState$.subscribe(function (matchState) {
-            console.log(matchState);
             if (!matchState.matchActive) {
                 _this.matchData.next();
             }
@@ -487,7 +486,6 @@ var OverwolfService = /** @class */ (function () {
         this.usingFeatures = [
             _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Feature"].matchState,
             _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Feature"].summonerInfo,
-            _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Feature"].gameMode
         ];
         //  todo: aparte functie voor listeners
         this.setFeatures();
@@ -525,23 +523,26 @@ var OverwolfService = /** @class */ (function () {
             return;
         }
         this.mainWindow = window;
-        console.log(this.mainWindow);
     };
     OverwolfService.prototype.updateInfo = function (info) {
-        console.log(info);
-        var result = this.validateResult(info);
+        var result = this.checkEventSource(info);
         if (!result) {
             return;
         }
-        var matchState = {
-            summonerId: result.summoner_info.id,
-            region: result.summoner_info.region,
-            matchActive: result.game_info.matchStarted
-        };
-        console.log(matchState);
-        this.matchState$.next(matchState);
+        var currentMatchState = this.matchState$.getValue();
+        if (this.hasSummonerId(result)) {
+            currentMatchState.summonerId = result.summoner_info.id;
+        }
+        if (this.hasSummonerRegion(result)) {
+            currentMatchState.region = result.summoner_info.region;
+        }
+        if (this.hasMatchInfo(result)) {
+            currentMatchState.matchActive = result.game_info.matchStarted;
+        }
+        this.matchState$.next(currentMatchState);
     };
     OverwolfService.prototype.handleNewEvents = function (events) {
+        console.log(events);
         for (var _i = 0, events_1 = events; _i < events_1.length; _i++) {
             var event_1 = events_1[_i];
             switch (event_1) {
@@ -628,16 +629,6 @@ var OverwolfService = /** @class */ (function () {
     OverwolfService.prototype.showWindow = function () {
         overwolf.windows.restore(this.mainWindow.id, function () { });
     };
-    OverwolfService.prototype.validateResult = function (info) {
-        var result = this.checkEventSource(info);
-        if (!result) {
-            return;
-        }
-        if (!this.hasSummonerInfo(result) || !this.hasGameInfo(result)) {
-            return null;
-        }
-        return result;
-    };
     /**
      *
      * Check if the info was send from InfoUpdates2 or GetInfo functions
@@ -646,7 +637,7 @@ var OverwolfService = /** @class */ (function () {
      */
     OverwolfService.prototype.checkEventSource = function (info) {
         if (this.fromInfoUpdates(info)) {
-            return info;
+            return info.info;
         }
         else if (this.fromGetInfo(info)) {
             return info.res;
@@ -663,8 +654,8 @@ var OverwolfService = /** @class */ (function () {
      */
     OverwolfService.prototype.fromInfoUpdates = function (info) {
         // TODO ASK dit is geen goeie check enige wat vast staat is dat info updates geen res heeft
-        if (info.res) {
-            return false;
+        if (info.feature) {
+            return true;
         }
     };
     /**
@@ -684,8 +675,8 @@ var OverwolfService = /** @class */ (function () {
      *
      * @param result
      */
-    OverwolfService.prototype.hasGameInfo = function (result) {
-        if (result.game_info || result.game_info.matchStarted) {
+    OverwolfService.prototype.hasMatchInfo = function (result) {
+        if (result.game_info && result.game_info.matchStarted) {
             return true;
         }
         return false;
@@ -697,10 +688,24 @@ var OverwolfService = /** @class */ (function () {
      * @param result
      */
     OverwolfService.prototype.hasSummonerInfo = function (result) {
-        if (result.summoner_info && result.summoner_info.id) {
+        if (result.summoner_info) {
             return true;
         }
         return false;
+    };
+    OverwolfService.prototype.hasSummonerId = function (result) {
+        if (this.hasSummonerInfo(result)) {
+            if (result.summoner_info.id) {
+                return true;
+            }
+        }
+    };
+    OverwolfService.prototype.hasSummonerRegion = function (result) {
+        if (this.hasSummonerInfo(result)) {
+            if (result.summoner_info.region) {
+                return true;
+            }
+        }
     };
     return OverwolfService;
 }());
