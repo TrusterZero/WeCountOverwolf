@@ -2,30 +2,41 @@ import {SocketService} from '../socket/socket.service';
 import {BehaviorSubject, interval, Subject} from 'rxjs';
 import {
   Feature,
-  WindowResult,
-  OverwolfWindow,
-  MatchState,
-  NewEvent,
-  Status,
   Hotkey,
-  Update
+  MatchState,
+  NewEvent, OverwolfKeyEvent,
+  OverwolfWindow, ShowWindowHotkey,
+  Status,
+  Update,
+  WindowResult
 } from './overwolf.interfaces';
 import {CreationRequest, SocketEvents} from '../socket/socket.interface';
+import {HostListener} from "@angular/core";
+import {current} from "../../../node_modules/codelyzer/util/syntaxKind";
 
 
 declare const overwolf; // Overwolf uses a build in js file
 
 const overwolfEvents = overwolf.games.events;
 const VISIBLE_WINDOW_TIME = 3000;
+const CTRL_KEYCODE = '162';
+const SPACE_KEYCODE = '32';
+
 // todo any's bestaan niet
 export class OverwolfService {
 
-  mainWindow: OverwolfWindow;
+  initialShowWindowState: ShowWindowHotkey = {
+    ctrlPressed: false,
+    spacePressed: false
+  }
   initialMatchState: MatchState = {
     matchActive: false,
     region: null,
     summonerId: null
   };
+
+  showWindowHotkeyState$: BehaviorSubject<ShowWindowHotkey> = new BehaviorSubject<ShowWindowHotkey>(this.initialShowWindowState);
+  mainWindow: OverwolfWindow;
   matchState$: BehaviorSubject<MatchState> = new BehaviorSubject<MatchState>(this.initialMatchState);
 
   private usingFeatures: Feature[] = [
@@ -40,21 +51,31 @@ export class OverwolfService {
     this.setWindow();
     this.handleOverwolfEvents();
     this.matchState$.subscribe((matchState: MatchState) => this.checkMatchState(matchState));
+    this.showWindowHotkeyState$.subscribe((hotKeyState: ShowWindowHotkey) => this.toggleWindow(hotKeyState));
   }
 
   private setWindow() {
-
     overwolf.windows.getCurrentWindow((result: WindowResult) => {
       this.setMainWindow(result.window);
     });
   }
 
   private handleOverwolfEvents() {
-    overwolfEvents.getInfo((info) => this.updateInfo(info));
-    overwolfEvents.onInfoUpdates2.addListener((info) => this.updateInfo(info));
+    overwolfEvents.getInfo((info: any) => this.updateInfo(info));
+    overwolfEvents.onInfoUpdates2.addListener((info: any) => this.updateInfo(info));
     overwolfEvents.onNewEvents.addListener(() => this.handleNewEvents);
-    overwolf.settings.registerHotKey(Hotkey.showWindow, (args) => this.handleHotKey(args));
+    overwolf.games.inputTracking.onKeyDown.addListener((event) => this.handleKeyDown(event));
+    overwolf.games.inputTracking.onKeyUp.addListener((event) => this.handleKeyUp(event));
+  }
 
+  private toggleWindow(hotKeyState: ShowWindowHotkey) {
+    if (hotKeyState.ctrlPressed && hotKeyState.spacePressed) {
+      this.showWindow();
+    }else {
+      if (this.mainWindow) {
+        this.hideWindow();
+      }
+    }
   }
 
   private setMainWindow(window: OverwolfWindow) {
@@ -64,6 +85,7 @@ export class OverwolfService {
     }
 
     this.mainWindow = window;
+    console.log(this.mainWindow);
   }
 
   private updateInfo(info: any) {
@@ -84,7 +106,6 @@ export class OverwolfService {
   }
 
   private handleNewEvents(events: NewEvent[]) {
-
     for (const event of events) {
       switch (event) {
         case NewEvent.matchEnd:
@@ -122,17 +143,30 @@ export class OverwolfService {
    *
    */
   private endMatch() {
+    console.log('match ended')
     const matchState = this.matchState$.getValue();
     matchState.matchActive = false;
     // TODO ask socketServer to Disconnect from the gameRoom
     this.matchState$.next(matchState);
   }
 
-  private handleHotKey(args) {
+  private handleKeyDown(event: OverwolfKeyEvent) {
+    this.updateShowWindowHotkeyState(true, event);
+  }
 
-    this.showWindow(args);
-    // todo in showWindow een Subject voor hideWindow met een delay van 2000 die je next
-    // todo ASK: ik heb denk gedaan wat je wou maar ik weet niet waarom
+  private handleKeyUp(event: OverwolfKeyEvent) {
+    this.updateShowWindowHotkeyState(false, event);
+  }
+
+  private updateShowWindowHotkeyState(isPressed, event) {
+    const newState = this.showWindowHotkeyState$.getValue();
+    if (event.key === CTRL_KEYCODE) {
+      newState.ctrlPressed = isPressed;
+      this.showWindowHotkeyState$.next(newState);
+    } else if (event.key === SPACE_KEYCODE) {
+      newState.spacePressed = isPressed;
+      this.showWindowHotkeyState$.next(newState);
+    }
   }
 
   /**
@@ -156,10 +190,7 @@ export class OverwolfService {
    * Hides the main window
    */
   private hideWindow() {
-
-    overwolf.windows.hide(this.mainWindow.id, () => {
-      this.mainWindow.isVisible = false;
-    });
+    overwolf.windows.hide(this.mainWindow.id, () => {});
   }
 
   /**
@@ -167,25 +198,9 @@ export class OverwolfService {
    * Shows the main window and hides it after 2 seconds using hideWindow method
    * @param arg
    */
-  private showWindow(arg): void {
-    if (this.mainWindow.isVisible) {
-      return;
+  private showWindow(): void {
+      overwolf.windows.restore(this.mainWindow.id, () => {});
     }
-
-    const hideWindow$: Subject<void> = new Subject<void>();
-
-    hideWindow$.subscribe(() => {
-      interval(VISIBLE_WINDOW_TIME)
-        .subscribe(() => this.hideWindow());
-    });
-
-    if (arg.status === Status.success) {
-      overwolf.windows.restore(this.mainWindow.id, () => {
-        this.mainWindow.isVisible = true;
-        hideWindow$.next();
-      });
-    }
-  }
 
   private validateResult(info: any): Update {
     const result = this.checkEventSource(info);
@@ -197,7 +212,7 @@ export class OverwolfService {
     if (!this.hasSummonerInfo(result) || !this.hasGameInfo(result)) {
       return null;
     }
-    return result;
+    return result as Update;
   }
 
   /**
@@ -248,7 +263,7 @@ export class OverwolfService {
    *
    * @param result
    */
-  private hasGameInfo(result): boolean {
+  private hasGameInfo(result: any): boolean {
 
     if (result.game_info || result.game_info.matchStarted) {
       return true;

@@ -442,6 +442,7 @@ var Status;
 var NewEvent;
 (function (NewEvent) {
     NewEvent["matchEnd"] = "matchEnd";
+    NewEvent["onKeyDown"] = "onKeyDown";
 })(NewEvent || (NewEvent = {}));
 
 
@@ -465,16 +466,23 @@ __webpack_require__.r(__webpack_exports__);
 
 var overwolfEvents = overwolf.games.events;
 var VISIBLE_WINDOW_TIME = 3000;
+var CTRL_KEYCODE = '162';
+var SPACE_KEYCODE = '32';
 // todo any's bestaan niet
 var OverwolfService = /** @class */ (function () {
     function OverwolfService(socketService) {
         var _this = this;
         this.socketService = socketService;
+        this.initialShowWindowState = {
+            ctrlPressed: false,
+            spacePressed: false
+        };
         this.initialMatchState = {
             matchActive: false,
             region: null,
             summonerId: null
         };
+        this.showWindowHotkeyState$ = new rxjs__WEBPACK_IMPORTED_MODULE_0__["BehaviorSubject"](this.initialShowWindowState);
         this.matchState$ = new rxjs__WEBPACK_IMPORTED_MODULE_0__["BehaviorSubject"](this.initialMatchState);
         this.usingFeatures = [
             _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Feature"].matchState,
@@ -486,6 +494,7 @@ var OverwolfService = /** @class */ (function () {
         this.setWindow();
         this.handleOverwolfEvents();
         this.matchState$.subscribe(function (matchState) { return _this.checkMatchState(matchState); });
+        this.showWindowHotkeyState$.subscribe(function (hotKeyState) { return _this.toggleWindow(hotKeyState); });
     }
     OverwolfService.prototype.setWindow = function () {
         var _this = this;
@@ -498,13 +507,25 @@ var OverwolfService = /** @class */ (function () {
         overwolfEvents.getInfo(function (info) { return _this.updateInfo(info); });
         overwolfEvents.onInfoUpdates2.addListener(function (info) { return _this.updateInfo(info); });
         overwolfEvents.onNewEvents.addListener(function () { return _this.handleNewEvents; });
-        overwolf.settings.registerHotKey(_overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Hotkey"].showWindow, function (args) { return _this.handleHotKey(args); });
+        overwolf.games.inputTracking.onKeyDown.addListener(function (event) { return _this.handleKeyDown(event); });
+        overwolf.games.inputTracking.onKeyUp.addListener(function (event) { return _this.handleKeyUp(event); });
+    };
+    OverwolfService.prototype.toggleWindow = function (hotKeyState) {
+        if (hotKeyState.ctrlPressed && hotKeyState.spacePressed) {
+            this.showWindow();
+        }
+        else {
+            if (this.mainWindow) {
+                this.hideWindow();
+            }
+        }
     };
     OverwolfService.prototype.setMainWindow = function (window) {
         if (!window) {
             return;
         }
         this.mainWindow = window;
+        console.log(this.mainWindow);
     };
     OverwolfService.prototype.updateInfo = function (info) {
         console.log(info);
@@ -554,15 +575,28 @@ var OverwolfService = /** @class */ (function () {
      *
      */
     OverwolfService.prototype.endMatch = function () {
+        console.log('match ended');
         var matchState = this.matchState$.getValue();
         matchState.matchActive = false;
         // TODO ask socketServer to Disconnect from the gameRoom
         this.matchState$.next(matchState);
     };
-    OverwolfService.prototype.handleHotKey = function (args) {
-        this.showWindow(args);
-        // todo in showWindow een Subject voor hideWindow met een delay van 2000 die je next
-        // todo ASK: ik heb denk gedaan wat je wou maar ik weet niet waarom
+    OverwolfService.prototype.handleKeyDown = function (event) {
+        this.updateShowWindowHotkeyState(true, event);
+    };
+    OverwolfService.prototype.handleKeyUp = function (event) {
+        this.updateShowWindowHotkeyState(false, event);
+    };
+    OverwolfService.prototype.updateShowWindowHotkeyState = function (isPressed, event) {
+        var newState = this.showWindowHotkeyState$.getValue();
+        if (event.key === CTRL_KEYCODE) {
+            newState.ctrlPressed = isPressed;
+            this.showWindowHotkeyState$.next(newState);
+        }
+        else if (event.key === SPACE_KEYCODE) {
+            newState.spacePressed = isPressed;
+            this.showWindowHotkeyState$.next(newState);
+        }
     };
     /**
      *
@@ -584,32 +618,15 @@ var OverwolfService = /** @class */ (function () {
      * Hides the main window
      */
     OverwolfService.prototype.hideWindow = function () {
-        var _this = this;
-        overwolf.windows.hide(this.mainWindow.id, function () {
-            _this.mainWindow.isVisible = false;
-        });
+        overwolf.windows.hide(this.mainWindow.id, function () { });
     };
     /**
      *
      * Shows the main window and hides it after 2 seconds using hideWindow method
      * @param arg
      */
-    OverwolfService.prototype.showWindow = function (arg) {
-        var _this = this;
-        if (this.mainWindow.isVisible) {
-            return;
-        }
-        var hideWindow$ = new rxjs__WEBPACK_IMPORTED_MODULE_0__["Subject"]();
-        hideWindow$.subscribe(function () {
-            Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["interval"])(VISIBLE_WINDOW_TIME)
-                .subscribe(function () { return _this.hideWindow(); });
-        });
-        if (arg.status === _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Status"].success) {
-            overwolf.windows.restore(this.mainWindow.id, function () {
-                _this.mainWindow.isVisible = true;
-                hideWindow$.next();
-            });
-        }
+    OverwolfService.prototype.showWindow = function () {
+        overwolf.windows.restore(this.mainWindow.id, function () { });
     };
     OverwolfService.prototype.validateResult = function (info) {
         var result = this.checkEventSource(info);
