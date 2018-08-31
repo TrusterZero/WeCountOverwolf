@@ -61,7 +61,6 @@ export class OverwolfService {
   }
 
   public setHotkeyListeners(): void {
-    console.log('hotkey set');
     overwolf.games.inputTracking.onKeyDown.addListener((event: OverwolfKeyEvent) => this.handleKeyDown(event));
     overwolf.games.inputTracking.onKeyUp.addListener((event: OverwolfKeyEvent) => this.handleKeyUp(event));
   }

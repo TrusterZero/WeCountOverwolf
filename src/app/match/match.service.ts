@@ -14,12 +14,10 @@ export class MatchService {
 
     constructor(private socketService: SocketService, private overwolf: OverwolfService) {
       socketService.listen( SocketEvents.matchCreated, ( match: Match ) => {
-        console.log('serverdata', match);
         this.matchData.next( match );
       });
       // Deze 2 combineren in 1 observable ???
       overwolf.matchState$.subscribe(( matchState: MatchState ) => {
-        console.log('match state changed', matchState);
         if (matchState.matchActive) {
           this.startMatch(matchState);
         } else {

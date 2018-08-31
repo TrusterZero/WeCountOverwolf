@@ -357,8 +357,6 @@ var MatchComponent = /** @class */ (function () {
         matchService.matchData.subscribe(function (match) { return _this.checkMatch(match); });
     }
     MatchComponent.prototype.checkMatch = function (match) {
-        console.log('match checked and is ', match);
-        console.log(!match);
         if (!match) {
             this.clearMatch();
         }
@@ -367,7 +365,6 @@ var MatchComponent = /** @class */ (function () {
         }
     };
     MatchComponent.prototype.clearMatch = function () {
-        console.log('clearing match');
         this.match = null;
         this.summoners = [];
         this.useWeCount = false;
@@ -375,13 +372,11 @@ var MatchComponent = /** @class */ (function () {
         this.changeDetection.detectChanges();
     };
     MatchComponent.prototype.setMatch = function (match) {
-        console.log('setting this match:', match);
         this.match = match;
         this.summoners = match.summoners;
         this.changeDetection.detectChanges();
     };
     MatchComponent.prototype.runWeCount = function (willRun) {
-        console.log('accepted run');
         this.overwolfService.hideWindow();
         if (willRun) {
             this.overwolfService.activateHotkeys = true;
