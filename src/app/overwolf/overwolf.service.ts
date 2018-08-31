@@ -19,7 +19,7 @@ const SPACE_KEYCODE = '32';
 
 // todo any's bestaan niet
 export class OverwolfService {
-
+  activateHotkeys = false;
   initialShowWindowState: ShowWindowHotkey = {
     ctrlPressed: false,
     spacePressed: false
@@ -42,6 +42,7 @@ export class OverwolfService {
   constructor(private socketService: SocketService) {
     this.setFeatures();
     this.setWindow();
+    this.setHotkeyListeners();
     this.handleOverwolfEvents();
     this.showWindowHotkeyState$.subscribe((hotKeyState: ShowWindowHotkey) => this.toggleWindow(hotKeyState));
   }
@@ -57,12 +58,6 @@ export class OverwolfService {
     overwolfEvents.getInfo((info: any) => this.updateInfo(info));
     overwolfEvents.onInfoUpdates2.addListener((info: any) => this.updateInfo(info));
     overwolfEvents.onNewEvents.addListener((resultSet: NewEventResultSet) => this.handleNewEvents(resultSet.events));
-  }
-
-  public clearHotkeyListeners(): void {
-    console.log('hotkey cleared');
-    overwolf.games.inputTracking.onKeyDown.removeListener(() => this.handleKeyDown);
-    overwolf.games.inputTracking.onKeyUp.removeListener(() => this.handleKeyUp);
   }
 
   public setHotkeyListeners(): void {
@@ -128,11 +123,15 @@ export class OverwolfService {
   }
 
   private handleKeyDown(event: OverwolfKeyEvent): void {
-    this.updateShowWindowHotkeyState(true, event);
+    if (this.activateHotkeys) {
+      this.updateShowWindowHotkeyState(true, event);
+    }
   }
 
   private handleKeyUp(event: OverwolfKeyEvent): void {
-    this.updateShowWindowHotkeyState(false, event);
+    if (this.activateHotkeys) {
+      this.updateShowWindowHotkeyState(false, event);
+    }
   }
 
   /**

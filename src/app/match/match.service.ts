@@ -36,7 +36,7 @@ export class MatchService {
    * @param summonerId
    */
   private startMatch(matchState: MatchState): void {
-
+    this.overwolf.showWindow();
     this.socketService.message(SocketEvents.createMatch, {
       summonerId: matchState.summonerId,
       region: matchState.region

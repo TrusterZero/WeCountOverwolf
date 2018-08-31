@@ -371,9 +371,8 @@ var MatchComponent = /** @class */ (function () {
         this.match = null;
         this.summoners = [];
         this.useWeCount = false;
-        this.overwolfService.clearHotkeyListeners();
+        this.overwolfService.activateHotkeys = false;
         this.changeDetection.detectChanges();
-        console.log(this);
     };
     MatchComponent.prototype.setMatch = function (match) {
         console.log('setting this match:', match);
@@ -385,8 +384,9 @@ var MatchComponent = /** @class */ (function () {
         console.log('accepted run');
         this.overwolfService.hideWindow();
         if (willRun) {
-            this.overwolfService.setHotkeyListeners();
+            this.overwolfService.activateHotkeys = true;
             this.useWeCount = true;
+            this.changeDetection.detectChanges();
         }
     };
     return MatchComponent;
@@ -443,6 +443,7 @@ var MatchService = /** @class */ (function () {
      * @param summonerId
      */
     MatchService.prototype.startMatch = function (matchState) {
+        this.overwolf.showWindow();
         this.socketService.message(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_2__["SocketEvents"].createMatch, {
             summonerId: matchState.summonerId,
             region: matchState.region
@@ -533,6 +534,7 @@ var OverwolfService = /** @class */ (function () {
     function OverwolfService(socketService) {
         var _this = this;
         this.socketService = socketService;
+        this.activateHotkeys = false;
         this.initialShowWindowState = {
             ctrlPressed: false,
             spacePressed: false
@@ -550,6 +552,7 @@ var OverwolfService = /** @class */ (function () {
         ];
         this.setFeatures();
         this.setWindow();
+        this.setHotkeyListeners();
         this.handleOverwolfEvents();
         this.showWindowHotkeyState$.subscribe(function (hotKeyState) { return _this.toggleWindow(hotKeyState); });
     }
@@ -565,12 +568,6 @@ var OverwolfService = /** @class */ (function () {
         overwolfEvents.getInfo(function (info) { return _this.updateInfo(info); });
         overwolfEvents.onInfoUpdates2.addListener(function (info) { return _this.updateInfo(info); });
         overwolfEvents.onNewEvents.addListener(function (resultSet) { return _this.handleNewEvents(resultSet.events); });
-    };
-    OverwolfService.prototype.clearHotkeyListeners = function () {
-        var _this = this;
-        console.log('hotkey cleared');
-        overwolf.games.inputTracking.onKeyDown.removeListener(function () { return _this.handleKeyDown; });
-        overwolf.games.inputTracking.onKeyUp.removeListener(function () { return _this.handleKeyUp; });
     };
     OverwolfService.prototype.setHotkeyListeners = function () {
         var _this = this;
@@ -626,10 +623,14 @@ var OverwolfService = /** @class */ (function () {
         }
     };
     OverwolfService.prototype.handleKeyDown = function (event) {
-        this.updateShowWindowHotkeyState(true, event);
+        if (this.activateHotkeys) {
+            this.updateShowWindowHotkeyState(true, event);
+        }
     };
     OverwolfService.prototype.handleKeyUp = function (event) {
-        this.updateShowWindowHotkeyState(false, event);
+        if (this.activateHotkeys) {
+            this.updateShowWindowHotkeyState(false, event);
+        }
     };
     /**
      *

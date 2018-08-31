@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ChangeDetectorRef} from '@angular/core';
+import {Component, ChangeDetectorRef} from '@angular/core';
 import { Summoner } from '../summoner/summoner.component';
 import { MatchService } from './match.service';
 import {OverwolfService} from '../overwolf/overwolf.service';
@@ -25,8 +25,6 @@ export class MatchComponent {
   }
 
   checkMatch(match: Match): void {
-    console.log('match checked and is ', match)
-    console.log(!match)
     if (!match) {
       this.clearMatch();
     }else {
@@ -35,28 +33,25 @@ export class MatchComponent {
   }
 
   clearMatch(): void {
-    console.log('clearing match')
     this.match = null;
     this.summoners = [];
     this.useWeCount = false;
-    this.overwolfService.clearHotkeyListeners();
+    this.overwolfService.activateHotkeys = false;
     this.changeDetection.detectChanges();
-    console.log(this)
   }
 
   setMatch(match: Match): void {
-    console.log('setting this match:', match)
     this.match = match;
     this.summoners = match.summoners;
     this.changeDetection.detectChanges();
   }
 
   runWeCount(willRun: boolean): void {
-    console.log('accepted run')
     this.overwolfService.hideWindow();
     if (willRun) {
-      this.overwolfService.setHotkeyListeners();
+      this.overwolfService.activateHotkeys = true;
       this.useWeCount = true;
+      this.changeDetection.detectChanges();
     }
   }
 
