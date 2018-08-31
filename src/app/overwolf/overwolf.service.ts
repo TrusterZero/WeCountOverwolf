@@ -1,8 +1,7 @@
 import {SocketService} from '../socket/socket.service';
-import {BehaviorSubject, interval, Subject} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {
   Feature,
-  Hotkey,
   MatchState, NewEvent,
   NewEventName, NewEventResultSet, OverwolfKeyEvent,
   OverwolfWindow, ShowWindowHotkey,
@@ -11,9 +10,6 @@ import {
   WindowResult
 } from './overwolf.interfaces';
 import {CreationRequest, SocketEvents} from '../socket/socket.interface';
-import {HostListener} from "@angular/core";
-import {current} from "../../../node_modules/codelyzer/util/syntaxKind";
-
 
 declare const overwolf; // Overwolf uses a build in js file
 
@@ -27,7 +23,7 @@ export class OverwolfService {
   initialShowWindowState: ShowWindowHotkey = {
     ctrlPressed: false,
     spacePressed: false
-  }
+  };
   initialMatchState: MatchState = {
     matchActive: false,
     region: null,
@@ -47,13 +43,13 @@ export class OverwolfService {
     this.setFeatures();
     this.setWindow();
     this.handleOverwolfEvents();
-    this.matchState$.subscribe((matchState: MatchState) => this.checkMatchState(matchState));
     this.showWindowHotkeyState$.subscribe((hotKeyState: ShowWindowHotkey) => this.toggleWindow(hotKeyState));
   }
 
   private setWindow(): void {
     overwolf.windows.getCurrentWindow((result: WindowResult) => {
       this.setMainWindow(result.window);
+      this.showWindow();
     });
   }
 
@@ -61,6 +57,16 @@ export class OverwolfService {
     overwolfEvents.getInfo((info: any) => this.updateInfo(info));
     overwolfEvents.onInfoUpdates2.addListener((info: any) => this.updateInfo(info));
     overwolfEvents.onNewEvents.addListener((resultSet: NewEventResultSet) => this.handleNewEvents(resultSet.events));
+  }
+
+  public clearHotkeyListeners(): void {
+    console.log('hotkey cleared');
+    overwolf.games.inputTracking.onKeyDown.removeListener(() => this.handleKeyDown);
+    overwolf.games.inputTracking.onKeyUp.removeListener(() => this.handleKeyUp);
+  }
+
+  public setHotkeyListeners(): void {
+    console.log('hotkey set');
     overwolf.games.inputTracking.onKeyDown.addListener((event: OverwolfKeyEvent) => this.handleKeyDown(event));
     overwolf.games.inputTracking.onKeyUp.addListener((event: OverwolfKeyEvent) => this.handleKeyUp(event));
   }
@@ -91,61 +97,34 @@ export class OverwolfService {
         return;
       }
 
-      const currentMatchState: MatchState = this.matchState$.getValue();
+      this.matchState$.next(
+        this.editMatchState(this.matchState$.getValue(), result));
+  }
 
-      if (this.hasSummonerId(result)) {
-        currentMatchState.summonerId = result.summoner_info.id;
-      }
-      if (this.hasSummonerRegion(result)) {
-        currentMatchState.region = result.summoner_info.region;
-      }
-      if (this.hasMatchInfo(result)) {
-        currentMatchState.matchActive = result.game_info.matchStarted;
-      }
-      this.matchState$.next(currentMatchState);
+  private editMatchState(matchState: MatchState, result: Update): MatchState {
+    if (this.hasSummonerId(result)) {
+      matchState.summonerId = result.summoner_info.id;
+    }
+    if (this.hasSummonerRegion(result)) {
+      matchState.region = result.summoner_info.region;
+    }
+    if (this.hasMatchInfo(result)) {
+      matchState.matchActive = result.game_info.matchStarted;
+    }
+
+    return matchState;
   }
 
   private handleNewEvents(events: NewEvent[]): void {
     for (const event of events) {
       switch (event.name) {
         case NewEventName.matchEnd:
-          this.endMatch();
+          const newMatchState: MatchState = this.matchState$.getValue();
+          newMatchState.matchActive = false;
+          this.matchState$.next(newMatchState);
           break;
       }
     }
-  }
-
-  private checkMatchState(matchState: MatchState): void {
-    if (matchState.matchActive) {
-      this.startMatch(matchState);
-    }
-  }
-
-  /**
-   *
-   *  Ask the server to start a match
-   *
-   * @param region: Region player is in
-   * @param summonerId
-   */
-  private startMatch(matchState: MatchState): void {
-
-    this.socketService.message(SocketEvents.createMatch, {
-      summonerId: matchState.summonerId,
-      region: matchState.region
-    } as CreationRequest);
-  }
-
-  /**
-   *
-   *  Ends the match and requests server to disconnect from the gameroom
-   *
-   */
-  private endMatch(): void {
-    const currentMatchState = this.matchState$.getValue();
-    currentMatchState.matchActive = false;
-    // TODO ask socketServer to Disconnect from the gameRoom
-    this.matchState$.next(currentMatchState);
   }
 
   private handleKeyDown(event: OverwolfKeyEvent): void {
@@ -156,6 +135,11 @@ export class OverwolfService {
     this.updateShowWindowHotkeyState(false, event);
   }
 
+  /**
+   *
+   * @param isPressed: If button is pressed or released
+   * @param event
+   */
   private updateShowWindowHotkeyState(isPressed: boolean, event: OverwolfKeyEvent): void {
     const newState = this.showWindowHotkeyState$.getValue();
     if (event.key === CTRL_KEYCODE) {
@@ -187,7 +171,7 @@ export class OverwolfService {
    *
    * Hides the main window
    */
-  private hideWindow(): void {
+  public hideWindow(): void {
     overwolf.windows.hide(this.mainWindow.id, () => {});
   }
 
@@ -196,7 +180,7 @@ export class OverwolfService {
    * Shows the main window and hides it after 2 seconds using hideWindow method
    * @param arg
    */
-  private showWindow(): void {
+  public showWindow(): void {
       overwolf.windows.restore(this.mainWindow.id, () => {});
     }
 
@@ -259,7 +243,7 @@ export class OverwolfService {
 
   /**
    *
-   * Check if datam contains summoner info
+   * Check if data contains summoner info
    *
    * @param result
    */

@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="match.component.scss">
-<div *ngIf="match != null">
+<div *ngIf="match != null && useWeCount">
   <div *ngFor="let summoner of summoners">
     <summoner [id]="summoner?.id"
               [champion]="summoner?.champion"
@@ -9,14 +9,14 @@
   </div>
 </div>
 
-<div class='startWindow'*ngIf="match == null">
+<div class='startWindow'*ngIf="!useWeCount">
 
   <h2> Use sumCounter this match?</h2>
   <div><!--id="ad-div"-->
     <img src="assets/ad-placeholder.jpg" width="400" height="300">
   </div>
   <div class = 'button-holder'>
-    <button>Yes</button>
-    <button>No</button>
+    <button  (click)="runWeCount(true)">Yes</button>
+    <button (click)="runWeCount(false)">No</button>
   </div>
 </div>
