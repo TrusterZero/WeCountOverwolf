@@ -416,12 +416,10 @@ var MatchService = /** @class */ (function () {
         this.overwolf = overwolf;
         this.matchData = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
         socketService.listen(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_2__["SocketEvents"].matchCreated, function (match) {
-            console.log('serverdata', match);
             _this.matchData.next(match);
         });
         // Deze 2 combineren in 1 observable ???
         overwolf.matchState$.subscribe(function (matchState) {
-            console.log('match state changed', matchState);
             if (matchState.matchActive) {
                 _this.startMatch(matchState);
             }
@@ -566,7 +564,6 @@ var OverwolfService = /** @class */ (function () {
     };
     OverwolfService.prototype.setHotkeyListeners = function () {
         var _this = this;
-        console.log('hotkey set');
         overwolf.games.inputTracking.onKeyDown.addListener(function (event) { return _this.handleKeyDown(event); });
         overwolf.games.inputTracking.onKeyUp.addListener(function (event) { return _this.handleKeyUp(event); });
     };
