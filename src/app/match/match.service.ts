@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Match } from './match.component';
-import { SocketService } from '../socket/socket.service';
-import { Subject } from 'rxjs';
-import {CreationRequest, SocketEvents} from '../socket/socket.interface';
+import {Injectable} from '@angular/core';
+import {Match} from './match.component';
+import {SocketService} from '../socket/socket.service';
+import {Subject} from 'rxjs';
+import {CreationRequest, ErrorCode, SocketEvents} from '../socket/socket.interface';
 import {OverwolfService} from '../overwolf/overwolf.service';
 import {MatchState} from '../overwolf/overwolf.interfaces';
+import {MessageService} from '../message/message.service';
 
 
 @Injectable()
@@ -12,11 +13,17 @@ export class MatchService {
 
     matchData: Subject<Match> = new Subject<Match>();
 
-    constructor(private socketService: SocketService, private overwolf: OverwolfService) {
+    constructor(private socketService: SocketService,
+                private overwolf: OverwolfService,
+                private messageService: MessageService) {
       socketService.listen( SocketEvents.matchCreated, ( match: Match ) => {
+        messageService.stopLoading();
+        if (match.summoners.length === 0) {
+          this.messageService.displayError(ErrorCode.noSummoners, null );
+        }
         this.matchData.next( match );
       });
-      // Deze 2 combineren in 1 observable ???
+
       overwolf.matchState$.subscribe(( matchState: MatchState ) => {
         if (matchState.matchActive) {
           this.startMatch(matchState);
@@ -33,7 +40,8 @@ export class MatchService {
    * @param region: Region player is in
    * @param summonerId
    */
-  private startMatch(matchState: MatchState): void {
+  public startMatch(matchState: MatchState): void {
+    this.messageService.startLoading();
     this.overwolf.showWindow();
     this.socketService.message(SocketEvents.createMatch, {
       summonerId: matchState.summonerId,

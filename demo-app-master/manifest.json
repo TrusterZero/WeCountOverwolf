@@ -60,6 +60,11 @@
         "action-type": "custom",
         "default": "Ctrl+Space"
       }
+    },
+    "externally_connectable": {
+      "matches": [
+        "http://18.217.193.138:3000"
+      ]
     }
   }
 }

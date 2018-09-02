@@ -1,11 +1,13 @@
 import {Injectable} from '@angular/core';
 import * as socketIo from 'socket.io-client';
-import {Subject} from 'rxjs';
 import {Match} from '../match/match.component';
-import {Payload, RequestError, RequestErrorCodes, SocketEvents} from './socket.interface';
+import {CreationRequest, Payload, RequestError, SocketEvents} from './socket.interface';
+import {Credentials} from "../credentials";
+import {MessageService} from "../message/message.service";
+import {OverwolfService} from "../overwolf/overwolf.service";
 import Socket = SocketIOClient.Socket;
 
-const SERVER_URL = 'http://127.0.0.1:3000/';
+const SERVER_URL = Credentials.IP;
 const socket: Socket = socketIo(SERVER_URL);
 
 @Injectable()
@@ -13,7 +15,8 @@ export class SocketService {
 
   private roomId: number;
 
-  constructor() {
+  constructor(private messageService: MessageService,
+              private overwolf: OverwolfService) {
 
     this.listen(SocketEvents.matchCreated, (match: Match) => {
 
@@ -67,16 +70,18 @@ export class SocketService {
    * @param socketError: Error thrown
    */
   private handleSocketError(socketError: RequestError): void {
-    // not fully implemented yet
-    switch (socketError.status) {
-      case RequestErrorCodes.unauthorized: console.log(socketError);
-        break;
-      case RequestErrorCodes.forbidden: console.log(socketError);
-        break;
-      case RequestErrorCodes.notFound: console.log(socketError);
-        break;
-      default: console.log(socketError);
-    }
+    this.messageService
+      .displayError(socketError.status,
+        () => this.retryMatch());
+  }
+
+  private retryMatch() {
+    const matchState = this.overwolf.matchState$.getValue();
+
+    this.message(SocketEvents.createMatch, {
+      summonerId: matchState.summonerId,
+      region: matchState.region
+    } as CreationRequest);
   }
 }
 

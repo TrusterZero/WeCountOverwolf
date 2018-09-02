@@ -6,15 +6,17 @@ export enum SocketEvents {
   requestError = 'error'
 }
 
-export enum RequestErrorCodes {
+export enum ErrorCode {
   notFound = 404,
   forbidden = 403,
   unauthorized = 401,
+  noSummoners = 1001,
+  wrongGameMode = 1002,
   unhandled = null
 }
 
 export interface RequestError {
-  status: RequestErrorCodes;
+  status: ErrorCode;
 }
 
 export interface CreationRequest {

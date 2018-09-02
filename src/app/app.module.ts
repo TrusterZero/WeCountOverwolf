@@ -7,7 +7,9 @@ import { ChampionComponent } from './champion/champion.component';
 import { SocketService } from './socket/socket.service';
 import { MatchComponent } from './match/match.component';
 import { MatchService } from './match/match.service';
-import {OverwolfService} from './overwolf/overwolf.service';
+import { OverwolfService } from './overwolf/overwolf.service';
+import { MessageComponent } from './message/message.component';
+import {MessageService} from './message/message.service';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,13 @@ import {OverwolfService} from './overwolf/overwolf.service';
     SummonerComponent,
     SpellComponent,
     ChampionComponent,
-    MatchComponent
+    MatchComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [SocketService, MatchService, OverwolfService],
+  providers: [ MatchService, SocketService, OverwolfService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,9 @@
 match {
   width: 500px;
 }
+message {
+  z-index: -1;
+  position: absolute;
+  top:40%;
+  left: 10%;
+}

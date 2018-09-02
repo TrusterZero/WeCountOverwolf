@@ -1,0 +1,31 @@
+.message {
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  background-color: rgba(40, 40, 40, 0.8);
+  text-align: center;
+
+  img {
+    width: 25px;
+  }
+  p {
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  .button-holder {
+    margin: auto;
+
+    button {
+      color: white;
+      padding: 7.5px 15px;
+      border: solid 5px rgba(80, 80, 80, 1);
+      border-radius: 4px;
+      margin: 15px 30px;
+      background-color: rgba(80, 80, 80, 0.8);
+
+      &:hover {
+        background-color: rgba(100, 100, 100, 0.9);
+      }
+    }
+  }
+}

@@ -10,6 +10,7 @@ import {
   WindowResult
 } from './overwolf.interfaces';
 import {CreationRequest, SocketEvents} from '../socket/socket.interface';
+import {MessageService} from "../message/message.service";
 
 declare const overwolf; // Overwolf uses a build in js file
 
@@ -39,7 +40,7 @@ export class OverwolfService {
     Feature.summonerInfo,
   ];
 
-  constructor(private socketService: SocketService) {
+  constructor() {
     this.setFeatures();
     this.setWindow();
     this.setHotkeyListeners();
