@@ -1,7 +1,7 @@
 <div class="message" *ngIf="message.text != null" >
   <p>{{message.text}}</p>
-  <div class="button-holder">
-    <button #actionButton *ngIf="message.action != null" (click)="runAction()">{{message.actionText}}</button>
+  <div *ngIf="message.action != null" class="button-holder">
+    <button  (click)="runAction()">{{message.actionText}}</button>
   </div>
   <img *ngIf="message.loading" src="assets/loading.gif">
   <!-- Loading gif image here-->

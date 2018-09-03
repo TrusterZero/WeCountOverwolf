@@ -41,7 +41,7 @@ export class MessageService {
     const message: Message = {
       text: messageText,
       loading: false,
-      action: null,
+      action: () => {},
       actionText: null
     };
 

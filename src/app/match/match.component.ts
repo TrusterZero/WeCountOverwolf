@@ -1,4 +1,4 @@
-import {Component, ChangeDetectorRef} from '@angular/core';
+import {Component, ChangeDetectorRef, OnChanges} from '@angular/core';
 import { Summoner } from '../summoner/summoner.component';
 import { MatchService } from './match.service';
 import {OverwolfService} from '../overwolf/overwolf.service';
@@ -14,7 +14,7 @@ export interface Match {
   styleUrls: ['./match.component.scss']
 })
 
-export class MatchComponent {
+export class MatchComponent implements OnChanges{
   match: Match = null;
   summoners: Summoner[] = [];
   useWeCount = false;
@@ -30,6 +30,7 @@ export class MatchComponent {
     }else {
       this.setMatch(match);
     }
+    this.changeDetection.detectChanges();
   }
 
   clearMatch(): void {
@@ -51,8 +52,12 @@ export class MatchComponent {
     if (willRun) {
       this.overwolfService.activateHotkeys = true;
       this.useWeCount = true;
-      this.changeDetection.detectChanges();
     }
+    this.changeDetection.detectChanges();
+  }
+
+  ngOnChanges() {
+    this.changeDetection.detectChanges();
   }
 
 }

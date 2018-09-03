@@ -9,12 +9,12 @@ import {
   Update,
   WindowResult
 } from './overwolf.interfaces';
-import {CreationRequest, SocketEvents} from '../socket/socket.interface';
-import {MessageService} from "../message/message.service";
+
 
 declare const overwolf; // Overwolf uses a build in js file
 
 const overwolfEvents = overwolf.games.events;
+const windows = overwolf.windows;
 const CTRL_KEYCODE = '162';
 const SPACE_KEYCODE = '32';
 
@@ -49,8 +49,9 @@ export class OverwolfService {
   }
 
   private setWindow(): void {
-    overwolf.windows.getCurrentWindow((result: WindowResult) => {
+    windows.getCurrentWindow((result: WindowResult) => {
       this.setMainWindow(result.window);
+      windows.changePosition(this.mainWindow.id, 0, 443);
       this.showWindow();
     });
   }
@@ -61,6 +62,17 @@ export class OverwolfService {
     overwolfEvents.onNewEvents.addListener((resultSet: NewEventResultSet) => this.handleNewEvents(resultSet.events));
   }
 
+  public dragMove() {
+    console.log('dragmove activated')
+    windows.dragMove(this.mainWindow.id, (status) => {
+      console.log(status);
+      windows.getCurrentWindow((window) => {
+        console.log(window);
+      });
+    });
+
+
+  }
   public setHotkeyListeners(): void {
     overwolf.games.inputTracking.onKeyDown.addListener((event: OverwolfKeyEvent) => this.handleKeyDown(event));
     overwolf.games.inputTracking.onKeyUp.addListener((event: OverwolfKeyEvent) => this.handleKeyUp(event));
@@ -171,7 +183,7 @@ export class OverwolfService {
    * Hides the main window
    */
   public hideWindow(): void {
-    overwolf.windows.hide(this.mainWindow.id, () => {});
+    windows.hide(this.mainWindow.id, () => {});
   }
 
   /**
@@ -180,7 +192,7 @@ export class OverwolfService {
    * @param arg
    */
   public showWindow(): void {
-      overwolf.windows.restore(this.mainWindow.id, () => {});
+      windows.restore(this.mainWindow.id, () => {});
     }
 
   /**

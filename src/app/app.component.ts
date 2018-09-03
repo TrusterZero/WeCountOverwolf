@@ -13,7 +13,12 @@ import { OverwolfService } from './overwolf/overwolf.service';
 export class AppComponent {
   title = 'app';
 
-  constructor(private socket: SocketService) {
+  constructor(private socket: SocketService, private overwolf: OverwolfService) {
     this.socket.connect();
+  }
+
+  dragMove() {
+    console.log('dragged')
+    this.overwolf.dragMove();
   }
 }

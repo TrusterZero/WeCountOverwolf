@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnDestroy, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy, ChangeDetectorRef, OnChanges} from '@angular/core';
 import { SocketService } from '../socket/socket.service';
 import { interval, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import {CooldownActivationData, SocketEvents} from '../socket/socket.interface';
   styleUrls: ['./spell.component.scss']
 })
 
-export class SpellComponent implements OnInit, OnDestroy {
+export class SpellComponent implements OnInit, OnDestroy, OnChanges {
   @Input() id: number;
   @Input() name: string;
   @Input() image: string;
@@ -93,6 +93,10 @@ export class SpellComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.destroyer$.next();
+  }
+
+  ngOnChanges(): void {
+    this.changeDetection.detectChanges();
   }
 }
 

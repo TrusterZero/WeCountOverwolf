@@ -39,7 +39,7 @@ __webpack_require__.r(__webpack_exports__);
  * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
  * tslint:disable
  */ 
-var styles = ["match[_ngcontent-%COMP%] {\r\n  width: 500px;\r\n}\r\nmessage[_ngcontent-%COMP%] {\r\n  z-index: -1;\r\n  position: absolute;\r\n  top:40%;\r\n  left: 10%;\r\n}"];
+var styles = ["#dragImage[_ngcontent-%COMP%] {\r\n  width: 15px;\r\n}\r\n\r\nmatch[_ngcontent-%COMP%] {\r\n  width: 500px;\r\n}\r\n\r\nmessage[_ngcontent-%COMP%] {\r\n  z-index: -1;\r\n  position: absolute;\r\n  top:40%;\r\n  left: 10%;\r\n}"];
 
 
 
@@ -89,8 +89,8 @@ __webpack_require__.r(__webpack_exports__);
 var styles_AppComponent = [_app_component_css_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 var RenderType_AppComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({ encapsulation: 0, styles: styles_AppComponent, data: {} });
 
-function View_AppComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "message", [], null, null, null, _message_message_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_MessageComponent_0"], _message_message_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_MessageComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _message_message_component__WEBPACK_IMPORTED_MODULE_3__["MessageComponent"], [_message_message_service__WEBPACK_IMPORTED_MODULE_4__["MessageService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, null, 1, "match", [], null, null, null, _match_match_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["View_MatchComponent_0"], _match_match_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["RenderType_MatchComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](3, 49152, null, 0, _match_match_component__WEBPACK_IMPORTED_MODULE_6__["MatchComponent"], [_match_match_service__WEBPACK_IMPORTED_MODULE_7__["MatchService"], _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_8__["OverwolfService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
-function View_AppComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-root", [], null, null, null, View_AppComponent_0, RenderType_AppComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 49152, null, 0, _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"], [_socket_socket_service__WEBPACK_IMPORTED_MODULE_10__["SocketService"]], null, null)], null, null); }
+function View_AppComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "message", [], null, null, null, _message_message_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_MessageComponent_0"], _message_message_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_MessageComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 638976, null, 0, _message_message_component__WEBPACK_IMPORTED_MODULE_3__["MessageComponent"], [_message_message_service__WEBPACK_IMPORTED_MODULE_4__["MessageService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](2, 0, null, null, 1, "match", [], null, null, null, _match_match_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["View_MatchComponent_0"], _match_match_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["RenderType_MatchComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](3, 573440, null, 0, _match_match_component__WEBPACK_IMPORTED_MODULE_6__["MatchComponent"], [_match_match_service__WEBPACK_IMPORTED_MODULE_7__["MatchService"], _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_8__["OverwolfService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_AppComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "app-root", [], null, null, null, View_AppComponent_0, RenderType_AppComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 49152, null, 0, _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"], [_socket_socket_service__WEBPACK_IMPORTED_MODULE_10__["SocketService"], _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_8__["OverwolfService"]], null, null)], null, null); }
 var AppComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-root", _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"], View_AppComponent_Host_0, {}, {}, []);
 
 
@@ -108,13 +108,20 @@ var AppComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"](
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _socket_socket_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./socket/socket.service */ "./src/app/socket/socket.service.ts");
+/* harmony import */ var _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./overwolf/overwolf.service */ "./src/app/overwolf/overwolf.service.ts");
+
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(socket) {
+    function AppComponent(socket, overwolf) {
         this.socket = socket;
+        this.overwolf = overwolf;
         this.title = 'app';
         this.socket.connect();
     }
+    AppComponent.prototype.dragMove = function () {
+        console.log('dragged');
+        this.overwolf.dragMove();
+    };
     return AppComponent;
 }());
 
@@ -331,7 +338,7 @@ function View_MatchComponent_3(_l) { return _angular_core__WEBPACK_IMPORTED_MODU
         ad = (pd_0 && ad);
     } return ad; }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["No"]))], null, null); }
 function View_MatchComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MatchComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MatchComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](3, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = ((_co.match != null) && _co.useWeCount); _ck(_v, 1, 0, currVal_0); var currVal_1 = !_co.useWeCount; _ck(_v, 3, 0, currVal_1); }, null); }
-function View_MatchComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "match", [], null, null, null, View_MatchComponent_0, RenderType_MatchComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 49152, null, 0, _match_component__WEBPACK_IMPORTED_MODULE_5__["MatchComponent"], [_match_service__WEBPACK_IMPORTED_MODULE_6__["MatchService"], _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_7__["OverwolfService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null)], null, null); }
+function View_MatchComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "match", [], null, null, null, View_MatchComponent_0, RenderType_MatchComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 573440, null, 0, _match_component__WEBPACK_IMPORTED_MODULE_5__["MatchComponent"], [_match_service__WEBPACK_IMPORTED_MODULE_6__["MatchService"], _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_7__["OverwolfService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null)], null, null); }
 var MatchComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("match", _match_component__WEBPACK_IMPORTED_MODULE_5__["MatchComponent"], View_MatchComponent_Host_0, {}, {}, []);
 
 
@@ -394,26 +401,27 @@ var MatchComponent = /** @class */ (function () {
         else {
             this.setMatch(match);
         }
+        this.changeDetection.detectChanges();
     };
     MatchComponent.prototype.clearMatch = function () {
         this.match = null;
         this.summoners = [];
         this.useWeCount = false;
         this.overwolfService.activateHotkeys = false;
-        this.changeDetection.detectChanges();
     };
     MatchComponent.prototype.setMatch = function (match) {
         this.match = match;
         this.summoners = match.summoners;
-        this.changeDetection.detectChanges();
     };
     MatchComponent.prototype.runWeCount = function (willRun) {
         this.overwolfService.hideWindow();
         if (willRun) {
             this.overwolfService.activateHotkeys = true;
             this.useWeCount = true;
-            this.changeDetection.detectChanges();
         }
+    };
+    MatchComponent.prototype.ngOnChanges = function () {
+        this.changeDetection.detectChanges();
     };
     return MatchComponent;
 }());
@@ -528,14 +536,14 @@ __webpack_require__.r(__webpack_exports__);
 var styles_MessageComponent = [_message_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 var RenderType_MessageComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({ encapsulation: 0, styles: styles_MessageComponent, data: {} });
 
-function View_MessageComponent_2(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, [["actionButton", 1]], null, 1, "button", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+function View_MessageComponent_2(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "div", [["class", "button-holder"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "button", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.runAction() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](1, null, ["", ""]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.message.actionText; _ck(_v, 1, 0, currVal_0); }); }
+    } return ad; }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", ""]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.message.actionText; _ck(_v, 2, 0, currVal_0); }); }
 function View_MessageComponent_3(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 0, "img", [["src", "assets/loading.gif"]], null, null, null, null, null))], null, null); }
-function View_MessageComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 7, "div", [["class", "message"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 2, "div", [["class", "button-holder"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MessageComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](5, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MessageComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](7, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_1 = (_co.message.action != null); _ck(_v, 5, 0, currVal_1); var currVal_2 = _co.message.loading; _ck(_v, 7, 0, currVal_2); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.message.text; _ck(_v, 2, 0, currVal_0); }); }
+function View_MessageComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 6, "div", [["class", "message"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MessageComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MessageComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](6, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_1 = (_co.message.action != null); _ck(_v, 4, 0, currVal_1); var currVal_2 = _co.message.loading; _ck(_v, 6, 0, currVal_2); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.message.text; _ck(_v, 2, 0, currVal_0); }); }
 function View_MessageComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MessageComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = (_co.message.text != null); _ck(_v, 1, 0, currVal_0); }, null); }
-function View_MessageComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "message", [], null, null, null, View_MessageComponent_0, RenderType_MessageComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _message_component__WEBPACK_IMPORTED_MODULE_3__["MessageComponent"], [_message_service__WEBPACK_IMPORTED_MODULE_4__["MessageService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_MessageComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "message", [], null, null, null, View_MessageComponent_0, RenderType_MessageComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 638976, null, 0, _message_component__WEBPACK_IMPORTED_MODULE_3__["MessageComponent"], [_message_service__WEBPACK_IMPORTED_MODULE_4__["MessageService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 var MessageComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("message", _message_component__WEBPACK_IMPORTED_MODULE_3__["MessageComponent"], View_MessageComponent_Host_0, {}, {}, []);
 
 
@@ -585,17 +593,19 @@ var MessageComponent = /** @class */ (function () {
         this.changeDetection = changeDetection;
         this.initialMessage = {
             text: null,
-            action: function () { return _this.resetMessage(); },
+            action: null,
             actionText: 'OK',
             loading: false
         };
         this.message = this.initialMessage;
         messageService.messageStream$.subscribe(function (message) {
+            console.log('got here', message);
             if (!message) {
                 _this.resetMessage();
+                return;
             }
             _this.message = message;
-            changeDetection.detectChanges();
+            _this.changeDetection.detectChanges();
         });
     }
     MessageComponent.prototype.resetMessage = function () {
@@ -608,7 +618,11 @@ var MessageComponent = /** @class */ (function () {
         }
         this.resetMessage();
     };
-    MessageComponent.prototype.ngOnInit = function () { };
+    MessageComponent.prototype.ngOnInit = function () {
+    };
+    MessageComponent.prototype.ngOnChanges = function () {
+        this.changeDetection.detectChanges();
+    };
     return MessageComponent;
 }());
 
@@ -689,7 +703,7 @@ var MessageService = /** @class */ (function () {
         var message = {
             text: messageText,
             loading: false,
-            action: null,
+            action: function () { },
             actionText: null
         };
         this.messageStream$.next(message);
@@ -764,6 +778,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var overwolfEvents = overwolf.games.events;
+var windows = overwolf.windows;
 var CTRL_KEYCODE = '162';
 var SPACE_KEYCODE = '32';
 // todo any's bestaan niet
@@ -794,8 +809,9 @@ var OverwolfService = /** @class */ (function () {
     }
     OverwolfService.prototype.setWindow = function () {
         var _this = this;
-        overwolf.windows.getCurrentWindow(function (result) {
+        windows.getCurrentWindow(function (result) {
             _this.setMainWindow(result.window);
+            windows.changePosition(_this.mainWindow.id, 0, 443);
             _this.showWindow();
         });
     };
@@ -804,6 +820,15 @@ var OverwolfService = /** @class */ (function () {
         overwolfEvents.getInfo(function (info) { return _this.updateInfo(info); });
         overwolfEvents.onInfoUpdates2.addListener(function (info) { return _this.updateInfo(info); });
         overwolfEvents.onNewEvents.addListener(function (resultSet) { return _this.handleNewEvents(resultSet.events); });
+    };
+    OverwolfService.prototype.dragMove = function () {
+        console.log('dragmove activated');
+        windows.dragMove(this.mainWindow.id, function (status) {
+            console.log(status);
+            windows.getCurrentWindow(function (window) {
+                console.log(window);
+            });
+        });
     };
     OverwolfService.prototype.setHotkeyListeners = function () {
         var _this = this;
@@ -903,7 +928,7 @@ var OverwolfService = /** @class */ (function () {
      * Hides the main window
      */
     OverwolfService.prototype.hideWindow = function () {
-        overwolf.windows.hide(this.mainWindow.id, function () { });
+        windows.hide(this.mainWindow.id, function () { });
     };
     /**
      *
@@ -911,7 +936,7 @@ var OverwolfService = /** @class */ (function () {
      * @param arg
      */
     OverwolfService.prototype.showWindow = function () {
-        overwolf.windows.restore(this.mainWindow.id, function () { });
+        windows.restore(this.mainWindow.id, function () { });
     };
     /**
      *
@@ -1158,7 +1183,7 @@ function View_SpellComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODU
         var pd_0 = (_co.startCooldown() !== false);
         ad = (pd_0 && ad);
     } return ad; }, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 278528, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgClass"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["KeyValueDiffers"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]], { klass: [0, "klass"], ngClass: [1, "ngClass"] }, null), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵpod"](2, { "spell-container--on-cooldown": 0 }), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 0, "img", [], [[8, "src", 4]], null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](4, 0, null, null, 2, "div", [["class", "spell-container__countdown"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](6, null, ["", ""]))], function (_ck, _v) { var _co = _v.component; var currVal_0 = "spell-container"; var currVal_1 = _ck(_v, 2, 0, (_co.countdown < _co.cooldown)); _ck(_v, 1, 0, currVal_0, currVal_1); }, function (_ck, _v) { var _co = _v.component; var currVal_2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵinlineInterpolate"](1, "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/", _co.image, ""); _ck(_v, 3, 0, currVal_2); var currVal_3 = _co.countdown; _ck(_v, 6, 0, currVal_3); }); }
-function View_SpellComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "spell", [], null, null, null, View_SpellComponent_0, RenderType_SpellComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 245760, null, 0, _spell_component__WEBPACK_IMPORTED_MODULE_3__["SpellComponent"], [_socket_socket_service__WEBPACK_IMPORTED_MODULE_4__["SocketService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_SpellComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "spell", [], null, null, null, View_SpellComponent_0, RenderType_SpellComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 770048, null, 0, _spell_component__WEBPACK_IMPORTED_MODULE_3__["SpellComponent"], [_socket_socket_service__WEBPACK_IMPORTED_MODULE_4__["SocketService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 var SpellComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("spell", _spell_component__WEBPACK_IMPORTED_MODULE_3__["SpellComponent"], View_SpellComponent_Host_0, { id: "id", name: "name", image: "image", cooldown: "cooldown", summonerId: "summonerId" }, {}, []);
 
 
@@ -1265,13 +1290,15 @@ var SpellComponent = /** @class */ (function () {
      */
     SpellComponent.prototype.resetCountdown = function () {
         this.countdown = this.cooldown;
-        this.changeDetection.detectChanges();
     };
     SpellComponent.prototype.ngOnInit = function () {
         this.resetCountdown();
     };
     SpellComponent.prototype.ngOnDestroy = function () {
         this.destroyer$.next();
+    };
+    SpellComponent.prototype.ngOnChanges = function () {
+        this.changeDetection.detectChanges();
     };
     return SpellComponent;
 }());
@@ -1318,7 +1345,7 @@ __webpack_require__.r(__webpack_exports__);
 var styles_SummonerComponent = [_summoner_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 var RenderType_SummonerComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({ encapsulation: 0, styles: styles_SummonerComponent, data: {} });
 
-function View_SummonerComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 6, "div", [["class", "summoner-container"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "champion", [], null, null, null, _champion_champion_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_ChampionComponent_0"], _champion_champion_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_ChampionComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 49152, null, 0, _champion_champion_component__WEBPACK_IMPORTED_MODULE_3__["ChampionComponent"], [], { id: [0, "id"], name: [1, "name"], image: [2, "image"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 1, "spell", [], null, null, null, _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_SpellComponent_0"], _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_SpellComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 245760, null, 0, _spell_spell_component__WEBPACK_IMPORTED_MODULE_5__["SpellComponent"], [_socket_socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], { id: [0, "id"], name: [1, "name"], image: [2, "image"], cooldown: [3, "cooldown"], summonerId: [4, "summonerId"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 1, "spell", [], null, null, null, _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_SpellComponent_0"], _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_SpellComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](6, 245760, null, 0, _spell_spell_component__WEBPACK_IMPORTED_MODULE_5__["SpellComponent"], [_socket_socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], { id: [0, "id"], name: [1, "name"], image: [2, "image"], cooldown: [3, "cooldown"], summonerId: [4, "summonerId"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.champion.id; var currVal_1 = _co.champion.name; var currVal_2 = _co.champion.image; _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2); var currVal_3 = _co.spell1.id; var currVal_4 = _co.spell1.name; var currVal_5 = _co.spell1.image; var currVal_6 = _co.spell1.cooldown; var currVal_7 = _co.id; _ck(_v, 4, 0, currVal_3, currVal_4, currVal_5, currVal_6, currVal_7); var currVal_8 = _co.spell2.id; var currVal_9 = _co.spell2.name; var currVal_10 = _co.spell2.image; var currVal_11 = _co.spell2.cooldown; var currVal_12 = _co.id; _ck(_v, 6, 0, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12); }, null); }
+function View_SummonerComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 6, "div", [["class", "summoner-container"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "champion", [], null, null, null, _champion_champion_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_ChampionComponent_0"], _champion_champion_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_ChampionComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 49152, null, 0, _champion_champion_component__WEBPACK_IMPORTED_MODULE_3__["ChampionComponent"], [], { id: [0, "id"], name: [1, "name"], image: [2, "image"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](3, 0, null, null, 1, "spell", [], null, null, null, _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_SpellComponent_0"], _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_SpellComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 770048, null, 0, _spell_spell_component__WEBPACK_IMPORTED_MODULE_5__["SpellComponent"], [_socket_socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], { id: [0, "id"], name: [1, "name"], image: [2, "image"], cooldown: [3, "cooldown"], summonerId: [4, "summonerId"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](5, 0, null, null, 1, "spell", [], null, null, null, _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["View_SpellComponent_0"], _spell_spell_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RenderType_SpellComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](6, 770048, null, 0, _spell_spell_component__WEBPACK_IMPORTED_MODULE_5__["SpellComponent"], [_socket_socket_service__WEBPACK_IMPORTED_MODULE_6__["SocketService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], { id: [0, "id"], name: [1, "name"], image: [2, "image"], cooldown: [3, "cooldown"], summonerId: [4, "summonerId"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.champion.id; var currVal_1 = _co.champion.name; var currVal_2 = _co.champion.image; _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2); var currVal_3 = _co.spell1.id; var currVal_4 = _co.spell1.name; var currVal_5 = _co.spell1.image; var currVal_6 = _co.spell1.cooldown; var currVal_7 = _co.id; _ck(_v, 4, 0, currVal_3, currVal_4, currVal_5, currVal_6, currVal_7); var currVal_8 = _co.spell2.id; var currVal_9 = _co.spell2.name; var currVal_10 = _co.spell2.image; var currVal_11 = _co.spell2.cooldown; var currVal_12 = _co.id; _ck(_v, 6, 0, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12); }, null); }
 function View_SummonerComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "summoner", [], null, null, null, View_SummonerComponent_0, RenderType_SummonerComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 114688, null, 0, _summoner_component__WEBPACK_IMPORTED_MODULE_7__["SummonerComponent"], [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 var SummonerComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("summoner", _summoner_component__WEBPACK_IMPORTED_MODULE_7__["SummonerComponent"], View_SummonerComponent_Host_0, { id: "id", champion: "champion", spell1: "spell1", spell2: "spell2" }, {}, []);
 

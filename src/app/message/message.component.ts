@@ -1,7 +1,6 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit , OnChanges} from '@angular/core';
 import { MessageService} from './message.service';
 import {Message } from './message.interface';
-import {Button} from "selenium-webdriver";
 
 
 
@@ -12,26 +11,28 @@ import {Button} from "selenium-webdriver";
   styleUrls: ['./message.component.scss']
 })
 
-export class MessageComponent implements OnInit {
+export class MessageComponent implements OnChanges, OnInit  {
   initialMessage: Message = {
     text: null,
-    action: () => this.resetMessage(),
+    action: null,
     actionText: 'OK',
     loading: false
   };
-
-  message: Message = this.initialMessage;
+  message: Message;
 
   constructor(private messageService: MessageService, private changeDetection: ChangeDetectorRef) {
+    this.message = this.initialMessage;
     messageService.messageStream$.subscribe((message: Message) => {
+      console.log('got here', message)
       if (!message) {
         this.resetMessage();
+        return;
       }
-
       this.message = message;
-      changeDetection.detectChanges();
+      this.changeDetection.detectChanges();
     } );
   }
+
 
   private resetMessage(): void {
     this.message = this.initialMessage;
@@ -45,5 +46,11 @@ export class MessageComponent implements OnInit {
     this.resetMessage();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
+
+   ngOnChanges() {
+      this.changeDetection.detectChanges();
+  }
 }
