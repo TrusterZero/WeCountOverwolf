@@ -18,6 +18,7 @@ export class MatchService {
                 private messageService: MessageService) {
       socketService.listen( SocketEvents.matchCreated, ( match: Match ) => {
         messageService.stopLoading();
+
         if (match.summoners.length === 0) {
           this.messageService.displayError(ErrorCode.noSummoners, null );
         }

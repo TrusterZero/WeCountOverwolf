@@ -408,10 +408,12 @@ var MatchComponent = /** @class */ (function () {
         this.summoners = [];
         this.useWeCount = false;
         this.overwolfService.activateHotkeys = false;
+        this.changeDetection.detectChanges();
     };
     MatchComponent.prototype.setMatch = function (match) {
         this.match = match;
         this.summoners = match.summoners;
+        this.changeDetection.detectChanges();
     };
     MatchComponent.prototype.runWeCount = function (willRun) {
         this.overwolfService.hideWindow();
@@ -419,6 +421,7 @@ var MatchComponent = /** @class */ (function () {
             this.overwolfService.activateHotkeys = true;
             this.useWeCount = true;
         }
+        this.changeDetection.detectChanges();
     };
     MatchComponent.prototype.ngOnChanges = function () {
         this.changeDetection.detectChanges();
@@ -1290,6 +1293,7 @@ var SpellComponent = /** @class */ (function () {
      */
     SpellComponent.prototype.resetCountdown = function () {
         this.countdown = this.cooldown;
+        this.changeDetection.detectChanges();
     };
     SpellComponent.prototype.ngOnInit = function () {
         this.resetCountdown();
