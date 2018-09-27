@@ -14,7 +14,7 @@ export interface Match {
   styleUrls: ['./match.component.scss']
 })
 
-export class MatchComponent implements OnChanges{
+export class MatchComponent implements OnChanges {
   match: Match = null;
   summoners: Summoner[] = [];
   useWeCount = false;

@@ -1,5 +1,5 @@
 import {SocketService} from '../socket/socket.service';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, combineLatest} from 'rxjs';
 import {
   Feature,
   MatchState, NewEvent,
@@ -18,7 +18,6 @@ const windows = overwolf.windows;
 const CTRL_KEYCODE = '162';
 const SPACE_KEYCODE = '32';
 
-// todo any's bestaan niet
 export class OverwolfService {
   activateHotkeys = false;
   initialShowWindowState: ShowWindowHotkey = {
@@ -31,7 +30,9 @@ export class OverwolfService {
     summonerId: null
   };
 
-  showWindowHotkeyState$: BehaviorSubject<ShowWindowHotkey> = new BehaviorSubject<ShowWindowHotkey>(this.initialShowWindowState);
+  ctrlPressed$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  shitPressed$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  showWindowHotkeyState$ = combineLatest(this.ctrlPressed$, this.shitPressed$);
   mainWindow: OverwolfWindow;
   matchState$: BehaviorSubject<MatchState> = new BehaviorSubject<MatchState>(this.initialMatchState);
 
@@ -45,7 +46,7 @@ export class OverwolfService {
     this.setWindow();
     this.setHotkeyListeners();
     this.handleOverwolfEvents();
-    this.showWindowHotkeyState$.subscribe((hotKeyState: ShowWindowHotkey) => this.toggleWindow(hotKeyState));
+    this.showWindowHotkeyState$.subscribe((result) => this.toggleWindow(result));
   }
 
   private setWindow(): void {
@@ -63,7 +64,6 @@ export class OverwolfService {
   }
 
   public dragMove() {
-    console.log('dragmove activated')
     windows.dragMove(this.mainWindow.id, (status) => {
       console.log(status);
       windows.getCurrentWindow((window) => {
@@ -87,8 +87,8 @@ export class OverwolfService {
     this.mainWindow = window;
   }
 
-  private toggleWindow(hotKeyState: ShowWindowHotkey): void {
-    if (hotKeyState.ctrlPressed && hotKeyState.spacePressed) {
+  private toggleWindow(result: boolean[]): void {
+    if (result[0] && result[1]) {
       this.showWindow();
     }else {
       if (this.mainWindow) {
@@ -152,13 +152,10 @@ export class OverwolfService {
    * @param event
    */
   private updateShowWindowHotkeyState(isPressed: boolean, event: OverwolfKeyEvent): void {
-    const newState = this.showWindowHotkeyState$.getValue();
     if (event.key === CTRL_KEYCODE) {
-      newState.ctrlPressed = isPressed;
-      this.showWindowHotkeyState$.next(newState);
+      this.ctrlPressed$.next(isPressed);
     } else if (event.key === SPACE_KEYCODE) {
-      newState.spacePressed = isPressed;
-      this.showWindowHotkeyState$.next(newState);
+      this.shitPressed$.next(isPressed);
     }
   }
 
@@ -168,10 +165,8 @@ export class OverwolfService {
    *
    */
   private setFeatures(): void {
-    // TODO: ff sparren!
     overwolfEvents.setRequiredFeatures(this.usingFeatures, (info) => {
       if (info.status === Status.error) {
-        // check info.status possible values
         console.log(info.reason);
         return;
       }

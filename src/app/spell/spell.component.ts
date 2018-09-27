@@ -19,7 +19,6 @@ export class SpellComponent implements OnInit, OnDestroy, OnChanges {
   @Input() summonerId: number;
 
   private destroyer$: Subject<void> = new Subject<void>();
-
   countdown = 0;
 
   get spellId(): string {
@@ -29,7 +28,6 @@ export class SpellComponent implements OnInit, OnDestroy, OnChanges {
   constructor(private socketService: SocketService, private changeDetection: ChangeDetectorRef) {
 
     socketService.listen(SocketEvents.sumUsed, (data: CooldownActivationData) => {
-
       if (this.spellId !== data.spellId) {
 
         return;
@@ -45,7 +43,7 @@ export class SpellComponent implements OnInit, OnDestroy, OnChanges {
         .subscribe(() => {
           this.countdown--;
           changeDetection.detectChanges();
-          if (this.countdown === 0) {
+          if (this.countdown <= 0) {
             stopCooldown$.next();
             this.resetCountdown();
           }
@@ -63,7 +61,6 @@ export class SpellComponent implements OnInit, OnDestroy, OnChanges {
     if (this.countdown !== this.cooldown) {
       return;
     }
-
     const cooldownActivationData: CooldownActivationData = {
 
       spellId: this.spellId,

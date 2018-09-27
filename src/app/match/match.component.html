@@ -1,15 +1,17 @@
 <link rel="stylesheet" href="match.component.scss">
-<div *ngIf="match != null && useWeCount">
-  <div *ngFor="let summoner of summoners">
-    <summoner [id]="summoner?.id"
-              [champion]="summoner?.champion"
-              [spell1]="summoner?.spell1"
-              [spell2]="summoner?.spell2">
-    </summoner>
-  </div>
-</div>
 
-<div class='startWindow'*ngIf="!useWeCount">
+<div class="windowTitle">
+  <img src="assets/logo.png">
+  <div *ngIf="match != null && useWeCount">
+    <div *ngFor="let summoner of summoners">
+      <summoner [id]="summoner?.id"
+                [champion]="summoner?.champion"
+                [spell1]="summoner?.spell1"
+                [spell2]="summoner?.spell2">
+      </summoner>
+    </div>
+  </div>
+<div class='startWindow' *ngIf="!useWeCount">
   <h2> Activate WeCount?</h2>
   <div id ="ad-div">
     <p>AD SPACE 400x300</p>
@@ -18,4 +20,5 @@
     <button  (click)="runWeCount(true)">Yes</button>
     <button (click)="runWeCount(false)">No</button>
   </div>
+</div>
 </div>

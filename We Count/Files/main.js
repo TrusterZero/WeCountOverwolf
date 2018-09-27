@@ -325,7 +325,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var styles_MatchComponent = [".startWindow[_ngcontent-%COMP%] {\n  width: 500px;\n  height: 500px;\n  padding-top: 25px;\n  background: url(\"/Files/assets/Pyke.jpg\") center;\n  border-radius: 20px;\n  box-shadow: inset 20px 20px 200px 20px black;\n  text-align: center; }\n  .startWindow[_ngcontent-%COMP%]   #ad-div[_ngcontent-%COMP%] {\n    margin: 30px auto auto;\n    width: 400px;\n    height: 300px;\n    background-color: black;\n    text-align: center;\n    vertical-align: center; }\n  .startWindow[_ngcontent-%COMP%]   #ad-div[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n      color: white; }\n  .startWindow[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n    color: white;\n    font-style: oblique;\n    background-color: rgba(0, 0, 0, 0.5);\n    padding: 5px 2px;\n    font-family: 'Ubuntu', sans-serif; }\n  .startWindow[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%] {\n    margin: auto; }\n  .startWindow[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n      color: white;\n      padding: 15px 50px;\n      border: solid 5px #282828;\n      border-radius: 4px;\n      margin: 15px 30px;\n      background-color: rgba(40, 40, 40, 0.8); }\n  .startWindow[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%]   button[_ngcontent-%COMP%]:hover {\n        background-color: rgba(60, 60, 60, 0.9); }", _match_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
+var styles_MatchComponent = [".windowTitle[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 80px; }\n\n.startWindow[_ngcontent-%COMP%] {\n  width: 500px;\n  height: 500px;\n  padding-top: 25px;\n  background: url(\"/Files/assets/Pyke.jpg\") center;\n  border-radius: 20px;\n  box-shadow: inset 20px 20px 200px 20px black;\n  text-align: center; }\n\n.startWindow[_ngcontent-%COMP%]   #ad-div[_ngcontent-%COMP%] {\n    margin: 30px auto auto;\n    width: 400px;\n    height: 300px;\n    background-color: black;\n    text-align: center;\n    vertical-align: center; }\n\n.startWindow[_ngcontent-%COMP%]   #ad-div[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n      color: white; }\n\n.startWindow[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n    color: white;\n    font-style: oblique;\n    background-color: rgba(0, 0, 0, 0.5);\n    padding: 5px 2px;\n    font-family: 'Ubuntu', sans-serif; }\n\n.startWindow[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%] {\n    margin: auto; }\n\n.startWindow[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n      color: white;\n      padding: 15px 50px;\n      border: solid 5px #282828;\n      border-radius: 4px;\n      margin: 15px 30px;\n      background-color: rgba(40, 40, 40, 0.8); }\n\n.startWindow[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%]   button[_ngcontent-%COMP%]:hover {\n        background-color: rgba(60, 60, 60, 0.9); }", _match_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 var RenderType_MatchComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({ encapsulation: 0, styles: styles_MatchComponent, data: {} });
 
 function View_MatchComponent_2(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "div", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "summoner", [], null, null, null, _summoner_summoner_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["View_SummonerComponent_0"], _summoner_summoner_component_ngfactory__WEBPACK_IMPORTED_MODULE_2__["RenderType_SummonerComponent"])), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](2, 114688, null, 0, _summoner_summoner_component__WEBPACK_IMPORTED_MODULE_3__["SummonerComponent"], [], { id: [0, "id"], champion: [1, "champion"], spell1: [2, "spell1"], spell2: [3, "spell2"] }, null)], function (_ck, _v) { var currVal_0 = ((_v.context.$implicit == null) ? null : _v.context.$implicit.id); var currVal_1 = ((_v.context.$implicit == null) ? null : _v.context.$implicit.champion); var currVal_2 = ((_v.context.$implicit == null) ? null : _v.context.$implicit.spell1); var currVal_3 = ((_v.context.$implicit == null) ? null : _v.context.$implicit.spell2); _ck(_v, 2, 0, currVal_0, currVal_1, currVal_2, currVal_3); }, null); }
@@ -337,7 +337,7 @@ function View_MatchComponent_3(_l) { return _angular_core__WEBPACK_IMPORTED_MODU
         var pd_0 = (_co.runWeCount(false) !== false);
         ad = (pd_0 && ad);
     } return ad; }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](-1, null, ["No"]))], null, null); }
-function View_MatchComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MatchComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MatchComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](3, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = ((_co.match != null) && _co.useWeCount); _ck(_v, 1, 0, currVal_0); var currVal_1 = !_co.useWeCount; _ck(_v, 3, 0, currVal_1); }, null); }
+function View_MatchComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 5, "div", [["class", "windowTitle"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 0, "img", [["src", "assets/logo.png"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MatchComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](3, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MatchComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](5, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = ((_co.match != null) && _co.useWeCount); _ck(_v, 3, 0, currVal_0); var currVal_1 = !_co.useWeCount; _ck(_v, 5, 0, currVal_1); }, null); }
 function View_MatchComponent_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 1, "match", [], null, null, null, View_MatchComponent_0, RenderType_MatchComponent)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 573440, null, 0, _match_component__WEBPACK_IMPORTED_MODULE_5__["MatchComponent"], [_match_service__WEBPACK_IMPORTED_MODULE_6__["MatchService"], _overwolf_overwolf_service__WEBPACK_IMPORTED_MODULE_7__["OverwolfService"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]], null, null)], null, null); }
 var MatchComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("match", _match_component__WEBPACK_IMPORTED_MODULE_5__["MatchComponent"], View_MatchComponent_Host_0, {}, {}, []);
 
@@ -361,7 +361,7 @@ __webpack_require__.r(__webpack_exports__);
  * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
  * tslint:disable
  */ 
-var styles = [".startWindow[_ngcontent-%COMP%] {\n  width: 500px;\n  height: 500px;\n  padding-top: 25px;\n  background: url(\"/Files/assets/Pyke.jpg\") center;\n  border-radius: 20px;\n  box-shadow: inset 20px 20px 200px 20px black;\n  text-align: center; }\n  .startWindow[_ngcontent-%COMP%]   #ad-div[_ngcontent-%COMP%] {\n    margin: 30px auto auto;\n    width: 400px;\n    height: 300px;\n    background-color: black;\n    text-align: center;\n    vertical-align: center; }\n  .startWindow[_ngcontent-%COMP%]   #ad-div[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n      color: white; }\n  .startWindow[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n    color: white;\n    font-style: oblique;\n    background-color: rgba(0, 0, 0, 0.5);\n    padding: 5px 2px;\n    font-family: 'Ubuntu', sans-serif; }\n  .startWindow[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%] {\n    margin: auto; }\n  .startWindow[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n      color: white;\n      padding: 15px 50px;\n      border: solid 5px #282828;\n      border-radius: 4px;\n      margin: 15px 30px;\n      background-color: rgba(40, 40, 40, 0.8); }\n  .startWindow[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%]   button[_ngcontent-%COMP%]:hover {\n        background-color: rgba(60, 60, 60, 0.9); }"];
+var styles = [".windowTitle[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 80px; }\n\n.startWindow[_ngcontent-%COMP%] {\n  width: 500px;\n  height: 500px;\n  padding-top: 25px;\n  background: url(\"/Files/assets/Pyke.jpg\") center;\n  border-radius: 20px;\n  box-shadow: inset 20px 20px 200px 20px black;\n  text-align: center; }\n\n.startWindow[_ngcontent-%COMP%]   #ad-div[_ngcontent-%COMP%] {\n    margin: 30px auto auto;\n    width: 400px;\n    height: 300px;\n    background-color: black;\n    text-align: center;\n    vertical-align: center; }\n\n.startWindow[_ngcontent-%COMP%]   #ad-div[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n      color: white; }\n\n.startWindow[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n    color: white;\n    font-style: oblique;\n    background-color: rgba(0, 0, 0, 0.5);\n    padding: 5px 2px;\n    font-family: 'Ubuntu', sans-serif; }\n\n.startWindow[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%] {\n    margin: auto; }\n\n.startWindow[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n      color: white;\n      padding: 15px 50px;\n      border: solid 5px #282828;\n      border-radius: 4px;\n      margin: 15px 30px;\n      background-color: rgba(40, 40, 40, 0.8); }\n\n.startWindow[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%]   button[_ngcontent-%COMP%]:hover {\n        background-color: rgba(60, 60, 60, 0.9); }"];
 
 
 
@@ -542,7 +542,7 @@ var RenderType_MessageComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵ
 function View_MessageComponent_2(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "div", [["class", "button-holder"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "button", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.runAction() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", ""]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.message.actionText; _ck(_v, 2, 0, currVal_0); }); }
+    } return ad; }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", ""]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.message.acceptText; _ck(_v, 2, 0, currVal_0); }); }
 function View_MessageComponent_3(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 0, "img", [["src", "assets/loading.gif"]], null, null, null, null, null))], null, null); }
 function View_MessageComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 6, "div", [["class", "message"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MessageComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MessageComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](6, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_1 = (_co.message.action != null); _ck(_v, 4, 0, currVal_1); var currVal_2 = _co.message.loading; _ck(_v, 6, 0, currVal_2); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.message.text; _ck(_v, 2, 0, currVal_0); }); }
 function View_MessageComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MessageComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = (_co.message.text != null); _ck(_v, 1, 0, currVal_0); }, null); }
@@ -784,7 +784,6 @@ var overwolfEvents = overwolf.games.events;
 var windows = overwolf.windows;
 var CTRL_KEYCODE = '162';
 var SPACE_KEYCODE = '32';
-// todo any's bestaan niet
 var OverwolfService = /** @class */ (function () {
     function OverwolfService() {
         var _this = this;
@@ -798,7 +797,9 @@ var OverwolfService = /** @class */ (function () {
             region: null,
             summonerId: null
         };
-        this.showWindowHotkeyState$ = new rxjs__WEBPACK_IMPORTED_MODULE_0__["BehaviorSubject"](this.initialShowWindowState);
+        this.ctrlPressed$ = new rxjs__WEBPACK_IMPORTED_MODULE_0__["BehaviorSubject"](false);
+        this.shitPressed$ = new rxjs__WEBPACK_IMPORTED_MODULE_0__["BehaviorSubject"](false);
+        this.showWindowHotkeyState$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["combineLatest"])(this.ctrlPressed$, this.shitPressed$);
         this.matchState$ = new rxjs__WEBPACK_IMPORTED_MODULE_0__["BehaviorSubject"](this.initialMatchState);
         this.usingFeatures = [
             _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Feature"].matchState,
@@ -808,7 +809,7 @@ var OverwolfService = /** @class */ (function () {
         this.setWindow();
         this.setHotkeyListeners();
         this.handleOverwolfEvents();
-        this.showWindowHotkeyState$.subscribe(function (hotKeyState) { return _this.toggleWindow(hotKeyState); });
+        this.showWindowHotkeyState$.subscribe(function (result) { return _this.toggleWindow(result); });
     }
     OverwolfService.prototype.setWindow = function () {
         var _this = this;
@@ -825,7 +826,6 @@ var OverwolfService = /** @class */ (function () {
         overwolfEvents.onNewEvents.addListener(function (resultSet) { return _this.handleNewEvents(resultSet.events); });
     };
     OverwolfService.prototype.dragMove = function () {
-        console.log('dragmove activated');
         windows.dragMove(this.mainWindow.id, function (status) {
             console.log(status);
             windows.getCurrentWindow(function (window) {
@@ -844,8 +844,8 @@ var OverwolfService = /** @class */ (function () {
         }
         this.mainWindow = window;
     };
-    OverwolfService.prototype.toggleWindow = function (hotKeyState) {
-        if (hotKeyState.ctrlPressed && hotKeyState.spacePressed) {
+    OverwolfService.prototype.toggleWindow = function (result) {
+        if (result[0] && result[1]) {
             this.showWindow();
         }
         else {
@@ -901,14 +901,11 @@ var OverwolfService = /** @class */ (function () {
      * @param event
      */
     OverwolfService.prototype.updateShowWindowHotkeyState = function (isPressed, event) {
-        var newState = this.showWindowHotkeyState$.getValue();
         if (event.key === CTRL_KEYCODE) {
-            newState.ctrlPressed = isPressed;
-            this.showWindowHotkeyState$.next(newState);
+            this.ctrlPressed$.next(isPressed);
         }
         else if (event.key === SPACE_KEYCODE) {
-            newState.spacePressed = isPressed;
-            this.showWindowHotkeyState$.next(newState);
+            this.shitPressed$.next(isPressed);
         }
     };
     /**
@@ -917,10 +914,8 @@ var OverwolfService = /** @class */ (function () {
      *
      */
     OverwolfService.prototype.setFeatures = function () {
-        // TODO: ff sparren!
         overwolfEvents.setRequiredFeatures(this.usingFeatures, function (info) {
             if (info.status === _overwolf_interfaces__WEBPACK_IMPORTED_MODULE_1__["Status"].error) {
-                // check info.status possible values
                 console.log(info.reason);
                 return;
             }

@@ -1,3 +1,9 @@
+.windowTitle {
+  img {
+    width: 80px;
+  }
+}
+
 .startWindow {
   width: 500px;
   height: 500px;
@@ -6,6 +12,7 @@
   border-radius: 20px;
   box-shadow: inset 20px 20px 200px 20px rgba(0,0,0,1);
   text-align: center;
+
 
   #ad-div {
     margin: 30px auto auto;

@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "updateOverwolf": "ng build --aot && updateOverwolf"
+    "update-overwolf": "ng build --aot && updateOverwolf"
   },
   "private": true,
   "dependencies": {
