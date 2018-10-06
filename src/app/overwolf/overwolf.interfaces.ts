@@ -68,6 +68,7 @@ export interface Update {
 }
 interface SummonerInfo {
   id: number;
+  name: string;
   region: string;
 }
 
@@ -80,6 +81,7 @@ export interface GameModeInfo {
 
 export interface MatchState {
   summonerId: number;
+  summonerName: string;
   region: string;
   matchActive: boolean;
 }

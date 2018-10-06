@@ -2,7 +2,7 @@ import {Component, OnInit, Input, OnDestroy, ChangeDetectorRef, OnChanges} from 
 import { SocketService } from '../socket/socket.service';
 import { interval, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import {CooldownActivationData, SocketEvents} from '../socket/socket.interface';
+import {CooldownActivationData, SocketEvent} from '../socket/socket.interface';
 
 
 @Component({
@@ -12,7 +12,7 @@ import {CooldownActivationData, SocketEvents} from '../socket/socket.interface';
 })
 
 export class SpellComponent implements OnInit, OnDestroy, OnChanges {
-  @Input() id: number;
+  @Input() id: string;
   @Input() name: string;
   @Input() image: string;
   @Input() cooldown: number;
@@ -21,14 +21,11 @@ export class SpellComponent implements OnInit, OnDestroy, OnChanges {
   private destroyer$: Subject<void> = new Subject<void>();
   countdown = 0;
 
-  get spellId(): string {
-    return `${this.id}-${this.summonerId}`;
-  }
 
   constructor(private socketService: SocketService, private changeDetection: ChangeDetectorRef) {
 
-    socketService.listen(SocketEvents.sumUsed, (data: CooldownActivationData) => {
-      if (this.spellId !== data.spellId) {
+    socketService.listen(SocketEvent.sumUsed, (data: CooldownActivationData) => {
+      if (this.id !== data.spellId || this.countdown !== this.cooldown) {
 
         return;
       }
@@ -63,11 +60,11 @@ export class SpellComponent implements OnInit, OnDestroy, OnChanges {
     }
     const cooldownActivationData: CooldownActivationData = {
 
-      spellId: this.spellId,
+      spellId: this.id,
       timeStamp: Date.now(),
     };
 
-    this.socketService.message(SocketEvents.startCooldown, cooldownActivationData);
+    this.socketService.message(SocketEvent.startCooldown, cooldownActivationData);
 
     // we start counting down immediately to trigger the state change and
     // which is acceptable because there is most likely already a human response delay of at least a second

@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import * as socketIo from 'socket.io-client';
 import {Match} from '../match/match.component';
-import {CreationRequest, Payload, RequestError, SocketEvents} from './socket.interface';
-import {Credentials} from "../credentials";
-import {MessageService} from "../message/message.service";
-import {OverwolfService} from "../overwolf/overwolf.service";
+import {CreationRequest, Payload, RequestError, SocketEvent, Source} from './socket.interface';
+import {Credentials} from '../credentials';
+import {MessageService} from '../message/message.service';
+import {OverwolfService} from '../overwolf/overwolf.service';
 import Socket = SocketIOClient.Socket;
 
 const SERVER_URL = Credentials.IP;
@@ -18,7 +18,7 @@ export class SocketService {
   constructor(private messageService: MessageService,
               private overwolf: OverwolfService) {
 
-    this.listen(SocketEvents.matchCreated, (match: Match) => {
+    this.listen(SocketEvent.matchCreated, (match: Match) => {
 
       this.roomId = match.id;
     });
@@ -31,19 +31,20 @@ export class SocketService {
     socket.on('connect', () => {
       console.log('connected');
     });
-    this.listen(SocketEvents.requestError, (socketError) => { this.handleSocketError(socketError as RequestError); });
+    this.listen(SocketEvent.requestError, (socketError) => { this.handleSocketError(socketError as RequestError); });
   }
 
   /**
    *
-   * Sends SocketEvents to the server
+   * Sends SocketEvent to the server
    *
    *
    * @param type SocketEvent that will be sent out
    * @param data
    */
-  message(type: SocketEvents, data: any): void {
+  message(type: SocketEvent, data: any): void {
     const payload: Payload = {
+      source: Source.pc,
       roomId: this.roomId,
       data: data,
     };
@@ -53,12 +54,12 @@ export class SocketService {
 
   /**
    *
-   * Listens to SocketEvents triggered by the server
+   * Listens to SocketEvent triggered by the server
    *
    * @param type: SocketEvent that will be listened to
    * @param callback: method run when that SocketEvent is triggered
    */
-  listen<T>(type: SocketEvents, callback: (data: T) => void) {
+  listen<T>(type: SocketEvent, callback: (data: T) => void) {
     socket.on(type, callback);
   }
 
@@ -78,7 +79,7 @@ export class SocketService {
   private retryMatch() {
     const matchState = this.overwolf.matchState$.getValue();
 
-    this.message(SocketEvents.createMatch, {
+    this.message(SocketEvent.createMatch, {
       summonerId: matchState.summonerId,
       region: matchState.region
     } as CreationRequest);

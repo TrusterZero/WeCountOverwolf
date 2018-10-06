@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Match} from './match.component';
 import {SocketService} from '../socket/socket.service';
 import {Subject} from 'rxjs';
-import {CreationRequest, ErrorCode, SocketEvents} from '../socket/socket.interface';
+import {CreationRequest, ErrorCode, SocketEvent} from '../socket/socket.interface';
 import {OverwolfService} from '../overwolf/overwolf.service';
 import {MatchState} from '../overwolf/overwolf.interfaces';
 import {MessageService} from '../message/message.service';
@@ -16,7 +16,8 @@ export class MatchService {
     constructor(private socketService: SocketService,
                 private overwolf: OverwolfService,
                 private messageService: MessageService) {
-      socketService.listen( SocketEvents.matchCreated, ( match: Match ) => {
+
+      socketService.listen( SocketEvent.matchCreated, (match: Match ) => {
         messageService.stopLoading();
 
         if (match.summoners.length === 0) {
@@ -44,7 +45,9 @@ export class MatchService {
   public startMatch(matchState: MatchState): void {
     this.messageService.startLoading();
     this.overwolf.showWindow();
-    this.socketService.message(SocketEvents.createMatch, {
+    console.log(matchState);
+    this.socketService.message(SocketEvent.createMatch, {
+      summonerName: '',
       summonerId: matchState.summonerId,
       region: matchState.region
     } as CreationRequest);

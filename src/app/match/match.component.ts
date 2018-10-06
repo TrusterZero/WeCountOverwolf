@@ -27,7 +27,7 @@ export class MatchComponent implements OnChanges {
   checkMatch(match: Match): void {
     if (!match) {
       this.clearMatch();
-    }else {
+    } else {
       this.setMatch(match);
     }
     this.changeDetection.detectChanges();

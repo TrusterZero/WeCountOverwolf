@@ -282,7 +282,8 @@ __webpack_require__.r(__webpack_exports__);
 var Credentials = /** @class */ (function () {
     function Credentials() {
     }
-    Credentials.IP = 'http://18.217.193.138:3000';
+    // static IP = 'http://18.217.193.138:3000';
+    Credentials.IP = 'http://192.168.178.150:3000';
     return Credentials;
 }());
 
@@ -460,7 +461,7 @@ var MatchService = /** @class */ (function () {
         this.overwolf = overwolf;
         this.messageService = messageService;
         this.matchData = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
-        socketService.listen(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_2__["SocketEvents"].matchCreated, function (match) {
+        socketService.listen(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_2__["SocketEvent"].matchCreated, function (match) {
             messageService.stopLoading();
             if (match.summoners.length === 0) {
                 _this.messageService.displayError(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_2__["ErrorCode"].noSummoners, null);
@@ -486,7 +487,9 @@ var MatchService = /** @class */ (function () {
     MatchService.prototype.startMatch = function (matchState) {
         this.messageService.startLoading();
         this.overwolf.showWindow();
-        this.socketService.message(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_2__["SocketEvents"].createMatch, {
+        console.log(matchState);
+        this.socketService.message(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_2__["SocketEvent"].createMatch, {
+            summonerName: '',
             summonerId: matchState.summonerId,
             region: matchState.region
         });
@@ -652,7 +655,7 @@ var ErrorMessage;
     // @ts-ignore
     ErrorMessage[401] = "Can't access Riot's Server";
     // @ts-ignore
-    ErrorMessage[1001] = "No enemies around!";
+    ErrorMessage[1] = "No enemies around!";
     // @ts-ignore
     ErrorMessage[1002] = "WeCount can't be used in this gamemode";
 })(ErrorMessage || (ErrorMessage = {}));
@@ -794,6 +797,7 @@ var OverwolfService = /** @class */ (function () {
         };
         this.initialMatchState = {
             matchActive: false,
+            summonerName: null,
             region: null,
             summonerId: null
         };
@@ -855,6 +859,7 @@ var OverwolfService = /** @class */ (function () {
         }
     };
     OverwolfService.prototype.updateInfo = function (info) {
+        console.log(info);
         var result = this.checkEventSource(info);
         if (!result) {
             return;
@@ -1025,29 +1030,34 @@ var OverwolfService = /** @class */ (function () {
 /*!********************************************!*\
   !*** ./src/app/socket/socket.interface.ts ***!
   \********************************************/
-/*! exports provided: SocketEvents, ErrorCode */
+/*! exports provided: SocketEvent, Source, ErrorCode */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SocketEvents", function() { return SocketEvents; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SocketEvent", function() { return SocketEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Source", function() { return Source; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorCode", function() { return ErrorCode; });
-var SocketEvents;
-(function (SocketEvents) {
-    SocketEvents["startCooldown"] = "startCooldown";
-    SocketEvents["createMatch"] = "createMatch";
-    SocketEvents["matchCreated"] = "matchCreated";
-    SocketEvents["sumUsed"] = "sumUsed";
-    SocketEvents["requestError"] = "error";
-})(SocketEvents || (SocketEvents = {}));
+var SocketEvent;
+(function (SocketEvent) {
+    SocketEvent["startCooldown"] = "startCooldown";
+    SocketEvent["createMatch"] = "createMatch";
+    SocketEvent["matchCreated"] = "matchCreated";
+    SocketEvent["sumUsed"] = "sumUsed";
+    SocketEvent["requestError"] = "error";
+})(SocketEvent || (SocketEvent = {}));
+var Source;
+(function (Source) {
+    Source[Source["pc"] = 0] = "pc";
+    Source[Source["mobile"] = 1] = "mobile";
+})(Source || (Source = {}));
 var ErrorCode;
 (function (ErrorCode) {
     ErrorCode[ErrorCode["notFound"] = 404] = "notFound";
     ErrorCode[ErrorCode["forbidden"] = 403] = "forbidden";
     ErrorCode[ErrorCode["unauthorized"] = 401] = "unauthorized";
-    ErrorCode[ErrorCode["noSummoners"] = 1001] = "noSummoners";
-    ErrorCode[ErrorCode["wrongGameMode"] = 1002] = "wrongGameMode";
-    ErrorCode[ErrorCode["unhandled"] = null] = "unhandled";
+    ErrorCode[ErrorCode["unhandled"] = 0] = "unhandled";
+    ErrorCode[ErrorCode["noSummoners"] = 1] = "noSummoners";
 })(ErrorCode || (ErrorCode = {}));
 
 
@@ -1081,7 +1091,7 @@ var SocketService = /** @class */ (function () {
         var _this = this;
         this.messageService = messageService;
         this.overwolf = overwolf;
-        this.listen(_socket_interface__WEBPACK_IMPORTED_MODULE_1__["SocketEvents"].matchCreated, function (match) {
+        this.listen(_socket_interface__WEBPACK_IMPORTED_MODULE_1__["SocketEvent"].matchCreated, function (match) {
             _this.roomId = match.id;
         });
     }
@@ -1093,11 +1103,11 @@ var SocketService = /** @class */ (function () {
         socket.on('connect', function () {
             console.log('connected');
         });
-        this.listen(_socket_interface__WEBPACK_IMPORTED_MODULE_1__["SocketEvents"].requestError, function (socketError) { _this.handleSocketError(socketError); });
+        this.listen(_socket_interface__WEBPACK_IMPORTED_MODULE_1__["SocketEvent"].requestError, function (socketError) { _this.handleSocketError(socketError); });
     };
     /**
      *
-     * Sends SocketEvents to the server
+     * Sends SocketEvent to the server
      *
      *
      * @param type SocketEvent that will be sent out
@@ -1105,6 +1115,7 @@ var SocketService = /** @class */ (function () {
      */
     SocketService.prototype.message = function (type, data) {
         var payload = {
+            source: _socket_interface__WEBPACK_IMPORTED_MODULE_1__["Source"].pc,
             roomId: this.roomId,
             data: data,
         };
@@ -1112,7 +1123,7 @@ var SocketService = /** @class */ (function () {
     };
     /**
      *
-     * Listens to SocketEvents triggered by the server
+     * Listens to SocketEvent triggered by the server
      *
      * @param type: SocketEvent that will be listened to
      * @param callback: method run when that SocketEvent is triggered
@@ -1133,7 +1144,7 @@ var SocketService = /** @class */ (function () {
     };
     SocketService.prototype.retryMatch = function () {
         var matchState = this.overwolf.matchState$.getValue();
-        this.message(_socket_interface__WEBPACK_IMPORTED_MODULE_1__["SocketEvents"].createMatch, {
+        this.message(_socket_interface__WEBPACK_IMPORTED_MODULE_1__["SocketEvent"].createMatch, {
             summonerId: matchState.summonerId,
             region: matchState.region
         });
@@ -1237,8 +1248,8 @@ var SpellComponent = /** @class */ (function () {
         this.changeDetection = changeDetection;
         this.destroyer$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         this.countdown = 0;
-        socketService.listen(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_4__["SocketEvents"].sumUsed, function (data) {
-            if (_this.spellId !== data.spellId) {
+        socketService.listen(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_4__["SocketEvent"].sumUsed, function (data) {
+            if (_this.id !== data.spellId || _this.countdown !== _this.cooldown) {
                 return;
             }
             var stopCooldown$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
@@ -1248,20 +1259,13 @@ var SpellComponent = /** @class */ (function () {
                 .subscribe(function () {
                 _this.countdown--;
                 changeDetection.detectChanges();
-                if (_this.countdown === 0) {
+                if (_this.countdown <= 0) {
                     stopCooldown$.next();
                     _this.resetCountdown();
                 }
             });
         });
     }
-    Object.defineProperty(SpellComponent.prototype, "spellId", {
-        get: function () {
-            return this.id + "-" + this.summonerId;
-        },
-        enumerable: true,
-        configurable: true
-    });
     /**
      *
      * Starts the cooldown for all players in the users team
@@ -1273,10 +1277,10 @@ var SpellComponent = /** @class */ (function () {
             return;
         }
         var cooldownActivationData = {
-            spellId: this.spellId,
+            spellId: this.id,
             timeStamp: Date.now(),
         };
-        this.socketService.message(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_4__["SocketEvents"].startCooldown, cooldownActivationData);
+        this.socketService.message(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_4__["SocketEvent"].startCooldown, cooldownActivationData);
         // we start counting down immediately to trigger the state change and
         // which is acceptable because there is most likely already a human response delay of at least a second
         // this.countdown--;

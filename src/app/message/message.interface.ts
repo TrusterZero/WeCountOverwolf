@@ -7,7 +7,7 @@ export enum ErrorMessage {
   // @ts-ignore
   401 = 'Can\'t access Riot\'s Server',
   // @ts-ignore
-  1001 = 'No enemies around!',
+  1 = 'No enemies around!',
   // @ts-ignore
   1002 = 'WeCount can\'t be used in this gamemode'
 }

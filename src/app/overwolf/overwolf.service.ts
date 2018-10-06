@@ -26,6 +26,7 @@ export class OverwolfService {
   };
   initialMatchState: MatchState = {
     matchActive: false,
+    summonerName: null,
     region: null,
     summonerId: null
   };
@@ -90,7 +91,7 @@ export class OverwolfService {
   private toggleWindow(result: boolean[]): void {
     if (result[0] && result[1]) {
       this.showWindow();
-    }else {
+    } else {
       if (this.mainWindow) {
         this.hideWindow();
       }
@@ -98,6 +99,7 @@ export class OverwolfService {
   }
 
   private updateInfo(info: any): void {
+      console.log(info);
       const result: Update = this.checkEventSource(info);
 
       if ( !result) {

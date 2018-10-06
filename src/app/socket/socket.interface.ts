@@ -1,4 +1,4 @@
-export enum SocketEvents {
+export enum SocketEvent {
   startCooldown = 'startCooldown',
   createMatch = 'createMatch',
   matchCreated = 'matchCreated',
@@ -6,13 +6,17 @@ export enum SocketEvents {
   requestError = 'error'
 }
 
+export enum Source {
+  pc =  0,
+  mobile = 1
+}
+
 export enum ErrorCode {
   notFound = 404,
   forbidden = 403,
   unauthorized = 401,
-  noSummoners = 1001,
-  wrongGameMode = 1002,
-  unhandled = null
+  unhandled = 0,
+  noSummoners= 1
 }
 
 export interface RequestError {
@@ -20,11 +24,13 @@ export interface RequestError {
 }
 
 export interface CreationRequest {
-  summonerId: number;
+  summonerName?: string;
+  summonerId?: number;
   region: string;
 }
 
 export interface Payload {
+  source?: Source;
   roomId: number;
   data: any;
 }
@@ -33,5 +39,3 @@ export interface CooldownActivationData {
   spellId: string;
   timeStamp: number; // unix timestamp data type
 }
-
-
