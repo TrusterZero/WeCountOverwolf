@@ -31,7 +31,7 @@ export class SocketService {
     socket.on('connect', () => {
       console.log('connected');
     });
-    this.listen(SocketEvent.requestError, (socketError) => { this.handleSocketError(socketError as RequestError); });
+    this.listen(SocketEvent.requestError, (socketError: RequestError) => this.handleSocketError(socketError));
   }
 
   /**
@@ -72,7 +72,7 @@ export class SocketService {
    */
   private handleSocketError(socketError: RequestError): void {
     this.messageService
-      .displayError(socketError.status,
+      .displayError(socketError,
         () => this.retryMatch());
   }
 
@@ -81,6 +81,7 @@ export class SocketService {
 
     this.message(SocketEvent.createMatch, {
       summonerId: matchState.summonerId,
+      summonerName: '',
       region: matchState.region
     } as CreationRequest);
   }

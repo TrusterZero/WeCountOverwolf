@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ErrorCode} from '../socket/socket.interface';
+import {ErrorCode, RequestError} from '../socket/socket.interface';
 import {Subject} from 'rxjs';
 import { ErrorMessage, Message} from './message.interface';
 
@@ -26,10 +26,10 @@ export class MessageService {
     this.messageStream$.next();
   }
 
-  public displayError(error: ErrorCode, action: () => void ): void {
-  console.log(ErrorMessage[error]);
+  public displayError(error: RequestError, action: () => void ): void {
+    console.log('in error', error)
   const message: Message  = {
-    text: ErrorMessage[error],
+    text: error.message,
     loading: false,
     action: action,
     actionText: 'Retry'

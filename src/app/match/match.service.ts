@@ -20,9 +20,6 @@ export class MatchService {
       socketService.listen( SocketEvent.matchCreated, (match: Match ) => {
         messageService.stopLoading();
 
-        if (match.summoners.length === 0) {
-          this.messageService.displayError(ErrorCode.noSummoners, null );
-        }
         this.matchData.next( match );
       });
 

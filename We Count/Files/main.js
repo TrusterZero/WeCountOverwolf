@@ -463,9 +463,6 @@ var MatchService = /** @class */ (function () {
         this.matchData = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
         socketService.listen(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_2__["SocketEvent"].matchCreated, function (match) {
             messageService.stopLoading();
-            if (match.summoners.length === 0) {
-                _this.messageService.displayError(_socket_socket_interface__WEBPACK_IMPORTED_MODULE_2__["ErrorCode"].noSummoners, null);
-            }
             _this.matchData.next(match);
         });
         overwolf.matchState$.subscribe(function (matchState) {
@@ -545,7 +542,7 @@ var RenderType_MessageComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵ
 function View_MessageComponent_2(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 2, "div", [["class", "button-holder"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "button", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.runAction() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", ""]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.message.acceptText; _ck(_v, 2, 0, currVal_0); }); }
+    } return ad; }, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", ""]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.message.actionText; _ck(_v, 2, 0, currVal_0); }); }
 function View_MessageComponent_3(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 0, "img", [["src", "assets/loading.gif"]], null, null, null, null, null))], null, null); }
 function View_MessageComponent_1(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](0, 0, null, null, 6, "div", [["class", "message"]], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵeld"](1, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵted"](2, null, ["", ""])), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MessageComponent_2)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](4, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MessageComponent_3)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](6, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_1 = (_co.message.action != null); _ck(_v, 4, 0, currVal_1); var currVal_2 = _co.message.loading; _ck(_v, 6, 0, currVal_2); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.message.text; _ck(_v, 2, 0, currVal_0); }); }
 function View_MessageComponent_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵand"](16777216, null, null, 1, null, View_MessageComponent_1)), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵdid"](1, 16384, null, 0, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]], { ngIf: [0, "ngIf"] }, null)], function (_ck, _v) { var _co = _v.component; var currVal_0 = (_co.message.text != null); _ck(_v, 1, 0, currVal_0); }, null); }
@@ -572,7 +569,7 @@ __webpack_require__.r(__webpack_exports__);
  * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
  * tslint:disable
  */ 
-var styles = [".message[_ngcontent-%COMP%] {\n  width: 200px;\n  height: 100px;\n  padding: 10px;\n  background-color: rgba(40, 40, 40, 0.8);\n  text-align: center; }\n  .message[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n    width: 25px; }\n  .message[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    color: white;\n    font-family: 'Ubuntu', sans-serif; }\n  .message[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%] {\n    margin: auto; }\n  .message[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n      color: white;\n      padding: 7.5px 15px;\n      border: solid 5px #505050;\n      border-radius: 4px;\n      margin: 15px 30px;\n      background-color: rgba(80, 80, 80, 0.8); }\n  .message[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%]   button[_ngcontent-%COMP%]:hover {\n        background-color: rgba(100, 100, 100, 0.9); }"];
+var styles = [".message[_ngcontent-%COMP%] {\n  width: 200px;\n  height: 100px;\n  padding: 10px 10px 30px;\n  background-color: rgba(40, 40, 40, 0.8);\n  text-align: center; }\n  .message[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n    width: 25px; }\n  .message[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    color: white;\n    font-family: 'Ubuntu', sans-serif; }\n  .message[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%] {\n    margin: auto; }\n  .message[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n      color: white;\n      padding: 7.5px 15px;\n      border: solid 5px #505050;\n      border-radius: 2px;\n      margin: 15px 30px;\n      background-color: rgba(80, 80, 80, 0.8); }\n  .message[_ngcontent-%COMP%]   .button-holder[_ngcontent-%COMP%]   button[_ngcontent-%COMP%]:hover {\n        background-color: rgba(100, 100, 100, 0.9); }"];
 
 
 
@@ -673,15 +670,17 @@ var ErrorMessage;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageService", function() { return MessageService; });
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _message_interface__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./message.interface */ "./src/app/message/message.interface.ts");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _socket_socket_interface__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../socket/socket.interface */ "./src/app/socket/socket.interface.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _message_interface__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./message.interface */ "./src/app/message/message.interface.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
 
 
 
 var MessageService = /** @class */ (function () {
     function MessageService() {
-        this.messageStream$ = new rxjs__WEBPACK_IMPORTED_MODULE_0__["Subject"]();
+        this.messageStream$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
     }
     MessageService.prototype.startLoading = function () {
         var message = {
@@ -696,9 +695,9 @@ var MessageService = /** @class */ (function () {
         this.messageStream$.next();
     };
     MessageService.prototype.displayError = function (error, action) {
-        console.log(_message_interface__WEBPACK_IMPORTED_MODULE_1__["ErrorMessage"][error]);
+        console.log('in error', error);
         var message = {
-            text: _message_interface__WEBPACK_IMPORTED_MODULE_1__["ErrorMessage"][error],
+            text: error.message,
             loading: false,
             action: action,
             actionText: 'Retry'
@@ -714,7 +713,7 @@ var MessageService = /** @class */ (function () {
         };
         this.messageStream$.next(message);
     };
-    MessageService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_2__["defineInjectable"]({ factory: function MessageService_Factory() { return new MessageService(); }, token: MessageService, providedIn: "root" });
+    MessageService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_3__["defineInjectable"]({ factory: function MessageService_Factory() { return new MessageService(); }, token: MessageService, providedIn: "root" });
     return MessageService;
 }());
 
@@ -1030,7 +1029,7 @@ var OverwolfService = /** @class */ (function () {
 /*!********************************************!*\
   !*** ./src/app/socket/socket.interface.ts ***!
   \********************************************/
-/*! exports provided: SocketEvent, Source, ErrorCode */
+/*! exports provided: SocketEvent, Source, ErrorCode, RequestErrorMessage */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1038,6 +1037,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SocketEvent", function() { return SocketEvent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Source", function() { return Source; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorCode", function() { return ErrorCode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RequestErrorMessage", function() { return RequestErrorMessage; });
 var SocketEvent;
 (function (SocketEvent) {
     SocketEvent["startCooldown"] = "startCooldown";
@@ -1054,11 +1054,24 @@ var Source;
 var ErrorCode;
 (function (ErrorCode) {
     ErrorCode[ErrorCode["notFound"] = 404] = "notFound";
+    ErrorCode[ErrorCode["matchNotFound"] = 4041] = "matchNotFound";
+    ErrorCode[ErrorCode["summonerNotfound"] = 4042] = "summonerNotfound";
     ErrorCode[ErrorCode["forbidden"] = 403] = "forbidden";
     ErrorCode[ErrorCode["unauthorized"] = 401] = "unauthorized";
+    ErrorCode[ErrorCode["rateLimitExceeded"] = 429] = "rateLimitExceeded";
     ErrorCode[ErrorCode["unhandled"] = 0] = "unhandled";
     ErrorCode[ErrorCode["noSummoners"] = 1] = "noSummoners";
+    ErrorCode[ErrorCode["wrongGameMode"] = 2] = "wrongGameMode";
 })(ErrorCode || (ErrorCode = {}));
+var RequestErrorMessage;
+(function (RequestErrorMessage) {
+    RequestErrorMessage["summonerNotFound"] = "Can't find your summonername, please re-login";
+    RequestErrorMessage["matchNotFound"] = "Wait until the loading screen pops up, then we will be ready";
+    RequestErrorMessage["wrongGameMode"] = "We Count can't be used in this gamemode";
+    RequestErrorMessage["noSummoners"] = "No enemies found in this match";
+    RequestErrorMessage["invalidData"] = "Something is wrong with the data!";
+    RequestErrorMessage["generic"] = "Error occured please try again later";
+})(RequestErrorMessage || (RequestErrorMessage = {}));
 
 
 /***/ }),
@@ -1103,7 +1116,7 @@ var SocketService = /** @class */ (function () {
         socket.on('connect', function () {
             console.log('connected');
         });
-        this.listen(_socket_interface__WEBPACK_IMPORTED_MODULE_1__["SocketEvent"].requestError, function (socketError) { _this.handleSocketError(socketError); });
+        this.listen(_socket_interface__WEBPACK_IMPORTED_MODULE_1__["SocketEvent"].requestError, function (socketError) { return _this.handleSocketError(socketError); });
     };
     /**
      *
@@ -1140,12 +1153,13 @@ var SocketService = /** @class */ (function () {
     SocketService.prototype.handleSocketError = function (socketError) {
         var _this = this;
         this.messageService
-            .displayError(socketError.status, function () { return _this.retryMatch(); });
+            .displayError(socketError, function () { return _this.retryMatch(); });
     };
     SocketService.prototype.retryMatch = function () {
         var matchState = this.overwolf.matchState$.getValue();
         this.message(_socket_interface__WEBPACK_IMPORTED_MODULE_1__["SocketEvent"].createMatch, {
             summonerId: matchState.summonerId,
+            summonerName: '',
             region: matchState.region
         });
     };
