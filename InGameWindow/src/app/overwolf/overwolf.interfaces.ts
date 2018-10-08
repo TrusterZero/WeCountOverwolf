@@ -62,6 +62,12 @@ export interface OverwolfWindow {
     Parent: OverwolfWindow;
 }
 
+export enum WindowName {
+  inGameWindow = 'inGameWindow',
+  desktopWindow = 'desktopWindow'
+}
+
+
 export interface Update {
     summoner_info: SummonerInfo;
     game_info: GameInfo;

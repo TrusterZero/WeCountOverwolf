@@ -41,9 +41,9 @@
         "start_minimized": false
       }
     ],
-    "start_window": "MainWindow",
+    "start_window": "inGameWindow",
     "windows": {
-      "MainWindow": {
+      "inGameWindow": {
         "file": "Files/index.html",
         "transparent": true,
         "resizable": false,
@@ -59,6 +59,14 @@
         "block_top_window_navigation": true,
         "popup_blocker": true,
         "mute": true
+      },
+      "desktopWindow": {
+        "file": "Files/desktop.html",
+        "show_in_taskbar": true,
+        "transparent": false,
+        "desktop_only": true,
+        "use_os_windowing": true,
+        "native_window": true
       }
     }
   },

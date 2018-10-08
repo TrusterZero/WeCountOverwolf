@@ -6,7 +6,7 @@ import {
   NewEventName, NewEventResultSet, OverwolfKeyEvent,
   OverwolfWindow, ShowWindowHotkey,
   Status,
-  Update,
+  Update, WindowName,
   WindowResult
 } from './overwolf.interfaces';
 
@@ -51,7 +51,7 @@ export class OverwolfService {
   }
 
   private setWindow(): void {
-    windows.getCurrentWindow((result: WindowResult) => {
+    windows.obtainDeclaredWindow(WindowName.inGameWindow, (result: WindowResult) => {
       this.setMainWindow(result.window);
       windows.changePosition(this.mainWindow.id, 0, 443);
       this.showWindow();
