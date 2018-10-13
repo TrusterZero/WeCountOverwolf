@@ -1,0 +1,42 @@
+$ff: 'Ubuntu', sans-serif;
+
+.content {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    text-align: center;
+    color: white;
+    font-family: $ff;
+  }
+
+  img {
+    width: 200px;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    &:focus {
+      outline: none;
+      border: 0;
+    }
+  }
+
+
+}
+
+@keyframes example {
+  0%, 100% {
+    padding-bottom: 0;
+  }
+  50% {
+    padding-bottom: 20px;
+  }
+  75% {
+    padding-bottom: 30px;
+  }
+
+}
+

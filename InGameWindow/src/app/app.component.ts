@@ -19,6 +19,6 @@ export class AppComponent {
 
   dragMove() {
     console.log('dragged')
-    this.overwolf.dragMove();
+    this.overwolf.dragMove(this.overwolf.inGameWindow);
   }
 }

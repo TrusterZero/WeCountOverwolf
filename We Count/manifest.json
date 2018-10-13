@@ -41,15 +41,19 @@
         "start_minimized": false
       }
     ],
-    "start_window": "inGameWindow",
+    "start_window": "controller",
     "windows": {
+      "controller": {
+        "file": "Files/controller/index.html",
+        "is_background_page": true
+      },
       "inGameWindow": {
-        "file": "Files/index.html",
+        "file": "Files/inGame/index.html",
         "transparent": true,
         "resizable": false,
         "in_game_only": true,
         "min_size": {
-          "width": 400,
+          "width": 600,
           "height": 600
         },
         "start_position": {
@@ -61,12 +65,23 @@
         "mute": true
       },
       "desktopWindow": {
-        "file": "Files/desktop.html",
+        "file": "Files/desktop/index.html",
+        "resizable": true,
         "show_in_taskbar": true,
         "transparent": false,
         "desktop_only": true,
         "use_os_windowing": true,
-        "native_window": true
+        "native_window": false,
+        "show_minimize": true,
+        "show_maximize": true,
+        "start_position": {
+          "top": 0,
+          "left": 0
+        },
+        "min_size": {
+          "width": 1600,
+          "height": 800
+        }
       }
     }
   },

@@ -24,6 +24,7 @@ export class MatchService {
       });
 
       overwolf.matchState$.subscribe(( matchState: MatchState ) => {
+        console.log(matchState)
         if (matchState.matchActive) {
           this.startMatch(matchState);
         } else {
@@ -41,9 +42,9 @@ export class MatchService {
    */
   public startMatch(matchState: MatchState): void {
     this.messageService.startLoading();
-    this.overwolf.showWindow();
+    this.overwolf.showWindow(this.overwolf.inGameWindow);
     console.log(matchState);
-    this.socketService.message(SocketEvent.createMatch, {
+    this.socketService.send(SocketEvent.createMatch, {
       summonerName: '',
       summonerId: matchState.summonerId,
       region: matchState.region

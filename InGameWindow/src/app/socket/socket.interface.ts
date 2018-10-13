@@ -3,7 +3,8 @@ export enum SocketEvent {
   createMatch = 'createMatch',
   matchCreated = 'matchCreated',
   sumUsed = 'sumUsed',
-  requestError = 'error'
+  requestError = 'requestError',
+  connectionError = 'connect_error'
 }
 
 export enum Source {

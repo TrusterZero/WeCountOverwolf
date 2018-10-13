@@ -8,11 +8,19 @@
   width: 500px;
   height: 500px;
   padding-top: 25px;
-  background: url("/Files/assets/Pyke.jpg") center;
+  background: url("/Files/inGame/assets/Pyke.jpg") center;
   border-radius: 20px;
-  box-shadow: inset 20px 20px 200px 20px rgba(0,0,0,1);
+  box-shadow: inset 20px 20px 200px 20px rgba(0, 0, 0, 1);
   text-align: center;
 
+  .loadingScreen {
+    padding-top: 30px;
+    margin: auto;
+    img {
+      width: 35px;
+    }
+
+  }
 
   #ad-div {
     margin: 30px auto auto;
@@ -23,14 +31,14 @@
     vertical-align: center;
 
     p {
-      color:white;
+      color: white;
     }
   }
 
   h2 {
     color: white;
     font-style: oblique;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 5px 2px;
     font-family: 'Ubuntu', sans-serif;
 
@@ -48,7 +56,7 @@
       background-color: rgba(40, 40, 40, 0.8);
 
       &:hover {
-        background-color: rgba(60,60,60,0.9);
+        background-color: rgba(60, 60, 60, 0.9);
       }
     }
   }

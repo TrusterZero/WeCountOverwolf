@@ -42,7 +42,7 @@ export class MessageService {
       text: messageText,
       loading: false,
       action: () => {},
-      actionText: null
+      actionText: 'OK'
     };
 
     this.messageStream$.next(message);

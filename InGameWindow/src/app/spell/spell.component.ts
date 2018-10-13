@@ -64,7 +64,7 @@ export class SpellComponent implements OnInit, OnDestroy, OnChanges {
       timeStamp: Date.now(),
     };
 
-    this.socketService.message(SocketEvent.startCooldown, cooldownActivationData);
+    this.socketService.send(SocketEvent.startCooldown, cooldownActivationData);
 
     // we start counting down immediately to trigger the state change and
     // which is acceptable because there is most likely already a human response delay of at least a second

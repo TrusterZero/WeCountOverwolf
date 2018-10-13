@@ -11,14 +11,17 @@
       </summoner>
     </div>
   </div>
-<div class='startWindow' *ngIf="!useWeCount">
-  <h2> Activate WeCount?</h2>
-  <div id ="ad-div">
-    <p>AD SPACE 400x300</p>
+  <div class='startWindow' *ngIf="!useWeCount">
+    <h2>{{loading ? 'Collecting match data!' : 'Activate WeCount?'}}</h2>
+    <div id="ad-div">
+      <p>AD SPACE 400x300</p>
+    </div>
+    <div class="loadingScreen" *ngIf="loading">
+      <img  src="assets/loading.gif">
+    </div>
+    <div *ngIf="!loading" class='button-holder'>
+      <button (click)="runWeCount(true)">Yes</button>
+      <button (click)="runWeCount(false)">No</button>
+    </div>
   </div>
-  <div class = 'button-holder'>
-    <button  (click)="runWeCount(true)">Yes</button>
-    <button (click)="runWeCount(false)">No</button>
-  </div>
-</div>
 </div>

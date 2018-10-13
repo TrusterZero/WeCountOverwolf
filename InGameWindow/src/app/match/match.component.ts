@@ -2,6 +2,7 @@ import {Component, ChangeDetectorRef, OnChanges} from '@angular/core';
 import { Summoner } from '../summoner/summoner.component';
 import { MatchService } from './match.service';
 import {OverwolfService} from '../overwolf/overwolf.service';
+import {timer} from 'rxjs';
 
 export interface Match {
   id: number;
@@ -18,10 +19,13 @@ export class MatchComponent implements OnChanges {
   match: Match = null;
   summoners: Summoner[] = [];
   useWeCount = false;
-
+  loading = true;
 
   constructor(private matchService: MatchService, private overwolfService: OverwolfService, private changeDetection: ChangeDetectorRef) {
     matchService.matchData.subscribe((match: Match) => this.checkMatch(match));
+    timer(8000).subscribe(() => {
+      this.loading = false;
+    });
   }
 
   checkMatch(match: Match): void {
@@ -48,10 +52,12 @@ export class MatchComponent implements OnChanges {
   }
 
   runWeCount(willRun: boolean): void {
-    this.overwolfService.hideWindow();
+    this.overwolfService.hideWindow(this.overwolfService.inGameWindow);
     if (willRun) {
       this.overwolfService.activateHotkeys = true;
       this.useWeCount = true;
+    } else {
+      this.overwolfService.closeThisWindow();
     }
     this.changeDetection.detectChanges();
   }

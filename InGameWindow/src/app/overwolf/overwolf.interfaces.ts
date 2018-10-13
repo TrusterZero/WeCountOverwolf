@@ -67,6 +67,14 @@ export enum WindowName {
   desktopWindow = 'desktopWindow'
 }
 
+export enum WindowMessageType {
+  matchState = 'matchState'
+}
+
+export interface WindowMessage {
+  id: string;
+  content: any;
+}
 
 export interface Update {
     summoner_info: SummonerInfo;

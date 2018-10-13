@@ -17,11 +17,7 @@ export class SocketService {
 
   constructor(private messageService: MessageService,
               private overwolf: OverwolfService) {
-
-    this.listen(SocketEvent.matchCreated, (match: Match) => {
-
-      this.roomId = match.id;
-    });
+    this.setListeners();
   }
 
   /**
@@ -31,9 +27,19 @@ export class SocketService {
     socket.on('connect', () => {
       console.log('connected');
     });
-    this.listen(SocketEvent.requestError, (socketError: RequestError) => this.handleSocketError(socketError));
   }
 
+  private setListeners() {
+    this.listen(SocketEvent.connectionError, () => {
+      this.messageService.showMessage('Please check internet connection');
+    });
+    this.listen(SocketEvent.matchCreated, (match: Match) => {
+      this.roomId = match.id;
+    });
+    this.listen(SocketEvent.requestError, (socketError: RequestError) => {
+      this.handleSocketError(socketError);
+    });
+  }
   /**
    *
    * Sends SocketEvent to the server
@@ -42,7 +48,7 @@ export class SocketService {
    * @param type SocketEvent that will be sent out
    * @param data
    */
-  message(type: SocketEvent, data: any): void {
+  send(type: SocketEvent, data: any): void {
     const payload: Payload = {
       source: Source.pc,
       roomId: this.roomId,
@@ -79,7 +85,7 @@ export class SocketService {
   private retryMatch() {
     const matchState = this.overwolf.matchState$.getValue();
 
-    this.message(SocketEvent.createMatch, {
+    this.send(SocketEvent.createMatch, {
       summonerId: matchState.summonerId,
       summonerName: '',
       region: matchState.region

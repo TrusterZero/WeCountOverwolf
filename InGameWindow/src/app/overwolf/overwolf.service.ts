@@ -6,132 +6,79 @@ import {
   NewEventName, NewEventResultSet, OverwolfKeyEvent,
   OverwolfWindow, ShowWindowHotkey,
   Status,
-  Update, WindowName,
+  Update, WindowMessage, WindowMessageType, WindowName,
   WindowResult
 } from './overwolf.interfaces';
 
 
 declare const overwolf; // Overwolf uses a build in js file
 
-const overwolfEvents = overwolf.games.events;
 const windows = overwolf.windows;
 const CTRL_KEYCODE = '162';
 const SPACE_KEYCODE = '32';
 
 export class OverwolfService {
   activateHotkeys = false;
-  initialShowWindowState: ShowWindowHotkey = {
-    ctrlPressed: false,
-    spacePressed: false
-  };
+
   initialMatchState: MatchState = {
     matchActive: false,
     summonerName: null,
     region: null,
     summonerId: null
   };
+  matchState$: BehaviorSubject<MatchState> = new BehaviorSubject<MatchState>(this.initialMatchState);
+
 
   ctrlPressed$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   shitPressed$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   showWindowHotkeyState$ = combineLatest(this.ctrlPressed$, this.shitPressed$);
-  mainWindow: OverwolfWindow;
-  matchState$: BehaviorSubject<MatchState> = new BehaviorSubject<MatchState>(this.initialMatchState);
-
-  private usingFeatures: Feature[] = [
-    Feature.matchState,
-    Feature.summonerInfo,
-  ];
+  inGameWindow: OverwolfWindow;
 
   constructor() {
-    this.setFeatures();
-    this.setWindow();
+    this.listenToMessages();
     this.setHotkeyListeners();
-    this.handleOverwolfEvents();
+    this.setInGameWindow();
     this.showWindowHotkeyState$.subscribe((result) => this.toggleWindow(result));
   }
 
-  private setWindow(): void {
+  closeThisWindow() {
+    this.closeWindow(this.inGameWindow);
+  }
+
+
+  private listenToMessages(): void {
+    windows.onMessageReceived.addListener((windowMessage: WindowMessage) => {
+      console.log('message received');
+        this.matchState$.next(windowMessage.content);
+    });
+  }
+
+  private setInGameWindow(): void {
     windows.obtainDeclaredWindow(WindowName.inGameWindow, (result: WindowResult) => {
-      this.setMainWindow(result.window);
-      windows.changePosition(this.mainWindow.id, 0, 443);
-      this.showWindow();
+      result.window ? this.inGameWindow = result.window : null;
+      windows.changePosition(this.inGameWindow.id, 0, 443);
+      this.showWindow(this.inGameWindow);
     });
   }
 
-  private handleOverwolfEvents(): void {
-    overwolfEvents.getInfo((info: any) => this.updateInfo(info));
-    overwolfEvents.onInfoUpdates2.addListener((info: any) => this.updateInfo(info));
-    overwolfEvents.onNewEvents.addListener((resultSet: NewEventResultSet) => this.handleNewEvents(resultSet.events));
-  }
-
-  public dragMove() {
-    windows.dragMove(this.mainWindow.id, (status) => {
+  public dragMove(window: OverwolfWindow) {
+    windows.dragMove(window.id, (status) => {
       console.log(status);
-      windows.getCurrentWindow((window) => {
-        console.log(window);
-      });
     });
 
-
   }
+
   public setHotkeyListeners(): void {
     overwolf.games.inputTracking.onKeyDown.addListener((event: OverwolfKeyEvent) => this.handleKeyDown(event));
     overwolf.games.inputTracking.onKeyUp.addListener((event: OverwolfKeyEvent) => this.handleKeyUp(event));
   }
 
-  private setMainWindow(window: OverwolfWindow): void {
-
-    if (!window) {
-      return;
-    }
-
-    this.mainWindow = window;
-  }
-
   private toggleWindow(result: boolean[]): void {
     if (result[0] && result[1]) {
-      this.showWindow();
+      this.showWindow(this.inGameWindow);
     } else {
-      if (this.mainWindow) {
-        this.hideWindow();
-      }
-    }
-  }
-
-  private updateInfo(info: any): void {
-      console.log(info);
-      const result: Update = this.checkEventSource(info);
-
-      if ( !result) {
-        return;
-      }
-
-      this.matchState$.next(
-        this.editMatchState(this.matchState$.getValue(), result));
-  }
-
-  private editMatchState(matchState: MatchState, result: Update): MatchState {
-    if (this.hasSummonerId(result)) {
-      matchState.summonerId = result.summoner_info.id;
-    }
-    if (this.hasSummonerRegion(result)) {
-      matchState.region = result.summoner_info.region;
-    }
-    if (this.hasMatchInfo(result)) {
-      matchState.matchActive = result.game_info.matchStarted;
-    }
-
-    return matchState;
-  }
-
-  private handleNewEvents(events: NewEvent[]): void {
-    for (const event of events) {
-      switch (event.name) {
-        case NewEventName.matchEnd:
-          const newMatchState: MatchState = this.matchState$.getValue();
-          newMatchState.matchActive = false;
-          this.matchState$.next(newMatchState);
-          break;
+      if (this.inGameWindow) {
+        this.hideWindow(this.inGameWindow);
       }
     }
   }
@@ -161,122 +108,27 @@ export class OverwolfService {
     }
   }
 
-  /**
-   *
-   * Set the event types we react to
-   *
-   */
-  private setFeatures(): void {
-    overwolfEvents.setRequiredFeatures(this.usingFeatures, (info) => {
-      if (info.status === Status.error) {
-        console.log(info.reason);
-        return;
-      }
+
+
+  public hideWindow(window: OverwolfWindow): void {
+    windows.hide(window.id, () => {
     });
   }
 
-  /**
-   *
-   * Hides the main window
-   */
-  public hideWindow(): void {
-    windows.hide(this.mainWindow.id, () => {});
-  }
-
-  /**
-   *
-   * Shows the main window and hides it after 2 seconds using hideWindow method
-   * @param arg
-   */
-  public showWindow(): void {
-      windows.restore(this.mainWindow.id, () => {});
-    }
-
-  /**
-   *
-   * Check if the info was send from InfoUpdates2 or GetInfo functions
-   *
-   * @param info
-   */
-  private checkEventSource(info: any): Update {
-    if (this.fromInfoUpdates(info)) {
-      return info.info;
-    } else if (this.fromGetInfo(info)) {
-      return info.res;
-    } else {
-      return null;
+  private closeWindow(window: OverwolfWindow) {
+    if (window) {
+      windows.close(window.id);
     }
   }
 
-  /**
-   *
-   *  Check if info was send from InfoUpdates2
-   *
-   * @param info
-   */
-  private fromInfoUpdates(info: any): boolean {
-    // TODO ASK dit is geen goeie check enige wat vast staat is dat info updates geen res heeft
-    if (info.feature) {
-      return true;
-    }
-  }
-
-  /**
-   *
-   * Check if info was send from GetInfo
-   *
-   * @param info
-   */
-  private fromGetInfo(info: any): boolean  {
-
-    if (info.res) {
-      return true;
-    }
-  }
-
-  /**
-   *
-   * Check if data contains game info
-   *
-   * @param result
-   */
-  private hasMatchInfo(result: Update): boolean {
-
-    if (result.game_info && result.game_info.matchStarted) {
-      return true;
-    }
-    return false;
-
-  }
-
-  /**
-   *
-   * Check if data contains summoner info
-   *
-   * @param result
-   */
-  private hasSummonerInfo(result: Update): boolean {
-
-    if (result.summoner_info) {
-      return true;
-    }
-    return false;
-
-  }
-
-  private hasSummonerId(result: Update): boolean {
-    if (this.hasSummonerInfo(result)) {
-      if (result.summoner_info.id) {
-        return true;
-      }
-    }
-  }
-
-  private hasSummonerRegion(result: Update): boolean {
-    if (this.hasSummonerInfo(result)) {
-      if (result.summoner_info.region) {
-        return true;
-      }
-    }
+  public showWindow(window: OverwolfWindow): void {
+    windows.restore(window.id, () => {
+    });
   }
 }
+
+
+
+
+
+

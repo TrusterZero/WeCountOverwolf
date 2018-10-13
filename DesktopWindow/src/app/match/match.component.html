@@ -1,0 +1,9 @@
+<h2> Click on the summonerspells to start the cooldown</h2>
+<div class="startWindow" *ngFor="let summoner of summoners">
+    <summoner [id]="summoner?.id"
+              [champion]="summoner?.champion"
+              [spell1]="summoner?.spell1"
+              [spell2]="summoner?.spell2">
+    </summoner>
+  </div>
+
