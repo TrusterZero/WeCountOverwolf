@@ -16,7 +16,7 @@ $ff: 'Ubuntu', sans-serif;
   img {
     width: 200px;
     animation-name: example;
-    animation-duration: 4s;
+    animation-duration: 1.5s;
     animation-iteration-count: infinite;
     &:focus {
       outline: none;
@@ -32,10 +32,7 @@ $ff: 'Ubuntu', sans-serif;
     padding-bottom: 0;
   }
   50% {
-    padding-bottom: 20px;
-  }
-  75% {
-    padding-bottom: 30px;
+    padding-bottom: 40px;
   }
 
 }

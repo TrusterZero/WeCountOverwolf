@@ -71,7 +71,8 @@ export class WindowService {
 
   private usingFeatures: Feature[] = [
     Feature.matchState,
-    Feature.summonerInfo
+    Feature.summonerInfo,
+    Feature.gameMode
   ];
 
   private onReopening() {

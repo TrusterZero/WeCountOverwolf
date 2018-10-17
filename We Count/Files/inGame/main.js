@@ -282,8 +282,7 @@ __webpack_require__.r(__webpack_exports__);
 var Credentials = /** @class */ (function () {
     function Credentials() {
     }
-    // static IP = 'http://18.217.193.138:3000';
-    Credentials.IP = 'http://192.168.178.150:3000';
+    Credentials.IP = 'http://18.217.193.138:3000';
     return Credentials;
 }());
 
